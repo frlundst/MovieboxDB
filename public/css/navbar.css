@@ -1,0 +1,16 @@
+.navbar{
+    background-color: #0D253F;
+}
+
+.navbar-brand img{
+    width: 100px;
+    height: 100px;
+}
+
+.nav-item a{
+    color: white !important;
+}
+
+.nav-item a:hover{
+    color: gray !important;
+}
