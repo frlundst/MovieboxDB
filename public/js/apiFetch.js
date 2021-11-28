@@ -13,3 +13,5 @@ const ApiFetch = {
 function throwError(message) {
     throw new Error(message);
 }
+
+console.log("test")
