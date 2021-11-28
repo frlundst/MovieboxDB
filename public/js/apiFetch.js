@@ -1,17 +1,16 @@
 const ApiFetch = {
     apiCall(params) {
-        return fetch(BASE_URL + params, {
-                "method": "GET",
-                "headers": {
-                    'api_key' : API_KEY,
-                    'language' : 'en-US',
-                }
-        }).then(response => response.ok ? response.json() : throwError(response.statusText));
+        return fetch(BASE_URL + params + "?api_key=" + API_KEY).then(
+            (response) =>
+                response.ok ? response.json() : throwError(response.statusText)
+        );
     },
+
+    getTopMovies(page = 1) {
+        return this.apiCall(`/movie/popular`);
+    }
 };
 
 function throwError(message) {
     throw new Error(message);
 }
-
-console.log("test")
