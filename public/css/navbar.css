@@ -14,3 +14,10 @@
 .nav-item a:hover{
     color: gray !important;
 }
+
+.nav-item img{
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    margin-left: 10px;
+}
