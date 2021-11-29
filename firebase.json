@@ -4,6 +4,6 @@
   },
   "hosting": {
     "site": "movieboxdb",
-    "public": "public"
+    "public": "build"
   }
 }
