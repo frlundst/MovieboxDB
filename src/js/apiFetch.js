@@ -44,7 +44,15 @@ export const ApiFetch = {
     },
     getUpcomingMovies(page = 1){
         return this.apiCall(`/movie/upcoming?`);
-    }
+    },
+
+    searchMovie(query=""){
+        return this.apiCall(`/search/multi?query=${query}&`);
+    },
+
+    discoverMovie(query=""){
+        return this.apiCall(`/discover/movie?query=${query}&`);
+    },
 };
 
 function throwError(message) {

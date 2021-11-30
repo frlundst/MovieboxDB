@@ -5,7 +5,7 @@ import {ApiFetch} from './js/apiFetch';
 function App() {
   return (
     <div className="App">
-      {console.log(ApiFetch.getTopMovies())}
+      {console.log(ApiFetch.discoverMovie())}
     </div>
   );
 }
