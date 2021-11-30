@@ -1,8 +1,8 @@
-import {api_key, base_url} from './apiConfig';
+import {API_KEY, BASE_URL} from './apiConfig';
 
 export const ApiFetch = {
     apiCall(params) {
-        return fetch(base_url() + params + "api_key=" + api_key()).then(
+        return fetch(BASE_URL + params + "api_key=" + API_KEY).then(
             (response) =>
                 response.ok ? response.json() : throwError(response.statusText)
         );
