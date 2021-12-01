@@ -1,3 +1,5 @@
+@import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
+
 .navbar{
     background-color: #0D253F;
 }
@@ -7,17 +9,14 @@
     height: 100px;
 }
 
+.nav{
+    margin-left:auto;
+}
+
 .nav-item a{
     color: white !important;
 }
 
 .nav-item a:hover{
     color: gray !important;
-}
-
-.nav-item img{
-    width: 25px;
-    height: 25px;
-    border-radius: 50px;
-    margin-left: 10px;
 }
