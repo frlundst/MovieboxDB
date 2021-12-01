@@ -7,6 +7,13 @@
     color: white;
 }
 
+.top-movies-section-second {
+    margin-top: -4px;
+    padding: 0px 10% 150px 10%;
+    background-color: #19181F;
+    color: white;
+}
+
 .top-movies-section h1 {
     padding-bottom: 30px;
     font-size: 60px;

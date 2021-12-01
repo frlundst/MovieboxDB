@@ -6,16 +6,21 @@ import promiseNoRender from "./promiseNoRender";
 import HomeImageView from "./views/homeImageView";
 import HomeMoviesView from "./views/homeMoviesView";
 import HomeMovieDetailsView from "./views/homeMovieDetailsView.js";
+import HomeMoviesViewSecond from "./views/homeMoviesViewSecond";
 import '../css/homeMoviesView.css';
 
 const scrollToRef = (ref) => {
     setTimeout(
-        () =>
+        () => {
+            try {
             window.scrollTo({
-                top: ref.current.offsetTop,
+                top: ref.current.offsetTop - 350,
                 left: 0,
                 behavior: "smooth",
-            }),
+            })
+            } catch (error) {
+                console.log(error);
+            }},
         100
     );
 };
@@ -29,20 +34,21 @@ function HomePresenter(props) {
     const [dataDetailsMovie, setDataDetailsMovie] = React.useState(null);
     const [errorDetailsMovie, setErrorDetailsMovie] = React.useState(null);
 
+    const [promiseDetailsMovieSecond, setPromiseDetailsMovieSecond] = React.useState(null);
+    const [dataDetailsMovieSecond, setDataDetailsMovieSecond] = React.useState(null);
+    const [errorDetailsMovieSecond, setErrorDetailsMovieSecond] = React.useState(null);
+
     const movieDetails = useRef(null);
-    const executeScroll = () => scrollToRef(movieDetails)
+    const executeScroll = () => scrollToRef(movieDetails);
+
+    const movieDetailsSecond = useRef(null);
+    const executeScrollSecond = () => scrollToRef(movieDetailsSecond);
 
     React.useEffect(() => {
         setPromise(
             ApiFetch.getTopMovies()
                 .then((data) => setData(data))
                 .catch((error) => setError(error))
-        );
-
-        setPromiseDetailsMovie(
-            ApiFetch.getMovieDetails('566525')
-                .then((data) => {setDataDetailsMovie(data)})
-                .catch((error) => setErrorDetailsMovie(error))
         );
     }, []);
 
@@ -62,6 +68,7 @@ function HomePresenter(props) {
                     }}
                 />
             )}
+
             {promiseNoRender(promiseDetailsMovie, dataDetailsMovie, errorDetailsMovie) || (
                 <div ref={movieDetails}>
                     <HomeMovieDetailsView
@@ -70,6 +77,33 @@ function HomePresenter(props) {
                             setPromiseDetailsMovie(null);
                             setDataDetailsMovie(null);
                             setErrorDetailsMovie(null);
+                        }}
+                    />
+                </div>
+             )}
+
+             {promiseNoData(promise, data, error) || (
+                <HomeMoviesViewSecond
+                    movies={data.results}
+                    onClick={(id) => {
+                        setPromiseDetailsMovieSecond(
+                            ApiFetch.getMovieDetails(id)
+                                .then((data) => {setDataDetailsMovieSecond(data)})
+                                .catch((error) => setErrorDetailsMovieSecond(error))
+                        );
+                        executeScrollSecond()
+                    }}
+                />
+            )}
+
+            {promiseNoRender(promiseDetailsMovieSecond, dataDetailsMovieSecond, errorDetailsMovieSecond) || (
+                <div ref={movieDetailsSecond}>
+                    <HomeMovieDetailsView
+                        movieDetails={dataDetailsMovieSecond}
+                        closeMovieDetails={() => {
+                            setPromiseDetailsMovieSecond(null);
+                            setDataDetailsMovieSecond(null);
+                            setErrorDetailsMovieSecond(null);
                         }}
                     />
                 </div>
