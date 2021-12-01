@@ -4,7 +4,7 @@ import "../../css/homeMoviesView.css";
 function HomeMoviesView(props) {
     return (
         <div className={`top-movies-section`}>
-            <h1>Top Movies</h1>
+            <h1>{props.heading}</h1>
             <div className="top-movies-container">
                 {props.movies.slice(0, 6).map(function (movie) {
                     return (
