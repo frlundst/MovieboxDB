@@ -4,18 +4,18 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 function NavigationbarView(props) {
     return (
-        <Navbar className="navbar" bg="blue" sticky="top" variant="dark" expand="lg">
-            <Navbar.Brand className="navbar-brand">
-                <img src="images/logo.png" />
+        <Navbar className="navbar" bg="blue" fixed="top" variant="dark" expand="lg">
+            <Navbar.Brand className="navbar-brand" href="#">
+                <img alt="Logo" src="images/logo.png" />
             </Navbar.Brand>
 
             <Navbar.Toggle/>
             <Navbar.Collapse>
                 <Nav className="nav">
-                    <Nav.Link href="#">Home</Nav.Link>
-                    <Nav.Link href="#">Search</Nav.Link>
-                    <Nav.Link href="#">Favourites</Nav.Link>
-                    <Nav.Link href="#">Watchlist</Nav.Link>
+                    <Nav.Link href="#home">Home</Nav.Link>
+                    <Nav.Link href="#search">Search</Nav.Link>
+                    <Nav.Link href="#favourites">Favourites</Nav.Link>
+                    <Nav.Link href="#watchlist">Watchlist</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>
