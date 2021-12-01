@@ -1,28 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 .intro-section {
     position: relative;
 }
 
 .intro-text {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
+    height: auto;
 }
 
-.intro-section img {
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-.intro-section h1{
+.intro-text h1{
     font-size: 8rem;
     color: #fff;
 }
 
-.intro-section p {
+.intro-text p {
     font-size: 2rem;
     color: #fff;
 }
@@ -35,4 +34,35 @@
     width: 100%;
     height: 100%;
     background: rgba(0,0,0,0.3);
+}
+
+.intro-section img {
+    width: 100%;
+    height: auto;
+}
+
+@media (max-width: 1500px) {
+	.intro-text h1{
+        font-size: 6rem;
+    }
+}
+
+@media (max-width: 1000px) {
+    .intro-text h1{
+        font-size: 4rem;
+    }
+
+    .intro-text p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 450px) {
+    .intro-text h1{
+        font-size: 3rem;
+    }
+
+    .intro-text p {
+        font-size: 1.2rem;
+    } 
 }
