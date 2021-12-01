@@ -10,7 +10,7 @@ function Show(props) {
         return function(){window.removeEventListener("hashchange", listener)} //Unsubscribe
     }, []);
 
-    return ( <span class={hashState === props.hash ? "" : "hidden"}> {props.children} </span> );
+    return ( <span className={hashState === props.hash ? "" : "hidden"}> {props.children} </span> );
 }
 
 export default Show;

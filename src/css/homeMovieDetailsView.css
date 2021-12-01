@@ -1,0 +1,20 @@
+.movie-details-section {
+    margin-top: -50px;
+    padding: 0px 10%;
+    background-color: #19181F;
+}
+
+.movie-details-section img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+.movie-details-img:before {
+    position: absolute;
+    content: '';
+    width: 80%;
+    height: 700px;
+    background: rgba(0,0,0,0.4);
+}
