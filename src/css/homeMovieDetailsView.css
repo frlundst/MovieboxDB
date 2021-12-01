@@ -1,6 +1,6 @@
 .movie-details-section {
     margin-top: -50px;
-    padding: 0px 10%;
+    padding: 0px 10% 200px 10%;
     background-color: #19181F;
 }
 
@@ -16,5 +16,90 @@
     content: '';
     width: 80%;
     height: 700px;
-    background: rgba(0,0,0,0.4);
+    background: rgba(0,0,0,0.6);
+}
+
+.movie-details-info {
+    position: absolute;
+    z-index: 1;
+}
+
+.movie-details-title {
+    color: white;
+    position: relative;
+    margin-top: 200px;
+    margin-left: 40px;
+    width: 800px;
+}
+
+.movie-details-title h1{
+    font-size: 50px;
+}
+
+.movie-details-overview {
+    position: relative;
+    color: white;
+    margin-left: 40px; 
+    width: 800px;
+}
+
+.movie-details-overview p {
+    font-size: 20px;
+}
+
+hr.style {
+    border-top: 1px solid #8c8b8b;
+    width: 800px;
+}
+
+.movie-details-description {
+    width: 800px;
+    margin-left: 40px;
+    padding-bottom: 50px;
+}
+
+.movie-details-description p {
+    font-size: 18px;
+    color: white;
+    
+}
+
+.movie-details-rating {
+    float: left;
+}
+
+.movie-details-genre {
+    float: right;
+    padding-right: 50px;
+}
+
+.movie-details-runtime {
+    float: right;
+}
+
+.movie-details-release p{
+    color: white;
+    font-size: 20px;
+}
+
+.movie-details-release {
+    margin-left: 40px;
+    margin-top: 650px;
+    position: absolute;
+    z-index: 1;
+}
+
+.movie-details-close {
+    position: relative;
+    z-index: 1;
+    float: right;
+    margin-bottom: -200px;
+    margin-right: 40px;
+}
+
+.movie-details-close button {
+    font-size: 70px;
+    color: white;
+    background-color: transparent;
+    border: none;
 }

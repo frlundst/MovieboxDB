@@ -1,10 +1,24 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ApiFetch } from "./apiFetch";
 import promiseNoData from "./promiseNoData";
+import promiseNoRender from "./promiseNoRender";
 
 import HomeImageView from "./views/homeImageView";
 import HomeMoviesView from "./views/homeMoviesView";
 import HomeMovieDetailsView from "./views/homeMovieDetailsView.js";
+import '../css/homeMoviesView.css';
+
+const scrollToRef = (ref) => {
+    setTimeout(
+        () =>
+            window.scrollTo({
+                top: ref.current.offsetTop,
+                left: 0,
+                behavior: "smooth",
+            }),
+        100
+    );
+};
 
 function HomePresenter(props) {
     const [promise, setPromise] = React.useState(null);
@@ -14,6 +28,9 @@ function HomePresenter(props) {
     const [promiseDetailsMovie, setPromiseDetailsMovie] = React.useState(null);
     const [dataDetailsMovie, setDataDetailsMovie] = React.useState(null);
     const [errorDetailsMovie, setErrorDetailsMovie] = React.useState(null);
+
+    const movieDetails = useRef(null);
+    const executeScroll = () => scrollToRef(movieDetails)
 
     React.useEffect(() => {
         setPromise(
@@ -41,13 +58,21 @@ function HomePresenter(props) {
                                 .then((data) => {setDataDetailsMovie(data)})
                                 .catch((error) => setErrorDetailsMovie(error))
                         );
+                        executeScroll()
                     }}
                 />
             )}
-            {promiseNoData(promiseDetailsMovie, dataDetailsMovie, errorDetailsMovie) || (
-                <HomeMovieDetailsView
-                    movieDetails={dataDetailsMovie}
-                />
+            {promiseNoRender(promiseDetailsMovie, dataDetailsMovie, errorDetailsMovie) || (
+                <div ref={movieDetails}>
+                    <HomeMovieDetailsView
+                        movieDetails={dataDetailsMovie}
+                        closeMovieDetails={() => {
+                            setPromiseDetailsMovie(null);
+                            setDataDetailsMovie(null);
+                            setErrorDetailsMovie(null);
+                        }}
+                    />
+                </div>
              )}
         </div>
     );
