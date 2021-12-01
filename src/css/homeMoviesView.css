@@ -2,7 +2,7 @@
 
 .top-movies-section {
     margin-top: -4px;
-    padding: 100px 10% 150px 10%;
+    padding: 0px 10% 150px 10%;
     background-color: #19181F;
     color: white;
 }
@@ -17,6 +17,10 @@
 .top-movies-section h1 {
     padding-bottom: 30px;
     font-size: 60px;
+}
+
+.movie-heading {
+    padding-top: 100px;
 }
 
 .top-movies-container {

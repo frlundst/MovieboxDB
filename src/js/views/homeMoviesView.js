@@ -4,9 +4,9 @@ import "../../css/homeMoviesView.css";
 function HomeMoviesView(props) {
     return (
         <div className={`top-movies-section`}>
-            <h1>{props.heading}</h1>
+            <h1 className={props.heading ? "movie-heading" : ""}>{props.heading}</h1>
             <div className="top-movies-container">
-                {props.movies.slice(0, 6).map(function (movie) {
+                {props.movies.slice(props.startIndex, props.endIndex).map(function (movie) {
                     return (
                         <div className="movie-card" key={movie.id}>
                             <div className="movie-vote">

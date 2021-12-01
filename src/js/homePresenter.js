@@ -5,7 +5,6 @@ import promiseNoRender from "./promiseNoRender";
 
 import HomeImageView from "./views/homeImageView";
 import HomeMoviesView from "./views/homeMoviesView";
-import HomeMoviesViewSecond from "./views/homeMoviesViewSecond.js";
 import HomeMovieDetailsView from "./views/homeMovieDetailsView.js";
 import HomeUsView from "./views/homeUsView.js";
 
@@ -112,6 +111,8 @@ function HomePresenter(props) {
                     <HomeMoviesView
                         movies={data.results}
                         heading="Popular Movies"
+                        startIndex={0}
+                        endIndex={6}
                         onClick={(id) => {
                             setPromiseDetailsMovie(
                                 ApiFetch.getMovieDetails(id)
@@ -141,8 +142,11 @@ function HomePresenter(props) {
 
              {promiseNoData(promise, data, error) || (
                 <div ref={popularMovieSecond}>
-                    <HomeMoviesViewSecond
+                    <HomeMoviesView
                         movies={data.results}
+                        heading=""
+                        startIndex={6}
+                        endIndex={12}
                         onClick={(id) => {
                             setPromiseDetailsMovieSecond(
                                 ApiFetch.getMovieDetails(id)
@@ -177,6 +181,8 @@ function HomePresenter(props) {
                     <HomeMoviesView
                         movies={dataRatedMovie.results}
                         heading="Top Rated Movies"
+                        startIndex={0}
+                        endIndex={6}
                         onClick={(id) => {
                             setPromiseDetailsMovieRated(
                                 ApiFetch.getMovieDetails(id)
@@ -206,8 +212,11 @@ function HomePresenter(props) {
 
              {promiseNoData(promiseRatedMovie, dataRatedMovie, errorRatedMovie) || (
                     <div ref={ratedMovieSecond}>
-                    <HomeMoviesViewSecond
+                    <HomeMoviesView
                         movies={dataRatedMovie.results}
+                        heading=""
+                        startIndex={6}
+                        endIndex={12}
                         onClick={(id) => {
                             setPromiseRatedMovieSecond(
                                 ApiFetch.getMovieDetails(id)
