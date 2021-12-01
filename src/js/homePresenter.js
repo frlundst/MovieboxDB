@@ -21,9 +21,7 @@ function HomePresenter(props) {
         <div>
             <HomeImageView />
             {promiseNoData(promise, data, error) || (
-                <HomeMoviesView
-                    movies={data}
-                />
+                <HomeMoviesView movies={data.results} />
             )}
         </div>
     );
