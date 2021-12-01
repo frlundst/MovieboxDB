@@ -1,10 +1,10 @@
 import React from 'react';
-import '../../css/homeView.css';
+import '../../css/homeImageView.css';
 
-function HomeView(props) {
+function HomeImageView(props) {
     return (
         <div className="intro-section">
-            <img src="/images/batmanHomePage.jpg" className="center-fit" alt="Melanie Jansen Pic" />
+            <img src="/images/batmanHomePage.jpg" alt="Batman Home Page" />
             <div className="intro-text">
                 <h1>MovieBoxDB</h1>
                 <p>Movie Tracking Application</p>
@@ -13,4 +13,4 @@ function HomeView(props) {
     );
 }
 
-export default HomeView;
+export default HomeImageView;

@@ -1,12 +1,11 @@
 import React from 'react';
 import './css/App.css';
-import {ApiFetch} from './js/apiFetch';
-import HomeView from './js/views/homeView';
+import HomePresenter from './js/homePresenter.js';
 
 function App() {
   return (
     <div className="App">
-      <HomeView />
+      <HomePresenter />
     </div>
   );
 }
