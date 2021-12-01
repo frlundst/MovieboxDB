@@ -1,53 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .top-movies-section {
-    display: grid;
-    grid-template-columns: 15% 15% 15% 15% 15% 15%;
-    grid-gap: 2%;
-    row-gap: 8%;
-    padding: 100px 10% 0 10%;
-}
-
-.movie-vote {
-    background-color: black;
-    border-radius: 50%;
-    margin-top: -30px;
-    z-index: 1;
-}
-
-.top-movies-section p {
-    font-size: 1.1em;
+    margin-top: -4px;
+    padding: 100px 10% 150px 10%;
+    background-color: #19181F;
     color: white;
 }
 
-.top-movies-section img {
+.top-movies-section h1 {
+    padding-bottom: 30px;
+    font-size: 60px;
+}
+
+.top-movies-container {
+    display: grid;
+    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    grid-gap: 2%;
+    row-gap: 12%;
+}
+
+.movie-vote {
+    position: relative;
+    background-color: #5B818A;
+    border-radius: 20px;
+    padding: 0 10px;
+
+    margin-bottom: -33px;
+    z-index: 99;
+    width: 70px;
+
+    text-align: center;
+
+    display: block;
+  	margin-left: auto;
+	margin-right: auto;
+}
+
+.top-movies-container p {
+    font-size: 1.5em;
+    color: white;
+}
+
+.top-movies-container img {
     width: 100%;
     height: 90%;
     object-fit: cover;
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1)
 }
 
-@media (max-width: 1500px) {
-    .top-movies-section {
-        grid-template-columns: 18% 18% 18% 18% 18%;
+@media (max-width: 1800px) {
+    .top-movies-container {
+        grid-template-columns: 32% 32% 32%;
+        row-gap: 5%;
     }
 }
 
 @media (max-width: 1200px) {
     .top-movies-section {
-        grid-template-columns: 22.5% 22.5% 22.5% 22.5%;
+        padding: 100px 4% 0 4%;
     }
+    
+    .top-movies-container {
+        grid-template-columns: 32% 32% 32%;
+        row-gap: 5%;
+    }
+
+    .top-movies-section h1 {
+        padding-bottom: 60px;
+        font-size: 60px;
+    }    
 }
 
 @media (max-width: 900px) {
-    .top-movies-section {
-        grid-template-columns: 32% 32% 32%;
-        row-gap: 5%;
-        padding: 100px 4% 0 4%;
-    }
-}
-
-@media (max-width: 600px) {
-    .top-movies-section {
+    .top-movies-container{
         grid-template-columns: 49% 49%;
-        row-gap: 3%;
+        row-gap: 8%;
     }
+
+    .top-movies-section h1 {
+        text-align: center;
+    }    
 }
