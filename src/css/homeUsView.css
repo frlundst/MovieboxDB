@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.us-section {
+    position: relative;
+}
+
+.intro-text {
+    position: absolute;
+    text-align: center;
+    height: auto;
+}
+
+.us-section h3{
+    font-size: 4rem;
+    color: #fff;
+}
+
+.us-section p {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.us-section:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+}
+
+.us-section img {
+    width: 100%;
+    height: 700px;
+    object-fit: cover;
+    object-position: top;
+    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}

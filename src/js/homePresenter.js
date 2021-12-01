@@ -6,8 +6,8 @@ import promiseNoRender from "./promiseNoRender";
 import HomeImageView from "./views/homeImageView";
 import HomeMoviesView from "./views/homeMoviesView";
 import HomeMovieDetailsView from "./views/homeMovieDetailsView.js";
-import HomeMoviesViewSecond from "./views/homeMoviesViewSecond";
-import '../css/homeMoviesView.css';
+import HomeMoviesViewSecond from "./views/homeMoviesViewSecond.js";
+import HomeUsView from "./views/homeUsView.js";
 
 const scrollToRef = (ref) => {
     setTimeout(
@@ -108,6 +108,8 @@ function HomePresenter(props) {
                     />
                 </div>
              )}
+
+            <HomeUsView />
         </div>
     );
 }
