@@ -4,8 +4,7 @@ import "../../css/homeUsView.css";
 function HomeUsView(props) {
     return (
         <div className="us-section">
-            <img src="/images/justiceLeague.jpg" alt="Batman Home Page" />
-            <div className="intro-text">
+            <div className="us-text">
                 <h3>Discover & track your favorite movies and Tv-shows</h3>
                 <p>
                     Track every TV show & movie you watch, automatically from
@@ -15,6 +14,7 @@ function HomeUsView(props) {
                     account.
                 </p>
             </div>
+            <img src="/images/justiceLeague.jpg" alt="Batman Home Page" />
         </div>
     );
 }

@@ -7,10 +7,13 @@
     position: relative;
 }
 
-.intro-text {
+.us-text {
+    align-items: center;
     position: absolute;
     text-align: center;
-    height: auto;
+    top: 20%;
+    width: 40%;
+    left: 30%;
 }
 
 .us-section h3{
@@ -39,4 +42,50 @@
     object-fit: cover;
     object-position: top;
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+}
+
+@media (max-width: 1500px) {
+    .us-text {
+        align-items: center;
+        position: absolute;
+        text-align: center;
+        top: 20%;
+        width: 80%;
+        left: 10%;
+    }
+}
+
+
+@media (max-width: 1200px) {
+    .us-text {
+        width: 100%;
+        left: 0;
+    }
+}
+
+@media (max-width: 1000px) {
+    .us-text {
+        text-align: left;
+        padding-right: 40px;
+        padding-left: 40px;
+    }
+
+    .us-text p {
+        text-align: left;
+    }
+
+    .us-text h3 {
+        font-size: 3rem;
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 500px) {
+    .us-text h3 {
+        font-size: 2rem;
+    }
+
+    .us-text p {
+        font-size: 1.1rem;
+    }
 }

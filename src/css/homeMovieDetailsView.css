@@ -103,3 +103,16 @@ hr.style {
     background-color: transparent;
     border: none;
 }
+
+.movie-details-companies {
+    position: absolute;
+    z-index: 1;
+    margin-right: 40px;
+}
+
+.movie-details-companies img{
+    width: 50px;
+    height: auto;
+    margin-left: 15px;
+    margin-top: 5px;
+}

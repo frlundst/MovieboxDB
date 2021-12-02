@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { ApiFetch } from "./apiFetch";
 import promiseNoData from "./promiseNoData";
 import promiseNoRender from "./promiseNoRender";
+import WindowDimensions from "./windowDimensions";
 
 import HomeImageView from "./views/homeImageView";
 import HomeMoviesView from "./views/homeMoviesView";
@@ -20,7 +21,7 @@ const scrollToRef = (ref) => {
             } catch (error) {
                 console.log(error);
             }},
-        100
+        200
     );
 };
 
@@ -89,6 +90,8 @@ function HomePresenter(props) {
     const movieDetailsFourth = useRef(null);
     const executeScrollFourth = () => scrollToRef(movieDetailsFourth);
 
+    const { width } = WindowDimensions();
+
     React.useEffect(() => {
         setPromise(
             ApiFetch.getTopMovies()
@@ -114,12 +117,17 @@ function HomePresenter(props) {
                         startIndex={0}
                         endIndex={6}
                         onClick={(id) => {
-                            setPromiseDetailsMovie(
-                                ApiFetch.getMovieDetails(id)
-                                    .then((data) => {setDataDetailsMovie(data)})
-                                    .catch((error) => setErrorDetailsMovie(error))
-                            );
-                            executeScroll()
+                            if (width >= 1800) {
+                            
+                                setPromiseDetailsMovie(
+                                    ApiFetch.getMovieDetails(id)
+                                        .then((data) => {setDataDetailsMovie(data)})
+                                        .catch((error) => setErrorDetailsMovie(error))
+                                );
+                                executeScroll()
+                            } else {
+                                //TODO: Call full details view for mobile
+                            }
                         }}
                     />
                 </div>
@@ -148,12 +156,16 @@ function HomePresenter(props) {
                         startIndex={6}
                         endIndex={12}
                         onClick={(id) => {
-                            setPromiseDetailsMovieSecond(
-                                ApiFetch.getMovieDetails(id)
-                                    .then((data) => {setDataDetailsMovieSecond(data)})
-                                    .catch((error) => setErrorDetailsMovieSecond(error))
-                            );
-                            executeScrollSecond()
+                            if (width >= 1800) {
+                                setPromiseDetailsMovieSecond(
+                                    ApiFetch.getMovieDetails(id)
+                                        .then((data) => {setDataDetailsMovieSecond(data)})
+                                        .catch((error) => setErrorDetailsMovieSecond(error))
+                                );
+                                executeScrollSecond()
+                            } else {
+                                //TODO: Call full details view for mobile
+                            }                            
                         }}
                     />
                 </div>
@@ -184,12 +196,16 @@ function HomePresenter(props) {
                         startIndex={0}
                         endIndex={6}
                         onClick={(id) => {
-                            setPromiseDetailsMovieRated(
-                                ApiFetch.getMovieDetails(id)
-                                    .then((data) => {setDataDetailsMovieRated(data)})
-                                    .catch((error) => setErrorDetailsMovieRated(error))
-                            );
-                            executeScrollThird()
+                            if (width >= 1800) {
+                                setPromiseDetailsMovieRated(
+                                    ApiFetch.getMovieDetails(id)
+                                        .then((data) => {setDataDetailsMovieRated(data)})
+                                        .catch((error) => setErrorDetailsMovieRated(error))
+                                );
+                                executeScrollThird()
+                            } else {
+                                //TODO: Call full details view for mobile
+                            }
                         }}
                     />
                 </div>
@@ -218,12 +234,16 @@ function HomePresenter(props) {
                         startIndex={6}
                         endIndex={12}
                         onClick={(id) => {
-                            setPromiseRatedMovieSecond(
-                                ApiFetch.getMovieDetails(id)
-                                    .then((data) => {setDataRatedMovieSecond(data)})
-                                    .catch((error) => setErrorRatedMovieSecond(error))
-                            );
-                            executeScrollFourth()
+                            if (width >= 1800) {
+                                setPromiseRatedMovieSecond(
+                                    ApiFetch.getMovieDetails(id)
+                                        .then((data) => {setDataRatedMovieSecond(data)})
+                                        .catch((error) => setErrorRatedMovieSecond(error))
+                                );
+                                executeScrollFourth()
+                            } else {
+                                //TODO: Call full details view for mobile
+                            }
                         }}
                     />
                 </div>

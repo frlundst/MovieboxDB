@@ -9,7 +9,7 @@ function HomeMovieDetailsView(props) {
                 <div className="movie-details-info">
                     <div className="movie-details-title">
                         <h1>{props.movieDetails.title}</h1>
-                        <hr class="style"></hr>
+                        <hr className="style"></hr>
                     </div>
                     <div className="movie-details-description">
                         <div className="movie-details-rating">
@@ -33,6 +33,20 @@ function HomeMovieDetailsView(props) {
 
                 <div className="movie-details-close">
                     <button onClick={props.closeMovieDetails}> × </button>
+                </div>
+
+                <div className="movie-details-companies">
+                    {props.movieDetails.production_companies.map(company => (
+                        company.logo_path ? (
+                            <img
+                                src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
+                                alt={company.name}
+                                key={company.name}
+                            />
+                        ) : (
+                            ""
+                        )
+                    ))}
                 </div>
 
                 <div className="movie-details-img">
