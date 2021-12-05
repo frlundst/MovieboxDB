@@ -4,6 +4,11 @@
 }
 
 .us-section {
+    padding-top: 150px;
+    background: #19181F;
+}
+
+.us-container {
     position: relative;
 }
 
@@ -16,17 +21,17 @@
     left: 30%;
 }
 
-.us-section h3{
+.us-container h3{
     font-size: 4rem;
     color: #fff;
 }
 
-.us-section p {
+.us-container p {
     font-size: 1.5rem;
     color: #fff;
 }
 
-.us-section:before {
+.us-container:before {
     position: absolute;
     content: '';
     top: 0;
@@ -36,7 +41,7 @@
     background: rgba(0,0,0,0.7);
 }
 
-.us-section img {
+.us-container img {
     width: 100%;
     height: 700px;
     object-fit: cover;
@@ -77,6 +82,12 @@
     .us-text h3 {
         font-size: 3rem;
         padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 900px) {
+    .us-section {
+        padding-top: 60px;
     }
 }
 
