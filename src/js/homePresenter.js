@@ -117,7 +117,7 @@ function HomePresenter(props) {
                         startIndex={0}
                         endIndex={6}
                         onClick={(id) => {
-                            if (width >= 1800) {
+                            if (width >= 1200) {
                             
                                 setPromiseDetailsMovie(
                                     ApiFetch.getMovieDetails(id)
@@ -156,7 +156,7 @@ function HomePresenter(props) {
                         startIndex={6}
                         endIndex={12}
                         onClick={(id) => {
-                            if (width >= 1800) {
+                            if (width >= 1200) {
                                 setPromiseDetailsMovieSecond(
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataDetailsMovieSecond(data)})
@@ -196,7 +196,7 @@ function HomePresenter(props) {
                         startIndex={0}
                         endIndex={6}
                         onClick={(id) => {
-                            if (width >= 1800) {
+                            if (width >= 1200) {
                                 setPromiseDetailsMovieRated(
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataDetailsMovieRated(data)})
@@ -234,7 +234,7 @@ function HomePresenter(props) {
                         startIndex={6}
                         endIndex={12}
                         onClick={(id) => {
-                            if (width >= 1800) {
+                            if (width >= 1200) {
                                 setPromiseRatedMovieSecond(
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataRatedMovieSecond(data)})

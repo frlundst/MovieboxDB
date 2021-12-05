@@ -116,3 +116,19 @@ hr.style {
     margin-left: 15px;
     margin-top: 5px;
 }
+
+@media (max-width: 1800px) {
+    .movie-details-section {
+        padding: 0px 6%;
+    }
+
+    .movie-details-img:before {
+        width: 88%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .movie-details-section {
+        display: none;
+    }
+}
