@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <NavigationbarPresenter/>
       <Show hash="#home"><HomePresenter/></Show>
-      {/* <Show hash="#search"><SearchPresenter/></Show> */}
+      <Show hash="#search"><SearchPresenter/></Show>
     </div>
   );
 }

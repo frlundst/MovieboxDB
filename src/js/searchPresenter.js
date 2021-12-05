@@ -1,11 +1,10 @@
 import React from 'react';
-import SearchView from './views/searchView';
-
+import SearchFormView from './views/searchFormView.js';
 
 function SearchPresenter(props) {
     return (
         <div>
-            <SearchView></SearchView>
+            <SearchFormView options={["action", "drama"]}></SearchFormView>
         </div>
     );
 }
