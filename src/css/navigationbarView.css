@@ -5,13 +5,19 @@
     border-bottom: 1px solid #303743;
 }
 
+.navbar-brand {
+    padding-left: 9%;
+}
+
 .navbar-brand img{
-    width: 75px;
-    height: 75px;
+    height: 80px;
+    width: 100%;
 }
 
 .nav{
     margin-left:auto;
+    padding-right: 12%;
+    font-size: 25px !important;
 }
 
 .nav-item a{
