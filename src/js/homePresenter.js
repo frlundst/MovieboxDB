@@ -3,11 +3,7 @@ import { ApiFetch } from "./apiFetch";
 import promiseNoData from "./promiseNoData";
 import promiseNoRender from "./promiseNoRender";
 import WindowDimensions from "./windowDimensions";
-
-import HomeImageView from "./views/homeImageView";
-import HomeMoviesView from "./views/homeMoviesView";
-import HomeMovieDetailsView from "./views/homeMovieDetailsView.js";
-import HomeUsView from "./views/homeUsView.js";
+import { HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView } from "./views/homeView";
 
 const scrollToRef = (ref) => {
     setTimeout(
