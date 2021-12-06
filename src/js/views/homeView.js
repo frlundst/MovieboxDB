@@ -82,14 +82,12 @@ function HomeMovieDetailsView(props) {
                     {props.movieDetails.production_companies.map(company => (
                         company.logo_path ? (
                             <img
-                            src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
-                            alt={company.name}
-                            key={company.name}
+                                src={`https://image.tmdb.org/t/p/w500${company.logo_path}`}
+                                alt={company.name}
+                                key={company.name}
                             />
-                            ) : (
-                                ""
-                                )
-                                ))}
+                        ) : ("")
+                    ))}
                 </div>
 
                 <div className="movie-details-img">

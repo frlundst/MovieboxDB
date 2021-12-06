@@ -16,8 +16,8 @@ const scrollToRef = (ref) => {
             })
             } catch (error) {
                 console.log(error);
-            }},
-        200
+            }
+        }, 0
     );
 };
 
@@ -32,8 +32,8 @@ const scrollToList = (ref) => {
             })
             } catch (error) {
                 console.log(error);
-            }},
-        0
+            }
+        }, 0
     );
 };
 
@@ -119,8 +119,9 @@ function HomePresenter(props) {
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataDetailsMovie(data)})
                                         .catch((error) => setErrorDetailsMovie(error))
+                                        .then(() => {executeScroll()})
                                 );
-                                executeScroll()
+                                
                             } else {
                                 //TODO: Call full details view for mobile
                             }
@@ -157,8 +158,8 @@ function HomePresenter(props) {
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataDetailsMovieSecond(data)})
                                         .catch((error) => setErrorDetailsMovieSecond(error))
+                                        .then(() => {executeScrollSecond()})
                                 );
-                                executeScrollSecond()
                             } else {
                                 //TODO: Call full details view for mobile
                             }                            
@@ -197,8 +198,8 @@ function HomePresenter(props) {
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataDetailsMovieRated(data)})
                                         .catch((error) => setErrorDetailsMovieRated(error))
+                                        .then(() => {executeScrollThird()})
                                 );
-                                executeScrollThird()
                             } else {
                                 //TODO: Call full details view for mobile
                             }
@@ -235,8 +236,8 @@ function HomePresenter(props) {
                                     ApiFetch.getMovieDetails(id)
                                         .then((data) => {setDataRatedMovieSecond(data)})
                                         .catch((error) => setErrorRatedMovieSecond(error))
+                                        .then(() => {executeScrollFourth()})
                                 );
-                                executeScrollFourth()
                             } else {
                                 //TODO: Call full details view for mobile
                             }
