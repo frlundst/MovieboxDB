@@ -110,11 +110,10 @@ function HomeUsView(props) {
                 <div className="us-text">
                     <h3>Discover & track your favorite movies and Tv-shows</h3>
                     <p>
-                        Track every TV show & movie you watch, automatically from
-                        your favorite media center. We call this scrobbling. Keep
-                        all your devices in sync, even across different apps. Get
-                        started by installing the plugin and connecting your Trakt
-                        account.
+                        Track, save and discover all your favourite Tv-shows
+                        and movies. At MovieBoxDB we offer the best discovery
+                        experience when it comes to your favourite Tv-shows and movies.
+                        Join today and start discovering your new favourite shows!
                     </p>
                 </div>
                 <img src="/images/justiceLeague.jpg" alt="Batman Home Page" />
