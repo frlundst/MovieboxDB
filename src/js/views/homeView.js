@@ -123,4 +123,4 @@ function HomeUsView(props) {
     );
 }
 
-export default {HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView};
+export {HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView};
