@@ -1,7 +1,6 @@
 # MovieBoxDB
-### Project Description
-https://movieboxdb.web.app
 
+https://movieboxdb.web.app
 
 ## Short description of your project
 What we have decided to create is a website that showcases
