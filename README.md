@@ -15,12 +15,15 @@ and more. The website also allows users to check the cinema airing
 times for specific movies that are currently airing.
 
 ## What you have done
-We have finished creating the layout for the homepage, search page
-and favourites page. There are movies and shows visible with scores,
-genres and information visible.
+We have finished creating the layout for the homepage and started working on the search page.
+There are movies and shows visible with scores, genres and information visible.
+
 ## What you still plan to do
-Make it so that pressing on a show redirects the user to the page
-showcasing all information about the movie.
+- Movie details page
+- Search Page, Discovery Page, Profile Page
+- Creating users using firebase
+- Tracking movies, tvshows for each user
+
 ## Your project file structure (short description/purpose of each file)
 We are following the React structure for files, which means that
 we utilize a public folder where we store all our imgs and our 
