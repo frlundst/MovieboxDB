@@ -16,7 +16,7 @@ export const ApiFetch = {
         return this.apiCall(`/movie/top_rated?page=${page}&`);
     },
     
-    getMovieDetails(id = 566525) {
+    getMovieDetails(id = 512195) {
         return this.apiCall(`/movie/${id}?`);
     },
 
@@ -28,7 +28,7 @@ export const ApiFetch = {
         return this.apiCall(`/movie/popular?`);
     },
 
-    getMovieRecommendations(id = 566525){
+    getMovieRecommendations(id = 512195){
         return this.apiCall(`/movie/${id}/recommendations?`);
     },
 
@@ -62,7 +62,15 @@ export const ApiFetch = {
 
     discoverMovie(query="",language="",){
         return this.apiCall(`/discover/movie?query=${query}&`);
-    }
+    },
+
+    getSimilarMovies(id = 566525){
+        return this.apiCall(`/movie/${id}/similar?`);
+    },
+
+    getMovieVideos(id = 566525){
+        return this.apiCall(`/movie/${id}/videos?`);
+    },
 };
 
 function throwError(message) {

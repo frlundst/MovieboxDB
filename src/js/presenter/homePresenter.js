@@ -4,6 +4,7 @@ import promiseNoData from "../promiseNoData";
 import promiseNoRender from "../promiseNoRender";
 import WindowDimensions from "../windowDimensions";
 import { HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView } from "../views/homeView";
+// #TODO: Ask if multiple views should be stored in the same file
 
 const scrollToRef = (ref) => {
     setTimeout(
