@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationbarView from "./views/navigationbarView"
+import NavigationbarView from "../views/navigationbarView"
 
 function NavigationbarPresenter(props){
     return(

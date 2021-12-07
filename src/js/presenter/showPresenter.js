@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/show.css';
+import '../../css/show.css';
 
 function Show(props) {
     const [hashState, setHashState] = React.useState(window.location.hash);

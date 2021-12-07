@@ -1,5 +1,5 @@
 import React from 'react';
-import SearchFormView from './views/searchFormView.js';
+import SearchFormView from '../views/searchFormView.js';
 
 function SearchPresenter(props) {
     return (

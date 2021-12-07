@@ -1,9 +1,9 @@
 import React, { useRef } from "react";
-import { ApiFetch } from "./apiFetch";
-import promiseNoData from "./promiseNoData";
-import promiseNoRender from "./promiseNoRender";
-import WindowDimensions from "./windowDimensions";
-import { HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView } from "./views/homeView";
+import { ApiFetch } from "../apiFetch";
+import promiseNoData from "../promiseNoData";
+import promiseNoRender from "../promiseNoRender";
+import WindowDimensions from "../windowDimensions";
+import { HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView } from "../views/homeView";
 
 const scrollToRef = (ref) => {
     setTimeout(

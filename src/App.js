@@ -1,9 +1,9 @@
 import React from 'react';
 import './css/App.css';
-import HomePresenter from './js/homePresenter.js';
-import NavigationbarPresenter from './js/navigationbarPresenter.js';
-import SearchPresenter from './js/searchPresenter';
-import Show from './js/showPresenter.js';
+import HomePresenter from './js/presenter/homePresenter.js';
+import NavigationbarPresenter from './js/presenter/navigationbarPresenter.js';
+import SearchPresenter from './js/presenter/searchPresenter';
+import Show from './js/presenter/showPresenter.js';
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "watchlist"].find((knownRoute) => knownRoute !== window.location.hash)){
