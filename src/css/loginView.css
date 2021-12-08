@@ -1,4 +1,8 @@
 .login-section{
-    padding: 10%;
+    padding: 15%;
     width: 700px;
+}
+
+.error-message{
+    color:red;
 }
