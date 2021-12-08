@@ -5,6 +5,7 @@ import {
     MovieDetails,
     SimilarMovies,
     MovieVideos,
+    MovieCredits
 } from "../views/movieDetailsView";
 
 function MovieDetailsPresenter(props) {
@@ -20,6 +21,10 @@ function MovieDetailsPresenter(props) {
     const [MovieVideosData, setMovieVideosData] = React.useState(null);
     const [MovieVideosError, setMovieVideosError] = React.useState(null);
 
+    const [promiseMovieCredits, setMovieCredits] = React.useState(null);
+    const [MovieCreditsData, setMovieCreditsData] = React.useState(null);
+    const [MovieCreditsError, setMovieCreditsError] = React.useState(null);
+
     React.useEffect(() => {
         setMovieDetails(
             ApiFetch.getMovieDetails()
@@ -27,10 +32,16 @@ function MovieDetailsPresenter(props) {
                 .catch((error) => setMovieDetailsError(error))
         );
         
-        setMovieVideos(
-            ApiFetch.getMovieVideos()
-                .then((data) => setMovieVideosData(data))
-                .catch((error) => setMovieVideosError(error))
+        // setMovieVideos(
+        //     ApiFetch.getMovieVideos()
+        //         .then((data) => setMovieVideosData(data))
+        //         .catch((error) => setMovieVideosError(error))
+        // );
+
+        setMovieCredits(
+            ApiFetch.getMovieCredits()
+                .then((data) => setMovieCreditsData(data))
+                .catch((error) => setMovieCreditsError(error))
         );
 
         // setSimilarMovies(
@@ -44,20 +55,26 @@ function MovieDetailsPresenter(props) {
     return (
         <div>
             {promiseNoData(promiseMovieDetails, MovieDetailsData, MovieDetailsError) ||
-                    <MovieDetails
-                        movie={MovieDetailsData}
-                    />
+                <MovieDetails
+                    movie={MovieDetailsData}
+                />
             }
 
-            {/* {promiseNoData(promiseSimilarMovies, SimilarMoviesData, SimilarMoviesError) || (
+            {promiseNoData(promiseSimilarMovies, SimilarMoviesData, SimilarMoviesError) || (
                 <SimilarMovies
                     movie={SimilarMoviesData}
                 />
-            )} */}
+            )}
 
             {promiseNoData(promiseMovieVideos, MovieVideosData, MovieVideosError) || (
                 <MovieVideos
                     movie={MovieVideosData}
+                />
+            )}
+
+            {promiseNoData(promiseMovieCredits, MovieCreditsData, MovieCreditsError) || (
+                <MovieCredits
+                    movie={MovieCreditsData}
                 />
             )}
         </div>

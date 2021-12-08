@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar} from '@fortawesome/free-solid-svg-icons'
 
 function MovieDetails(props) {
-    return (
+    return (console.log(props),
         <div className="movie-details">
 
             <div className="movie-details-intro">
@@ -36,17 +36,23 @@ function MovieDetails(props) {
             </div>
 
             <div className="movie-details-content">
-                <div className="movie-details-content-left">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur tempor.
-                    </p>
+                <div className="movie-details-grid">
+                    <h2>STORYLINE</h2>
+                    <p>{props.movie.overview}</p>
                 </div>
-                <div className="movie-details-content-right">
-
+                <div className="movie-details-grid">
+                    <h2>CATEGORY</h2>
+                    <p>{props.movie.genres.map(genre => genre.name).join(", ")}</p>
+                </div>
+                <div className="movie-details-grid">
+                    <h2>STORYLINE</h2>
+                    <p>{props.movie.overview}</p>
+                </div>
+                <div className="movie-details-grid">
+                    <h2>STORYLINE</h2>
+                    <p>{props.movie.overview}</p>
                 </div>
             </div>
-
-            
 
             <div className="movie-details-image">
                 <img src={`https://image.tmdb.org/t/p/original/${props.movie.backdrop_path}`} alt="Movie Backdrop" />
@@ -70,8 +76,8 @@ function MovieVideos(props) {
                     {props.movie.results.slice(0, 3).map((video) => (
                         <div className="movie-details-video-content" key={video.key}>
                             <iframe
-                                width="560"
-                                height="315"
+                                width="450"
+                                height="250"
                                 src={`https://www.youtube.com/embed/${video.key}`}
                             />
                         </div>
@@ -82,4 +88,22 @@ function MovieVideos(props) {
     );
 }
 
-export { MovieDetails, SimilarMovies, MovieVideos };
+function MovieCredits(props) {
+    return (
+        console.log(props.movie),
+        (
+            <div className="movie-credits-container">
+                <div className="movie-details-credits">
+                    {props.movie.cast.slice(0, 3).map((cast) => (
+                        <div className="movie-details-credits-content" key={cast.id}>
+                            <img src={`https://image.tmdb.org/t/p/w185/${cast.profile_path}`} alt="Movie Poster" />
+                            <p>{cast.name}</p>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
+    );
+}
+
+export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits };

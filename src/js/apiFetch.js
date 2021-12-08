@@ -71,6 +71,10 @@ export const ApiFetch = {
     getMovieVideos(id = 566525){
         return this.apiCall(`/movie/${id}/videos?`);
     },
+
+    getMovieCredits(id = 566525){
+        return this.apiCall(`/movie/${id}/credits?`);
+    }
 };
 
 function throwError(message) {
