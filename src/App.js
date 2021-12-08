@@ -5,10 +5,11 @@ import NavigationbarPresenter from './js/presenter/navigationbarPresenter.js';
 import SearchPresenter from './js/presenter/searchPresenter';
 import Show from './js/presenter/showPresenter.js';
 import MovieDetailsPresenter from './js/presenter/movieDetailsPresenter.js';
+import LoginPresenter from './js/presenter/loginPresenter';
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails'].find((knownRoute) => knownRoute !== window.location.hash)){
-       window.location.hash = "#movieDetails"; //TODO: CHANGE BACK TO #home
+       window.location.hash = "#login"; //TODO: CHANGE BACK TO #home
   }
 }
 
@@ -20,7 +21,7 @@ function App() {
       <NavigationbarPresenter/>
       <Show hash="#movieDetails"><MovieDetailsPresenter/></Show>
       {/* <Show hash="#home"><HomePresenter/></Show>*/}
-      <Show hash="#search"><SearchPresenter/></Show>
+      <Show hash="#login"><LoginPresenter/></Show>
     </div>
   );
 }
