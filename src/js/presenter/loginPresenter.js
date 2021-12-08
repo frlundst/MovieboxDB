@@ -4,6 +4,10 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function createUser(email, password) {
     var auth = getAuth();
+    const emailErrorMessage = document.getElementById("error-message-email");
+    const passwordErrorMessage = document.getElementById("error-message-password");
+    emailErrorMessage.style.opacity = 0;
+    passwordErrorMessage.style.opacity = 0;
 
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
@@ -14,22 +18,13 @@ function createUser(email, password) {
             switch (error.code) {
                 default:
                case 'auth/email-already-in-use':
-                 console.log(`Email address ${email} already in use.`);
-                 validate();
-                 break;
-               case 'auth/invalid-email':
-                 console.log(`Email address ${email} is invalid.`);
+                 emailErrorMessage.style.opacity = 1;
                  break;
                case 'auth/weak-password':
-                 console.log('Password not strong enough.');
+                 passwordErrorMessage.style.opacity = 1;
                  break;
              }
          })
-}
-
-function validate(){
-    var email = document.getElementById("emailInput");
-    var password = document.getElementById("passwordInput");
 }
 
 

@@ -9,12 +9,13 @@ function LoginView(props) {
             <Form>
                 <Form.Group className="mb-3" controlId="email-input">
                     <Form.Label>Email address</Form.Label>
-                    <Form.Control className="emailInput"type="email" placeholder="name@example.com" onInput={e => props.setEmail(e.target.value)}/>
-                    <Form.Label id="error-message" className="error-message">Email already in use!</Form.Label>
+                    <Form.Control type="email" placeholder="name@example.com" onInput={e => props.setEmail(e.target.value)}/>
+                    <Form.Label id="error-message-email">Email already in use!</Form.Label>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password-input">
                     <Form.Label>Password</Form.Label>
-                    <Form.Control className="passwordInput" type="password" placeholder="Password"  onInput={e => props.setPassword(e.target.value)}/>
+                    <Form.Control type="password" placeholder="Password"  onInput={e => props.setPassword(e.target.value)}/>
+                    <Form.Label id="error-message-password">Password is not strong enough.</Form.Label>
                 </Form.Group>
                 <Button variant="primary" type="submit" onClick={() => props.createUser()}>
                     Create Account
