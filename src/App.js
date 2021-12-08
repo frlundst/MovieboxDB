@@ -8,7 +8,7 @@ import MovieDetailsPresenter from './js/presenter/movieDetailsPresenter.js';
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails'].find((knownRoute) => knownRoute !== window.location.hash)){
-       window.location.hash = "#home";
+       window.location.hash = "#movieDetails"; //TODO: CHANGE BACK TO #home
   }
 }
 
