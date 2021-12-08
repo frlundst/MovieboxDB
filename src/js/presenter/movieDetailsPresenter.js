@@ -1,9 +1,11 @@
 import React from "react";
 import { ApiFetch } from "../apiFetch";
 import promiseNoData from "../promiseNoData";
-import { MovieDetails, SimilarMovies, MovieVideos } from "../views/movieDetailsView";
-
-//512195 Red Notice
+import {
+    MovieDetails,
+    SimilarMovies,
+    MovieVideos,
+} from "../views/movieDetailsView";
 
 function MovieDetailsPresenter(props) {
     const [promiseMovieDetails, setMovieDetails] = React.useState(null);
@@ -24,6 +26,12 @@ function MovieDetailsPresenter(props) {
                 .then((data) => setMovieDetailsData(data))
                 .catch((error) => setMovieDetailsError(error))
         );
+        
+        setMovieVideos(
+            ApiFetch.getMovieVideos()
+                .then((data) => setMovieVideosData(data))
+                .catch((error) => setMovieVideosError(error))
+        );
 
         // setSimilarMovies(
         //     ApiFetch.getSimilarMovies()
@@ -31,32 +39,27 @@ function MovieDetailsPresenter(props) {
         //         .catch((error) => setSimilarMoviesError(error))
         // );
 
-        // setMovieVideos(
-        //     ApiFetch.getMovieVideos()
-        //         .then((data) => setMovieVideosData(data))
-        //         .catch((error) => setMovieVideosError(error))
-        // );
     }, []);
 
     return (
         <div>
-            {promiseNoData(promiseMovieDetails, MovieDetailsData, MovieDetailsError) || (
-                <MovieDetails
-                    movie={MovieDetailsData}
-                />
-            )}
+            {promiseNoData(promiseMovieDetails, MovieDetailsData, MovieDetailsError) ||
+                    <MovieDetails
+                        movie={MovieDetailsData}
+                    />
+            }
 
             {/* {promiseNoData(promiseSimilarMovies, SimilarMoviesData, SimilarMoviesError) || (
                 <SimilarMovies
                     movie={SimilarMoviesData}
                 />
-            )}
+            )} */}
 
             {promiseNoData(promiseMovieVideos, MovieVideosData, MovieVideosError) || (
                 <MovieVideos
                     movie={MovieVideosData}
                 />
-            )} */}
+            )}
         </div>
     );
 }

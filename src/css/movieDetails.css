@@ -75,3 +75,14 @@
     border: none;
     cursor: pointer;
 }
+
+.movie-videos-container {
+    position: absolute;
+    right: 75px;
+    top: 150px;
+}
+
+.movie-details-video-content iframe{
+    border: none;
+    border-radius: 10px;
+}
