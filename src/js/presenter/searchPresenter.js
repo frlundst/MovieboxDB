@@ -1,10 +1,35 @@
 import React from 'react';
 import SearchFormView from '../views/searchFormView.js';
+import SearchResultsView from '../views/searchResultsView.js';
+import promiseNoData from '../promiseNoData.js';
+import { ApiFetch } from '../apiFetch.js';
 
 function SearchPresenter(props) {
+    const [promise, setPromise] = React.useState(null);
+    const [data, setData] = React.useState(null);
+    const [error, setError] = React.useState(null);
+    //const [query, searchQuery] = React.useState("");
+    var query = "";
+    //const [type, searchType] = React.useState("");
+
     return (
         <div>
-            <SearchFormView options={["action", "drama"]}></SearchFormView>
+            <SearchFormView 
+                onText={text => query = text}
+                onSearch={() => {
+                    setData(null);
+                    setError(null);
+                    setPromise(
+                        ApiFetch.searchMovie(query)
+                            .then((data) => setData(data))
+                            .catch((error) => setError(error))
+                    );
+                    console.log("hej");
+                }}
+            ></SearchFormView>
+            {promiseNoData(promise, data, error) || <SearchResultsView 
+                searchResults={data}
+            ></SearchResultsView>}
         </div>
     );
 }

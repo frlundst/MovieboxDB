@@ -2,6 +2,7 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import '../../css/searchFormView.css';
 
 function SearchFormView(props) {
@@ -12,9 +13,9 @@ function SearchFormView(props) {
                     <Form.Label>Search for movies</Form.Label>
                     <Row className="g-2">
                         <Col md>
-
-                            <Form.Control type="search" placeholder="Search..." />
+                            <Form.Control type="search" placeholder="Search..." onInput={e => props.onText(e.target.value)}/>
                         </Col>
+                        <Button variant="dark" onClick={() => props.onSearch()}>Search</Button>
                     </Row>
                     <br />
                     <Row className="g-2">
