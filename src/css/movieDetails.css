@@ -18,7 +18,7 @@ body {
 
 .movie-details-image img {
     width: 100%;
-    height: 1200px;
+    height: 1300px;
     object-fit: cover;
     object-position: top;
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
@@ -112,7 +112,7 @@ body {
 .movie-credits-container {
     position: absolute;
     padding-left: calc(10% + 600px);
-    margin-top: -460px;
+    margin-top: -565px;
     z-index: 1;
     opacity: 0.8;
     width: 1250px;
@@ -190,6 +190,32 @@ body {
         width: 100%;
         font-size: 80px;
     }
+
+    .movie-details-content {
+        height: 585px;
+        grid-template-columns: 500px;
+        padding-left: 5%;
+        width: 100%;
+        border-radius: 40px;
+    }
+
+    .movie-details-grid {
+        padding-top: 200px;
+    }
+
+    .movie-details-grid:last-child {
+        padding: 0;
+        margin-top: -120px;
+    }
+
+    .movie-credits-container{
+        padding-left: 5%;
+    }
+
+    .movie-details-crew {
+        padding-top: 25px;
+    }
+
 }
 
 @media screen and (max-width: 1100px) {
@@ -246,7 +272,7 @@ body {
     }
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 550px) {
     .movie-details-intro-content {
         transform: scale(1);
         width: 100%;
@@ -257,6 +283,20 @@ body {
 
     .movie-details-button {
         margin-top: -50px; 
+    }
+
+    .movie-details-grid {
+        padding-top: 250px;
+        width: 80%;
+    }
+
+    .movie-details-grid:last-child {
+        padding: 0;
+        margin-top: -40px;
+    }
+
+    .movie-credits-container {
+        width: 80%;
     }
 }
 
@@ -269,6 +309,32 @@ body {
     .movie-details-intro h1 {
         width: 100%;
         font-size: 40px;
+    }
+
+    .movie-details-button {
+        margin-top: -50px; 
+    }
+
+    .movie-details-grid {
+        padding-top: 280px;
+        width: 60%;
+    }
+
+    .movie-details-grid:last-child {
+        padding: 0;
+        margin-top: -40px;
+    }
+
+    .movie-credits-container {
+        width: 80%;
+    }
+
+    .movie-details-content {
+        margin-top: 800px;
+    }
+
+    .movie-details-image img {
+        height: 1400px;
     }
 }
 

@@ -37,12 +37,12 @@ function MovieDetails(props) {
 
             <div className="movie-details-content">
                 <div className="movie-details-grid">
-                    <h2>STORYLINE</h2>
-                    <p>{props.movie.overview}</p>
-                </div>
-                <div className="movie-details-grid">
                     <h2>CATEGORY</h2>
                     <p>{props.movie.genres.map(genre => genre.name).join(", ")}</p>
+                </div>
+                <div className="movie-details-grid">
+                    <h2>STORYLINE</h2>
+                    <p>{props.movie.overview}</p>
                 </div>
             </div>
 
