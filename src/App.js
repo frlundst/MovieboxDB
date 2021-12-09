@@ -8,7 +8,7 @@ import Show from './js/presenter/showPresenter.js';
 import MovieDetailsPresenter from './js/presenter/movieDetailsPresenter.js';
 import LoginPresenter from './js/presenter/loginPresenter';
 import DiscoverPresenter from './js/presenter/discoverPresenter.js';
-import MovieMatcherPresenter from '.js/presenter/movieMatcherPresenter.js';
+import MovieMatcherPresenter from './js/presenter/movieMatcherPresenter.js'
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#moviematcher'].find((knownRoute) => knownRoute !== window.location.hash)){

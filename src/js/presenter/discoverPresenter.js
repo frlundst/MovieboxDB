@@ -18,17 +18,9 @@ function DiscoverPresenter(props){
         <div>
             {promiseNoData(promise, data, error) || <DiscoverView 
                 topMovies={data}
-                onSwipe={direction => whatToHappenOnSwipe(direction)}
         ></DiscoverView>}
         </div>
     );
-}
-
-function whatToHappenOnSwipe(direction){
-    if(direction == "left")
-    if(direction == "right")
-    if(direction == "up")
-    if(direction == "down");
 }
 
 export default DiscoverPresenter;
