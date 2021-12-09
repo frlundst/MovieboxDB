@@ -32,6 +32,10 @@ function SearchPresenter(props) {
             ></SearchFormView>
             {promiseNoData(promise, data, error) || <SearchResultsView 
                 searchResults={data}
+                onClick={(id) => {
+                    props.model.setCurrentMovie(id);
+                    window.location.hash="#movieDetails";
+            }}
             ></SearchResultsView>}
         </div>
     );
