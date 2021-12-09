@@ -1,4 +1,15 @@
 .login-section{
-    padding: 10%;
-    width: 700px;
+    padding: 15%;
+    width: 900px;
+    color:white;
+}
+
+#error-message-email{
+    color:red;
+    opacity: 0;
+}
+
+#error-message-password{
+    color:red;
+    opacity: 0;
 }

@@ -8,9 +8,13 @@ function SearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-    //const [query, searchQuery] = React.useState("");
     var query = "";
-    //const [type, searchType] = React.useState("");
+    
+    React.useEffect(() => {
+        setPromise(ApiFetch.getTopMovies()
+            .then(data => setData(data))
+            .catch(error => setError(error)));
+    }, []);
 
     return (
         <div>
@@ -24,7 +28,6 @@ function SearchPresenter(props) {
                             .then((data) => setData(data))
                             .catch((error) => setError(error))
                     );
-                    console.log("hej");
                 }}
             ></SearchFormView>
             {promiseNoData(promise, data, error) || <SearchResultsView 

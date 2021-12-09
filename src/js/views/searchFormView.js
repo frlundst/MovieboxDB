@@ -15,14 +15,14 @@ function SearchFormView(props) {
                         <Col md>
                             <Form.Control type="search" placeholder="Search..." onInput={e => props.onText(e.target.value)}/>
                         </Col>
-                        <Button variant="dark" onClick={() => props.onSearch()}>Search</Button>
+                        <Button variant="primary" onClick={() => props.onSearch()}>Search</Button>
                     </Row>
                     <br />
                     <Row className="g-2">
                         <Col md>
                             <Form.Select size="lg">
-                                <option>Series</option>
                                 <option>Movies</option>
+                                <option>Series</option>
                             </Form.Select>
                         </Col>
                         <Col md>

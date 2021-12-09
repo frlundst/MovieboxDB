@@ -20,8 +20,9 @@ function App() {
     window.addEventListener("hashchange", defaultRoute()),
     <div className="App">
       <NavigationbarPresenter/>
-      <Show hash="#movieDetails"><MovieDetailsPresenter/></Show>
+      {/*<Show hash="#movieDetails"><MovieDetailsPresenter/></Show>*/}
       {/* <Show hash="#home"><HomePresenter/></Show>*/}
+      <Show hash="#search"><SearchPresenter/></Show>
       <Show hash="#login"><LoginPresenter/></Show>
     </div>
   );

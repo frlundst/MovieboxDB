@@ -4,32 +4,41 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 function createUser(email, password) {
     var auth = getAuth();
+    const emailErrorMessage = document.getElementById("error-message-email");
+    const passwordErrorMessage = document.getElementById("error-message-password");
+    emailErrorMessage.style.opacity = 0;
+    passwordErrorMessage.style.opacity = 0;
+
     createUserWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             const user = userCredential.user;
             console.log(user);
         })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-        });
+        .catch(error => {
+            switch (error.code) {
+                default:
+               case 'auth/email-already-in-use':
+                 emailErrorMessage.style.opacity = 1;
+                 break;
+               case 'auth/weak-password':
+                 passwordErrorMessage.style.opacity = 1;
+                 break;
+             }
+         })
 }
+
 
 function LoginPresenter(props) {
     var email = "";
     var password = "";
-    /*const signupForm = document.querySelector('#login-section');
-    signupForm.addEventListener('submit',(e)=>{
-        e.preventDefault();
-        const email = signupForm['email-input'];
-    })*/
-    
+
     return (
         <div>
             <LoginView
                 setEmail={text => email = text}
                 setPassword={text => password = text}
-                createUser={() => createUser(email, password)}
+                createUser={() => {createUser(email, password)
+                }}
             />
         </div>
     );
