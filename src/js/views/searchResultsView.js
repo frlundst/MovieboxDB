@@ -3,23 +3,22 @@ import "../../css/searchResultsView.css";
 
 
 function SearchResultsView(props) {
-    console.log(props.searchResults.results);
     return (
         <div className="movies-container">
             {props.searchResults.results.map(function (result) {
                 if (result.poster_path == null) {
-                    return;
+                    return null;
                 } else {
                     return (
-                        <div className="movie-card" key={result.id}>
-                            <img
+                        <div id={result.id} className="movie-card" key={result.id}>
+                            <img id={result.id}
                                 src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
                                 alt={result.title}
                                 onClick={() => props.onClick(result.id)}
                             />
-                            <div className="movie-card-info">
-                                <h3>{result.title}</h3>
-                                <p>{result.release_date}</p>
+                            <div id={result.id} className="movie-card-info">
+                                <h3 id={result.id}>{result.title}</h3>
+                                <p id={result.id}>{result.release_date}</p>
                             </div>
                         </div>
                     );

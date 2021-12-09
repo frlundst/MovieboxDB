@@ -27,3 +27,8 @@
 .nav-item a:hover{
     color: gray !important;
 }
+
+.movie-matcher-link{
+    margin-top:5px;
+    font-size: 18px;
+}
