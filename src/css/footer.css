@@ -1,0 +1,33 @@
+.footer-attribution img{
+    width: 125px !important;
+}
+
+.footer {
+    margin-top: 150px;
+}
+
+@media (max-width: 768px) {
+    .footer-attribution img{
+        margin-left: -53px;
+    }
+
+    .footer-about-us{
+        margin-left: -73%;
+        padding: 0;
+    }
+
+    .footer-contact-us{
+        margin-left: -22%;
+        padding: 0;
+    }
+
+    .footer-contact-text {
+        width: 80%;
+        padding-left: 15%;
+    }
+
+    .footer-about-text {
+        width: 67%;
+        padding-left: 30%;
+    }
+}

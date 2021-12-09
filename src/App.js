@@ -9,10 +9,11 @@ import MovieDetailsPresenter from './js/presenter/movieDetailsPresenter.js';
 import LoginPresenter from './js/presenter/loginPresenter';
 import DiscoverPresenter from './js/presenter/discoverPresenter.js';
 import MovieMatcherPresenter from './js/presenter/movieMatcherPresenter.js'
+import FooterPresenter from './js/presenter/footerPresenter.js';
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#moviematcher'].find((knownRoute) => knownRoute !== window.location.hash)){
-       window.location.hash = "#home"; //TODO: CHANGE BACK TO #home
+       window.location.hash = "#home";
   }
 }
 
@@ -28,6 +29,7 @@ function App(props) {
       <Show hash="#discover"><DiscoverPresenter model={props.model}/></Show>
       <Show hash="#login"><LoginPresenter model={props.model}/></Show>
       <Show hash="#moviematcher"><MovieMatcherPresenter model={props.model}/></Show>
+      <FooterPresenter/>
     </div>
   );
 }
