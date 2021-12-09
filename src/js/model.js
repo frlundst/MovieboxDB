@@ -71,7 +71,6 @@ class Model {
         this.observers.forEach((observer) => {
             try {
                 observer();
-                console.log(this.similarMovies);
             } catch (e) {
                 console.error(e);
             }

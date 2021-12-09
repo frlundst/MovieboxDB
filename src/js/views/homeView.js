@@ -3,6 +3,8 @@ import "../../css/homeUsView.css";
 import "../../css/homeMoviesView.css";
 import "../../css/homeMovieDetailsView.css";
 import '../../css/homeImageView.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarAlt, faClock, faPlus, faStar, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 
 function HomeImageView(props) {
     return (
@@ -68,6 +70,12 @@ function HomeMovieDetailsView(props) {
                     </div>
                     <div className="movie-details-overview">
                         <p>{props.movieDetails.overview}</p>
+                        <button className="movie-details-button-watch">
+                            <FontAwesomeIcon icon={faPlus} size="lg"/> ADD LIST
+                        </button>
+                        <button className="movie-details-button-watch" onClick={() => props.readMore(props.movieDetails.id)}>
+                            <FontAwesomeIcon icon={faInfoCircle} size="lg" /> READ MORE
+                        </button>
                     </div>
                 </div>
                 <div className="movie-details-release">
@@ -77,7 +85,7 @@ function HomeMovieDetailsView(props) {
                 <div className="movie-details-close">
                     <button onClick={props.closeMovieDetails}> × </button>
                 </div>
-
+            
                 <div className="movie-details-companies">
                     {props.movieDetails.production_companies.map(company => (
                         company.logo_path ? (

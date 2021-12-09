@@ -61,6 +61,10 @@ function MovieDetailsPresenter(props) {
             {promiseNoData(movieID, SimilarMoviesData, SimilarMoviesError) || (
                 <SimilarMovies
                     movies={SimilarMoviesData.results}
+                    onClick={(movieID) => {
+                        props.model.setCurrentMovie(movieID);
+                        window.location.hash="#movieDetails";
+                    }}
                 />
             )}
         </div>

@@ -29,7 +29,7 @@ function MovieDetails(props) {
                         </p>
                     </div>
                     <div className="movie-details-button">
-                        <button className="movie-details-button-watch">
+                        <button className="movie-details-button-watch" onClick>
                             <FontAwesomeIcon icon={faPlus}/> ADD LIST
                         </button>
                     </div>
@@ -53,7 +53,6 @@ function MovieDetails(props) {
         </div>
     );
 }
-
 
 function MovieVideos(props) {
     return (

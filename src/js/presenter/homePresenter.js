@@ -143,6 +143,10 @@ function HomePresenter(props) {
                         
                             popularMovieScroll()
                         }}
+                        readMore={(id) => {
+                            props.model.setCurrentMovie(id);
+                            window.location.hash="#movieDetails";
+                        }}
                     />
                 </div>
              )}
@@ -163,8 +167,9 @@ function HomePresenter(props) {
                                         .then(() => {executeScrollSecond()})
                                 );
                             } else {
-                                //TODO: Call full details view for mobile
-                            }                            
+                                props.model.setCurrentMovie(id);
+                                window.location.hash="#movieDetails";
+                            }                        
                         }}
                     />
                 </div>
@@ -180,6 +185,10 @@ function HomePresenter(props) {
                             setErrorDetailsMovieSecond(null);
 
                             popularMovieSecondScroll()
+                        }}
+                        readMore={(id) => {
+                            props.model.setCurrentMovie(id);
+                            window.location.hash="#movieDetails";
                         }}
                     />
                 </div>
@@ -203,7 +212,8 @@ function HomePresenter(props) {
                                         .then(() => {executeScrollThird()})
                                 );
                             } else {
-                                //TODO: Call full details view for mobile
+                                props.model.setCurrentMovie(id);
+                                window.location.hash="#movieDetails";
                             }
                         }}
                     />
@@ -220,6 +230,10 @@ function HomePresenter(props) {
                             setErrorDetailsMovieRated(null);
 
                             ratedMovieScroll()
+                        }}
+                        readMore={(id) => {
+                            props.model.setCurrentMovie(id);
+                            window.location.hash="#movieDetails";
                         }}
                     />
                 </div>
@@ -241,7 +255,8 @@ function HomePresenter(props) {
                                         .then(() => {executeScrollFourth()})
                                 );
                             } else {
-                                //TODO: Call full details view for mobile
+                                props.model.setCurrentMovie(id);
+                                window.location.hash="#movieDetails";
                             }
                         }}
                     />
@@ -258,6 +273,10 @@ function HomePresenter(props) {
                             setErrorRatedMovieSecond(null);
 
                             ratedMovieSecondScroll()
+                        }}
+                        readMore={(id) => {
+                            props.model.setCurrentMovie(id);
+                            window.location.hash="#movieDetails";
                         }}
                     />
                 </div>
