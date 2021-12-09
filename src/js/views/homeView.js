@@ -58,11 +58,11 @@ function HomeMovieDetailsView(props) {
                     </div>
                     <div className="movie-details-description">
                         <div className="movie-details-rating">
-                            <p>{`⭐${props.movieDetails.vote_average}`}</p>
+                            <p><FontAwesomeIcon icon={faStar} color="#EBDE8E"/>{`${props.movieDetails.vote_average}`}</p>
                         </div>
                         
                         <div className="movie-details-runtime">
-                            <p>{`🕒${props.movieDetails.runtime} min`}</p>
+                            <p> <FontAwesomeIcon icon={faClock} color="#EBDE8E"/>{`${props.movieDetails.runtime} min`}</p>
                         </div>
                         <div className="movie-details-genre">
                             <p>{props.movieDetails.genres.map(genre => genre.name).join(", ")}</p>
@@ -79,7 +79,7 @@ function HomeMovieDetailsView(props) {
                     </div>
                 </div>
                 <div className="movie-details-release">
-                    <p>{`Release Date: ${props.movieDetails.release_date}`}</p>
+                    <p><FontAwesomeIcon icon={faCalendarAlt} color="#EBDE8E"/>{` Release Date: ${props.movieDetails.release_date}`}</p>
                 </div>
 
                 <div className="movie-details-close">
