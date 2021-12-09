@@ -44,14 +44,6 @@ function MovieDetails(props) {
                     <h2>CATEGORY</h2>
                     <p>{props.movie.genres.map(genre => genre.name).join(", ")}</p>
                 </div>
-                <div className="movie-details-grid">
-                    <h2>STORYLINE</h2>
-                    <p>{props.movie.overview}</p>
-                </div>
-                <div className="movie-details-grid">
-                    <h2>STORYLINE</h2>
-                    <p>{props.movie.overview}</p>
-                </div>
             </div>
 
             <div className="movie-details-image">
@@ -73,11 +65,11 @@ function MovieVideos(props) {
         (
             <div className="movie-videos-container">
                 <div className="movie-details-video">
-                    {props.movie.results.slice(0, 3).map((video) => (
+                    {props.movie.results.slice(0, 4).map((video) => (
                         <div className="movie-details-video-content" key={video.key}>
                             <iframe
-                                width="450"
-                                height="250"
+                                width="500"
+                                height="280"
                                 src={`https://www.youtube.com/embed/${video.key}`}
                             />
                         </div>
@@ -93,13 +85,13 @@ function MovieCredits(props) {
         console.log(props.movie),
         (
             <div className="movie-credits-container">
-                <div className="movie-details-credits">
-                    {props.movie.cast.slice(0, 3).map((cast) => (
-                        <div className="movie-details-credits-content" key={cast.id}>
-                            <img src={`https://image.tmdb.org/t/p/w185/${cast.profile_path}`} alt="Movie Poster" />
-                            <p>{cast.name}</p>
-                        </div>
-                    ))}
+                <div className="movie-details-cast">
+                    <h2>CAST</h2>
+                    <p>{props.movie.cast.slice(0, 5).map(cast => cast.name).join(", ")}</p>
+                </div>
+                <div className="movie-details-crew">
+                    <h2>CREW</h2>
+                    <p>{props.movie.crew.slice(0, 5).map(crew => crew.name).join(", ")}</p>
                 </div>
             </div>
         )

@@ -1,3 +1,7 @@
+body {
+    background-color: #19181F;
+}
+
 .movie-details-image {
     position: relative;
 }
@@ -24,12 +28,13 @@
     position: absolute;
     z-index: 1;
     padding-left: 10%;
-    padding-top: 300px;
+    padding-top: 200px;
 }
 
 .movie-details-intro h1 {
     font-size: 100px;
     color: white;
+    width: 1200px;
 }
 
 .movie-details-intro p {
@@ -67,7 +72,7 @@
 
 .movie-details-content {
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 50%;
     padding: 40px 0px 20px 10%;
     background-color: #3A0202;
     opacity: 0.8;
@@ -94,12 +99,182 @@
 
 .movie-videos-container {
     position: absolute;
-    right: 200px;
-    top: 290px;
+    right: 100px;
+    top: 200px;
 }
 
 .movie-details-video-content iframe{
     border: none;
     border-radius: 10px;
     margin-bottom: 25px;
+}
+
+.movie-credits-container {
+    position: absolute;
+    padding-left: calc(10% + 600px);
+    margin-top: -460px;
+    z-index: 1;
+    opacity: 0.8;
+    width: 1250px;
+}
+
+.movie-credits-container p {
+    color: #c7c7c7;
+}
+
+.movie-credits-container h2 {
+    color: white;
+    font-size: 19px;
+}
+
+.movie-details-crew {
+    padding-top: 95px;
+}
+
+.movie-details-video-content:nth-child(4) {
+    display: none;
+}
+
+@media screen and (max-width: 1900px) {
+    .movie-videos-container {
+        right: 15px;
+    }
+}
+
+@media screen and (max-width: 1815px) {
+    .movie-videos-container {
+        position: relative;
+        right: 0px;
+        top: 0px;
+        padding: 4%;
+    }
+
+    .movie-details-video {
+        display: grid;
+        grid-template-columns: repeat(3, 33%);
+    }
+
+    .movie-details-video-content{
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .movie-details-video {
+        display: grid;
+        grid-template-columns: repeat(2, 50%);
+    }
+
+    .movie-details-video-content{
+        margin-right: 20px;
+    }
+
+    .movie-details-video-content:nth-child(2n){
+        margin-left: 20px;
+    }
+
+    .movie-details-video-content:nth-child(4) {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .movie-details-intro {
+        width: 100%;
+        padding: 5%;
+        margin-top: 200px; 
+        left: 0;
+    }
+
+    .movie-details-intro h1 {
+        width: 100%;
+        font-size: 80px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .movie-details-video {
+        display: grid;
+        grid-template-columns: repeat(1, 100%);
+    }
+
+    .movie-details-video-content{
+        margin: auto;
+    }
+
+    .movie-details-video-content:nth-child(2){
+        margin: auto;
+    }
+    .movie-details-video-content:nth-child(3),
+    .movie-details-video-content:nth-child(4) {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .movie-details-video-content iframe{
+        width: 550px;
+        height: 300px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .movie-details-intro h1 {
+        width: 100%;
+        font-size: 60px;
+    }
+
+    .movie-details-intro-content {
+        transform: scale(0.9);
+        width: 115%;
+        margin-left: -6%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .movie-details-video-content iframe{
+        width: 400px;
+        height: 230px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .movie-details-intro-content {
+        transform: scale(0.8);
+        width: 130%;
+        margin-left: -12%;
+    }
+}
+
+@media screen and (max-width: 530px) {
+    .movie-details-intro-content {
+        transform: scale(1);
+        width: 100%;
+        margin-left: 0%;
+        display: grid;
+        grid-template-columns: 100%;
+    }
+
+    .movie-details-button {
+        margin-top: -50px; 
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .movie-details-video-content iframe{
+        width: 340px;
+        height: 180px;
+    }
+
+    .movie-details-intro h1 {
+        width: 100%;
+        font-size: 40px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .movie-details-video-content iframe{
+        width: 300px;
+        height: 160px;
+    }
 }

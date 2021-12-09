@@ -16,7 +16,7 @@ export const ApiFetch = {
         return this.apiCall(`/movie/top_rated?page=${page}&`);
     },
     
-    getMovieDetails(id = 512195) {
+    getMovieDetails(id = 566525) {
         return this.apiCall(`/movie/${id}?`);
     },
 
@@ -28,7 +28,7 @@ export const ApiFetch = {
         return this.apiCall(`/movie/popular?`);
     },
 
-    getMovieRecommendations(id = 512195){
+    getMovieRecommendations(id = 566525){
         return this.apiCall(`/movie/${id}/recommendations?`);
     },
 
