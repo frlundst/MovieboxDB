@@ -124,7 +124,8 @@ function HomePresenter(props) {
                                 );
                                 
                             } else {
-                                //TODO: Call full details view for mobile
+                                props.model.setCurrentMovie(id);
+                                window.location.hash="#movieDetails";
                             }
                         }}
                     />

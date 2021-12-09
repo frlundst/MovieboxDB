@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar} from '@fortawesome/free-solid-svg-icons'
 
 function MovieDetails(props) {
-    return (console.log(props),
+    return (
         <div className="movie-details">
 
             <div className="movie-details-intro">
@@ -57,41 +57,35 @@ function MovieDetails(props) {
 
 function MovieVideos(props) {
     return (
-        console.log(props.movie),
-        (
-            <div className="movie-videos-container">
-                <div className="movie-details-video">
-                    {props.movie.results.slice(0, 4).map((video) => (
-                        <div className="movie-details-video-content" key={video.key}>
-                            <iframe
-                                title={video.name}
-                                width="500"
-                                height="280"
-                                src={`https://www.youtube.com/embed/${video.key}`}
-                                />
-                        </div>
-                    ))}
-                </div>
+        <div className="movie-videos-container">
+            <div className="movie-details-video">
+                {props.movie.results.slice(0, 4).map((video) => (
+                    <div className="movie-details-video-content" key={video.key}>
+                        <iframe
+                            title={video.name}
+                            width="500"
+                            height="280"
+                            src={`https://www.youtube.com/embed/${video.key}`}
+                            />
+                    </div>
+                ))}
             </div>
-        )
+        </div>
     );
 }
 
 function MovieCredits(props) {
     return (
-        console.log(props.movie),
-        (
-            <div className="movie-credits-container">
-                <div className="movie-details-cast">
-                    <h2>CAST</h2>
-                    <p>{props.movie.cast.slice(0, 5).map(cast => cast.name).join(", ")}</p>
-                </div>
-                <div className="movie-details-crew">
-                    <h2>CREW</h2>
-                    <p>{props.movie.crew.slice(0, 5).map(crew => crew.name).join(", ")}</p>
-                </div>
+        <div className="movie-credits-container">
+            <div className="movie-details-cast">
+                <h2>CAST</h2>
+                <p>{props.movie.cast.slice(0, 5).map(cast => cast.name).join(", ")}</p>
             </div>
-        )
+            <div className="movie-details-crew">
+                <h2>CREW</h2>
+                <p>{props.movie.crew.slice(0, 5).map(crew => crew.name).join(", ")}</p>
+            </div>
+        </div>
     );
 }
 
@@ -124,4 +118,3 @@ function SimilarMovies(props) {
 }
 
 export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits };
-    
