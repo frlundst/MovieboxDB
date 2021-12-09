@@ -10,7 +10,7 @@ import LoginPresenter from './js/presenter/loginPresenter';
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails'].find((knownRoute) => knownRoute !== window.location.hash)){
-       window.location.hash = "#home"; //TODO: CHANGE BACK TO #home
+       window.location.hash = "#login"; //TODO: CHANGE BACK TO #home
   }
 }
 
