@@ -44,11 +44,11 @@ function MovieDetailsPresenter(props) {
                 .catch((error) => setMovieCreditsError(error))
         );
 
-        // setSimilarMovies(
-        //     ApiFetch.getSimilarMovies()
-        //         .then((data) => setSimilarMoviesData(data))
-        //         .catch((error) => setSimilarMoviesError(error))
-        // );
+        setSimilarMovies(
+            ApiFetch.getSimilarMovies()
+                .then((data) => setSimilarMoviesData(data))
+                .catch((error) => setSimilarMoviesError(error))
+        );
 
     }, []);
 
@@ -74,7 +74,7 @@ function MovieDetailsPresenter(props) {
 
             {promiseNoData(promiseSimilarMovies, SimilarMoviesData, SimilarMoviesError) || (
                 <SimilarMovies
-                    movie={SimilarMoviesData}
+                    movies={SimilarMoviesData.results}
                 />
             )}
         </div>

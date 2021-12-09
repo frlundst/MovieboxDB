@@ -135,6 +135,20 @@ body {
     display: none;
 }
 
+.similar-movies-section {
+    padding: 1%;
+}
+
+.similar-movies-section h1 {
+    text-align: center;
+}
+
+.similar-movies-header {
+    font-size: 70px;
+    color: white;
+    padding-bottom: 40px;
+}
+
 @media screen and (max-width: 1900px) {
     .movie-videos-container {
         right: 15px;
@@ -298,6 +312,10 @@ body {
     .movie-credits-container {
         width: 80%;
     }
+
+    .similar-movies-header {
+        font-size: 50px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -322,7 +340,7 @@ body {
 
     .movie-details-grid:last-child {
         padding: 0;
-        margin-top: -40px;
+        margin-top: -10px;
     }
 
     .movie-credits-container {
@@ -342,5 +360,9 @@ body {
     .movie-details-video-content iframe{
         width: 300px;
         height: 160px;
+    }
+
+    .similar-movies-header {
+        font-size: 40px;
     }
 }

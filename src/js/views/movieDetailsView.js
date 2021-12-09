@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../css/movieDetails.css';
+import '../../css/homeMoviesView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar} from '@fortawesome/free-solid-svg-icons'
 
@@ -53,11 +54,6 @@ function MovieDetails(props) {
     );
 }
 
-function SimilarMovies(props) {
-    return (console.log(props.movie),
-        <div></div>
-    );
-}
 
 function MovieVideos(props) {
     return (
@@ -68,10 +64,11 @@ function MovieVideos(props) {
                     {props.movie.results.slice(0, 4).map((video) => (
                         <div className="movie-details-video-content" key={video.key}>
                             <iframe
+                                title={video.name}
                                 width="500"
                                 height="280"
                                 src={`https://www.youtube.com/embed/${video.key}`}
-                            />
+                                />
                         </div>
                     ))}
                 </div>
@@ -98,4 +95,33 @@ function MovieCredits(props) {
     );
 }
 
+function SimilarMovies(props) {
+    return (
+        <div className="similar-movies-section">
+            <h1 className="similar-movies-header">More like this</h1>
+            <div className="top-movies-container">
+                {props.movies.slice(0, 6).map(function (movie) {
+                    return (
+                        <div className="movie-card" key={movie.id}>
+                            <div className="movie-vote">
+                                <p>{movie.vote_average ? `${movie.vote_average.toFixed(1)}` : "?"}</p>
+                            </div>
+                            <img
+                                src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                alt={movie.title}
+                                onClick={() => props.onClick(movie.id)}
+                                />
+                            <div className="movie-card-info">
+                                <h3>{movie.title}</h3>
+                                <p>{movie.release_date}</p>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+        </div>
+    );
+}
+
 export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits };
+    
