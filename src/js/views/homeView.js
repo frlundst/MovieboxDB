@@ -108,7 +108,7 @@ function HomeMovieDetailsView(props) {
 
 function HomeUsView(props) {
     return (
-        <div class="us-section">
+        <div className="us-section">
             <div className="us-container">
                 <div className="us-text">
                     <h3>Discover & track your favorite movies and Tv-shows</h3>

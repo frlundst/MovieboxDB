@@ -99,7 +99,7 @@ function FooterView(props) {
                         },
                         {
                             icon: (
-                                <img src="./images/moviedb.svg"/>
+                                <img src="./images/moviedb.svg" alt='themoviedb.org'/>
                             ),
                         },
                     ],

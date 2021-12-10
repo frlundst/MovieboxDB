@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/navigationbarView.css';
-import { Nav, Navbar, Container } from 'react-bootstrap';
+import { Nav, Navbar } from 'react-bootstrap';
 
 function NavigationbarView(props) {
     return (

@@ -4,6 +4,9 @@ import '../../css/homeMoviesView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar} from '@fortawesome/free-solid-svg-icons'
 
+//TODO: If only one trailer shows the resizing of the video is not working
+//TODO: Line up the crews and video details using grid
+
 function MovieDetails(props) {
     return (
         <div className="movie-details">
@@ -29,7 +32,7 @@ function MovieDetails(props) {
                         </p>
                     </div>
                     <div className="movie-details-button">
-                        <button className="movie-details-button-watch" onClick>
+                        <button className="movie-details-button-watch">
                             <FontAwesomeIcon icon={faPlus}/> ADD LIST
                         </button>
                     </div>

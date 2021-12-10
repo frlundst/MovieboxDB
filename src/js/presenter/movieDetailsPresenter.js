@@ -1,26 +1,20 @@
 import React from "react";
-import { ApiFetch } from "../apiFetch";
 import promiseNoData from "../promiseNoData";
-import {
-    MovieDetails,
-    SimilarMovies,
-    MovieVideos,
-    MovieCredits
-} from "../views/movieDetailsView";
+import { MovieDetails, SimilarMovies, MovieVideos, MovieCredits } from "../views/movieDetailsView";
 
 function MovieDetailsPresenter(props) {
-    const [movieID, setMovieID] = React.useState(null);
-    const [MovieDetailsData, setMovieDetailsData] = React.useState(null);
-    const [MovieDetailsError, setMovieDetailsError] = React.useState(null);
+    const [movieID, setMovieID] = React.useState(props.model.currentMovie);
+    const [MovieDetailsData, setMovieDetailsData] = React.useState(props.model.movieDetails);
+    const [MovieDetailsError, setMovieDetailsError] = React.useState(props.model.movieDetailsError);
 
-    const [SimilarMoviesData, setSimilarMoviesData] = React.useState(null);
-    const [SimilarMoviesError, setSimilarMoviesError] = React.useState(null);
+    const [SimilarMoviesData, setSimilarMoviesData] = React.useState(props.model.similarMovies);
+    const [SimilarMoviesError, setSimilarMoviesError] = React.useState(props.model.similarMoviesError);
 
-    const [MovieVideosData, setMovieVideosData] = React.useState(null);
-    const [MovieVideosError, setMovieVideosError] = React.useState(null);
+    const [MovieVideosData, setMovieVideosData] = React.useState(props.model.movieVideos);
+    const [MovieVideosError, setMovieVideosError] = React.useState(props.model.movieVideosError);
 
-    const [MovieCreditsData, setMovieCreditsData] = React.useState(null);
-    const [MovieCreditsError, setMovieCreditsError] = React.useState(null);
+    const [MovieCreditsData, setMovieCreditsData] = React.useState(props.model.movieCredits);
+    const [MovieCreditsError, setMovieCreditsError] = React.useState(props.model.movieCreditsError);
 
     React.useEffect(() => {
         const obs = () => {
@@ -36,7 +30,7 @@ function MovieDetailsPresenter(props) {
         };
         props.model.addObserver(obs);
         return () => props.model.removeObserver(obs);
-    }, []);
+    }, [props.model]);
 
     return (
         <div>
