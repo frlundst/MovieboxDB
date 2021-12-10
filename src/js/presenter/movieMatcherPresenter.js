@@ -8,6 +8,22 @@ function MovieMatcherPresenter(props){
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
 
+    const swiped = (direction, id) => {
+        console.log(direction + ", " + id)
+        switch (direction){
+            case "left":
+                break;
+            case "right":
+                break;
+            case "up":
+                break;
+            case "down":
+                props.model.setCurrentMovie(id);
+                window.location.hash="#movieDetails";
+                break;
+        }
+    }
+
     React.useEffect(() => {
         setPromise(ApiFetch.getTopMovies()
             .then(data => setData(data))
@@ -18,17 +34,10 @@ function MovieMatcherPresenter(props){
         <div>
             {promiseNoData(promise, data, error) || <MovieMatcherView 
                 topMovies={data}
-                onSwipe={direction => whatToHappenOnSwipe(direction)}
+                onSwipe={(direction,id) => swiped(direction, id)}
         ></MovieMatcherView>}
         </div>
     );
-}
-
-function whatToHappenOnSwipe(direction){
-    if(direction == "left")
-    if(direction == "right")
-    if(direction == "up")
-    if(direction == "down");
 }
 
 export default MovieMatcherPresenter;
