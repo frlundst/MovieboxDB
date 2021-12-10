@@ -7,6 +7,11 @@
 
 .navbar-brand {
     padding-left: 9%;
+    height: 90px;
+    display: flex;
+  	justify-content: center;
+  	align-items: center;
+    transition: all 0.25s ease-in-out;
 }
 
 .navbar-brand img{

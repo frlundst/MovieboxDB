@@ -24,10 +24,10 @@ function LoginTempView(props) {
                 <div className="terms-and-conditions">
                     <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
                     <a href="" hidden={props.signIn}>Terms and Condition</a>
-                    <a href="" hidden={!props.signIn}>Remember me</a>
+                    <a hidden={!props.signIn}>Remember me</a>
                 </div>
 
-                <button class="login-sign-in">SIGN IN</button>
+                <button class="login-sign-in">{props.signIn ? "SIGN IN" : "REGISTER"}</button>
             </form>
         </div>
     );

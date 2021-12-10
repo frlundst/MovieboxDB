@@ -6,8 +6,8 @@ function NavigationbarView(props) {
     return (
         <Navbar className="navbar" bg="blue" fixed="top" variant="dark" expand="lg">
             <Nav.Link href="#home">
-                <Navbar.Brand className="navbar-brand">
-                    <img alt="Logo" src="images/movieBoxDB Logo.png" />
+                <Navbar.Brand className="navbar-brand" id="navigation-bar">
+                    <img id="navigation-bar-img" alt="Logo" src="images/movieBoxDB Logo.png" />
                 </Navbar.Brand>
             </Nav.Link>
             
