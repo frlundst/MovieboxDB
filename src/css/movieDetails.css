@@ -68,20 +68,25 @@ body {
     background-color: white;
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.movie-details-button-watch:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 10px 20px rgba(0,0,0,0.3);  
 }
 
 .movie-details-content {
     display: grid;
-    grid-template-columns: 50%;
-    padding: 40px 0px 20px 10%;
+    grid-template-columns: 50% 50%;
+    padding: 40px 0px 40px 10%;
     background-color: #3A0202;
     opacity: 0.8;
     position: absolute;
     z-index: 1;
     width: 1300px;
-    height: 400px;
-    margin-top: 700px;
     border-radius: 0 70px 70px 0;
+    margin-top: -600px;
 }
 
 .movie-details-content p {
@@ -93,8 +98,12 @@ body {
     font-size: 19px;
 }
 
+.movie-details-grid:nth-child(2) {
+    margin-top: 100px;
+}
+
 .movie-details-grid {
-    padding-right: 20px;
+    padding-right: 40px;
 }
 
 .movie-videos-container {
@@ -200,30 +209,10 @@ body {
     }
 
     .movie-details-content {
-        height: 585px;
-        grid-template-columns: 500px;
-        padding-left: 5%;
         width: 100%;
-        border-radius: 40px;
+        padding: 40px 0px 40px 5%;
+        margin-top: -600px;
     }
-
-    .movie-details-grid {
-        padding-top: 200px;
-    }
-
-    .movie-details-grid:last-child {
-        padding: 0;
-        margin-top: -120px;
-    }
-
-    .movie-credits-container{
-        padding-left: 5%;
-    }
-
-    .movie-details-crew {
-        padding-top: 25px;
-    }
-
 }
 
 @media screen and (max-width: 1100px) {
@@ -241,6 +230,11 @@ body {
     }
     .movie-details-video-content:nth-child(3) {
         display: block;
+    }
+
+    .movie-details-intro h1 {
+        width: 100%;
+        font-size: 55px;
     }
 }
 
@@ -277,29 +271,52 @@ body {
         width: 130%;
         margin-left: -12%;
     }
+
+    .movie-details-content {
+        grid-template-columns: 100%;
+        margin-top: -600px;
+    }
+
+    .movie-details-grid:nth-child(2) {
+        margin-top: 0px;
+    }
+
+    .movie-details-intro h1 {
+        font-size: 50px;
+    }
 }
 
 @media screen and (max-width: 550px) {
     .movie-details-intro-content {
         transform: scale(1);
-        width: 100%;
-        margin-left: 0%;
-        display: grid;
-        grid-template-columns: 100%;
+        margin: 0;
+        padding-top: 20px;
     }
 
+    .movie-details-intro-content-left {
+        clear: both;
+    }
+
+    .movie-details-intro-content-center {
+        clear: both;
+    }
+
+    .movie-details-intro-content-right {
+        clear: both;
+    }
     .movie-details-button {
-        margin-top: -50px; 
+        clear: both;
+        padding-top: 20px;
     }
 
-    .movie-details-grid {
-        padding-top: 250px;
-        width: 80%;
-    }
-
-    .movie-details-grid:last-child {
-        padding: 0;
-        margin-top: -40px;
+    .movie-details-button-watch {
+        padding: 12px 30px;
+        border-radius: 45px;
+        font-size: 17px;
+        color: black;
+        background-color: white;
+        border: none;
+        cursor: pointer;
     }
 
     .movie-credits-container {
@@ -308,6 +325,11 @@ body {
 
     .similar-movies-header {
         font-size: 50px;
+    }
+
+    .movie-details-intro h1 {
+        width: 100%;
+        font-size: 45px;
     }
 }
 
@@ -322,30 +344,13 @@ body {
         font-size: 40px;
     }
 
-    .movie-details-button {
-        margin-top: -50px; 
-    }
-
-    .movie-details-grid {
-        padding-top: 280px;
-        width: 60%;
-    }
-
-    .movie-details-grid:last-child {
-        padding: 0;
-        margin-top: -10px;
-    }
-
-    .movie-credits-container {
-        width: 80%;
+    .movie-details-image img {
+        height: 1450px;
     }
 
     .movie-details-content {
-        margin-top: 800px;
-    }
-
-    .movie-details-image img {
-        height: 1400px;
+        grid-template-columns: 100%;
+        margin-top: -660px;
     }
 }
 

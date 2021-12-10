@@ -175,4 +175,12 @@ class Model {
     }
 }
 
-export default Model;
+function filterTextLength(text) {
+    if(text.length > 350) {
+        text = text.substring(0, 350);
+        text = text.substring(0, text.lastIndexOf(" ")) + "...";
+    }
+    return text;
+}
+
+export { Model, filterTextLength };

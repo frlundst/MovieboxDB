@@ -1,6 +1,6 @@
 import React from "react";
 import promiseNoData from "../promiseNoData";
-import { MovieDetails, SimilarMovies, MovieVideos, MovieCredits } from "../views/movieDetailsView";
+import { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation } from "../views/movieDetailsView";
 
 function MovieDetailsPresenter(props) {
     const [movieID, setMovieID] = React.useState(props.model.currentMovie);
@@ -39,12 +39,19 @@ function MovieDetailsPresenter(props) {
                     movie={MovieDetailsData}
                 />
             }
+            <div className="movie-details-content">
+                {promiseNoData(movieID, MovieDetailsData, MovieDetailsError) ||
+                    <MovieInformation
+                        movie={MovieDetailsData}
+                    />
+                }
 
-            {promiseNoData(movieID, MovieCreditsData, MovieCreditsError) || (
-                <MovieCredits
-                    movie={MovieCreditsData}
-                />
-            )}
+                {promiseNoData(movieID, MovieCreditsData, MovieCreditsError) || (
+                    <MovieCredits
+                        movie={MovieCreditsData}
+                    />
+                )}
+            </div>
 
             {promiseNoData(movieID, MovieVideosData, MovieVideosError) || (
                 <MovieVideos

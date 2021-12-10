@@ -3,9 +3,7 @@ import '../../css/movieDetails.css';
 import '../../css/homeMoviesView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar} from '@fortawesome/free-solid-svg-icons'
-
-//TODO: If only one trailer shows the resizing of the video is not working
-//TODO: Line up the crews and video details using grid
+import { filterTextLength } from '../model.js'
 
 function MovieDetails(props) {
     return (
@@ -39,19 +37,38 @@ function MovieDetails(props) {
                 </div>
             </div>
 
-            <div className="movie-details-content">
-                <div className="movie-details-grid">
-                    <h2>CATEGORY</h2>
-                    <p>{props.movie.genres.map(genre => genre.name).join(", ")}</p>
-                </div>
-                <div className="movie-details-grid">
-                    <h2>STORYLINE</h2>
-                    <p>{props.movie.overview}</p>
-                </div>
-            </div>
-
             <div className="movie-details-image">
                 <img src={`https://image.tmdb.org/t/p/original/${props.movie.backdrop_path}`} alt="Movie Backdrop" />
+            </div>
+        </div>
+    );
+}
+
+function MovieInformation(props) {
+    return (
+        <div className="movie-details-summary">
+            <div className="movie-details-grid">
+                <h2>CATEGORY</h2>
+                <p>{props.movie.genres.map(genre => genre.name).join(", ")}</p>
+            </div>
+            <div className="movie-details-grid">
+                <h2>STORYLINE</h2>
+                <p>{filterTextLength(props.movie.overview)}</p>
+            </div>
+        </div>
+    );
+}
+
+function MovieCredits(props) {
+    return (
+        <div className="">
+            <div className="movie-details-grid">
+                <h2>CAST</h2>
+                <p>{props.movie.cast.slice(0, 5).map(cast => cast.name).join(", ")}</p>
+            </div>
+            <div className="movie-details-grid">
+                <h2>CREW</h2>
+                <p>{props.movie.crew.slice(0, 5).map(crew => crew.name).join(", ")}</p>
             </div>
         </div>
     );
@@ -73,21 +90,6 @@ function MovieVideos(props) {
                             />
                     </div>
                 ))}
-            </div>
-        </div>
-    );
-}
-
-function MovieCredits(props) {
-    return (
-        <div className="movie-credits-container">
-            <div className="movie-details-cast">
-                <h2>CAST</h2>
-                <p>{props.movie.cast.slice(0, 5).map(cast => cast.name).join(", ")}</p>
-            </div>
-            <div className="movie-details-crew">
-                <h2>CREW</h2>
-                <p>{props.movie.crew.slice(0, 5).map(crew => crew.name).join(", ")}</p>
             </div>
         </div>
     );
@@ -121,4 +123,4 @@ function SimilarMovies(props) {
     );
 }
 
-export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits };
+export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation };

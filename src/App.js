@@ -13,7 +13,7 @@ import FooterPresenter from './js/presenter/footerPresenter.js';
 
 function defaultRoute() {
   if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#moviematcher', '#login'].find((knownRoute) => knownRoute !== window.location.hash)){
-       window.location.hash = "#login";
+       window.location.hash = "#home";
   }
 }
 
