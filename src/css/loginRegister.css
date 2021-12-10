@@ -1,0 +1,146 @@
+body {
+    overflow-x: hidden;
+}
+
+.login-section {
+    transition: .25s all ease;
+	display: block;
+	position: relative;
+    margin: 200px auto 0 auto;
+    padding: 90px 70px;
+	width: 100%;
+	max-width: 550px;
+	min-height: 700px;
+	box-shadow: 0 80px 80px -10px rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+}
+
+.login-section:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.background-purple {
+    background-image: radial-gradient(at bottom, #151a50 0%,#33156be6 80%, #0b1444e6 100%);
+}
+
+.background-blue {
+    background-image: radial-gradient(at bottom, #22375a 0%,#15296be6 80%, #0b074be6 100%);
+}
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #ffffff40;
+}
+
+.login-nav {
+	position: relative;
+	margin: 0 0 80px 10px;
+}
+
+.login-nav-item {
+	list-style: none;
+    margin-right: 30px;
+	display: inline-block;
+    transition: all .25s ease;
+    color: #b1b1b1;
+}
+
+.login-nav-item:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+.login-nav-item a {
+	padding-bottom: 5px;
+	position: relative;
+	color: #ffffff40;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 22px;
+    cursor: pointer;
+}
+
+.login-nav-item.active a,
+.login-nav-item a:hover{
+	color: white;
+}
+
+.login-nav-item a:after {
+	content: '';
+    height: 10px;
+    position: absolute;
+    left: 0;
+    
+}
+
+.login-nav-item a:hover:after,
+.login-nav-item.active a:after{
+	background-color: rgb(17, 97, 237);
+	height: 1px;
+	right: 0;
+	bottom: 0;
+}
+
+.login-text {
+	display: block;
+	padding-left: 5px;
+    font-size: 12px;
+    color: #d8d8d880;
+    margin: 20px 0 5px 10px;
+}
+
+.login-box {
+	color: white;
+	width: 100%;
+	padding: 10px 20px;
+	border: 2px solid transparent;
+	outline: none;
+	border-radius: 25px;
+	background-color: #ffffff40;
+}
+
+.login-box:hover,
+.login-box:focus{
+	color: white;
+	border: 3px solid #fffdfd80;
+	background-color: transparent;
+}
+
+.login-sign-in {
+	color: #ffffff;
+	font-size: 18px;
+    border: none;
+    background-color: rgba(17, 97, 237, .75);
+	margin-top: 80px;
+	padding: 12px 0;
+	border-radius: 25px;
+	width: 100%;
+	cursor: pointer;
+    transition: .15s all ease;
+}
+
+.login-sign-in:hover {
+	transform: scale(1.05);
+}
+
+.terms-and-conditions {
+    padding-top: 20px;
+    padding-left: 35px;
+}
+
+.terms-and-conditions input {
+    margin-top: 7px;
+}
+
+@media screen and (max-width: 500px) {
+    .login-section {
+        padding: 50px 20px;
+    }
+}

@@ -10,10 +10,11 @@ import LoginPresenter from './js/presenter/loginPresenter';
 import DiscoverPresenter from './js/presenter/discoverPresenter.js';
 import MovieMatcherPresenter from './js/presenter/movieMatcherPresenter.js'
 import FooterPresenter from './js/presenter/footerPresenter.js';
+import LoginTempPresenter from './js/presenter/loginTempPresenter';
 
 function defaultRoute() {
-  if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#moviematcher'].find((knownRoute) => knownRoute !== window.location.hash)){
-       window.location.hash = "#home";
+  if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#moviematcher', '#Login'].find((knownRoute) => knownRoute !== window.location.hash)){
+       window.location.hash = "#Login";
   }
 }
 
@@ -23,12 +24,14 @@ function App(props) {
     window.addEventListener("hashchange", defaultRoute()),
     <div className="App">
       <NavigationbarPresenter/>
+      
       <Show hash="#home"><HomePresenter model={props.model}/></Show>
       <Show hash="#movieDetails"><MovieDetailsPresenter model={props.model}/></Show>
       <Show hash="#search"><SearchPresenter model={props.model}/></Show>
       <Show hash="#discover"><DiscoverPresenter model={props.model}/></Show>
       <Show hash="#login"><LoginPresenter model={props.model}/></Show>
       <Show hash="#moviematcher"><MovieMatcherPresenter model={props.model}/></Show>
+      <Show hash="#Login"><LoginTempPresenter/></Show>
       <FooterPresenter/>
     </div>
   );
