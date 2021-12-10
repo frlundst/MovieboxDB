@@ -131,13 +131,31 @@ body {
 }
 
 .terms-and-conditions {
-    padding-top: 20px;
-    padding-left: 35px;
+    padding-left: 15px;
 }
 
 .terms-and-conditions input {
     margin-top: 7px;
 }
+
+.terms-and-conditions a {
+	color: #1161ED !important;
+	z-index: 1;
+}
+
+#error-message-email{
+    color:red;
+    opacity: 0;
+	padding-left: 20px;
+}
+
+#error-message-password{
+    color:red;
+    opacity: 0;
+	padding-left: 15px;
+	padding-top: 5px;
+}
+
 
 @media screen and (max-width: 500px) {
     .login-section {

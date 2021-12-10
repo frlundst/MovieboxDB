@@ -1,4 +1,5 @@
 import { ApiFetch } from "./apiFetch";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 class Model {
     constructor(currentMovie = null) {
@@ -74,6 +75,102 @@ class Model {
             } catch (e) {
                 console.error(e);
             }
+        });
+    }
+
+    createUser(email, password) {
+        var auth = getAuth();
+        const passwordErrorMessage = document.getElementById("error-message-password");
+        const emailErrorMessage = document.getElementById("error-message-email");
+        emailErrorMessage.style.opacity = 0;
+        passwordErrorMessage.style.opacity = 0;
+    
+        createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch(error => {
+                switch (error.code) {
+                    case 'auth/missing-email':
+                        console.log("Email is missing.");
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML='Email is required.'
+                        break;
+                    case 'auth/invalid-email':
+                        console.log("Email is invalid.");
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML='Email is invalid.'
+                        break;                   
+                    case 'auth/email-already-in-use':
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML = 'Email already in use!'
+                        break;
+                    case 'auth/weak-password':
+                        passwordErrorMessage.style.opacity = 1;
+                        passwordErrorMessage.innerHTML = 'Password not strong enough.'
+                        break;
+                    case 'auth/internal-error':
+                        passwordErrorMessage.style.opacity = 1;
+                        passwordErrorMessage.innerHTML = 'Password is required.'
+                        break;
+                }
+            })
+    }
+
+    isLoggedIn() {
+        const auth = getAuth();
+        var user = auth.currentUser;
+        if(user){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    loginUser(email, password) {
+
+        const auth = getAuth();
+        const emailErrorMessage = document.getElementById("error-message-email");
+        const passwordErrorMessage = document.getElementById("error-message-password");
+    
+        emailErrorMessage.style.opacity = 0;
+        passwordErrorMessage.style.opacity = 0;
+    
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                console.log("Successful sign in!");
+                console.log(userCredential.user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                switch (error.code) {
+                    case 'auth/wrong-password':
+                        passwordErrorMessage.style.opacity = 1;
+                        passwordErrorMessage.innerHTML='Incorrect Password.'
+                        break;
+                    case 'auth/missing-email':
+                        console.log("Email is missing.");
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML='Email is required.'
+                        break;
+                    case 'auth/invalid-email':
+                        console.log("Email is invalid.");
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML='Email is invalid.'
+                        break;                   
+                }
+            });
+    }
+
+    signOutUser() {
+        const auth = getAuth();
+        signOut(auth).then(() => {
+            console.log("Signed out");
+        }).catch((error) => {
+            console.log("Signout error occured.");
         });
     }
 }
