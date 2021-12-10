@@ -3,7 +3,7 @@ import "../../css/searchResultsView.css";
 
 
 function SearchResultsView(props) {
-    return (
+    return (console.log(props),
         <div className="movies-container">
             {props.searchResults.results.map(function (result) {
                 if (result.poster_path == null) {

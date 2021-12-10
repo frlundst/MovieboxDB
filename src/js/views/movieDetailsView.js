@@ -61,13 +61,15 @@ function MovieVideos(props) {
     return (
         <div className="movie-videos-container">
             <div className="movie-details-video">
-                {props.movie.results.slice(0, 4).map((video) => (
+                {props.movie.results.slice(0, 3).map((video) => (
                     <div className="movie-details-video-content" key={video.key}>
                         <iframe
                             title={video.name}
                             width="500"
                             height="280"
                             src={`https://www.youtube.com/embed/${video.key}`}
+                            frameBorder="0"
+                            allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                             />
                     </div>
                 ))}
