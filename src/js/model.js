@@ -1,12 +1,14 @@
 import { ApiFetch } from "./apiFetch";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { db } from "./firebaseLoad.js";
-import { getDocs, collection, addDoc, setDoc, doc } from "firebase/firestore"
+import { getDoc, collection, addDoc, setDoc, doc, updateDoc } from "firebase/firestore"
 class Model {
     constructor(currentMovie = null) {
         this.observers = [];
         this.currentMovie = currentMovie;
         this.user = null;
+        this.watchedMovies = [];
+        this.inWatchlist = false;
     }
 
     setCurrentMovie(currentMovie) {
@@ -187,21 +189,44 @@ class Model {
         });
     }
 
-    addMovieToWatchlist(movieId) {
-        console.log("Adding movie to watchlist");
-        const movieRef = doc(db, "users", this.user.uid);
-        console.log(movieRef);
+    addMovieToWatchlist(movieInformation) {
+        const docRef = doc(db, "users", 'N5hhR3bb7WVQxQ37XKpAzIcKodf1');
 
         (async () => {
             try {
-                await setDoc(movieRef, {
-                    watchedMovies: { movieId: true },
+                const doc = await getDoc(docRef);
+                const data = doc.data();
+                var inWatchList = false;
+
+                Object.values(data.watchListMovies.movies).forEach(movie => {
+                    if (movie.id === movieInformation.id) {
+                        inWatchList = true;
+                    }
                 });
+
+                if (!inWatchList) {
+                    const movies = [...Object.values(data.watchListMovies.movies), movieInformation];
+                    this.watchedMovies = movies;
+
+                    await updateDoc(docRef, {
+                        watchListMovies: {
+                            movies
+                        },
+                    });
+                } else {
+                    this.setInWatchlist(true);
+                }
+                    
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
         })();
-        console.log("Added");
+    }
+
+    setInWatchlist(boolean) {
+        console.log(boolean);
+        this.inWatchlist = boolean;
+        this.notifyObservers();
     }
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import promiseNoData from "../promiseNoData";
-import { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation } from "../views/movieDetailsView";
+import { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation, MovieNotification } from "../views/movieDetailsView";
 
 function MovieDetailsPresenter(props) {
     const [movieID, setMovieID] = React.useState(props.model.currentMovie);
@@ -16,6 +16,8 @@ function MovieDetailsPresenter(props) {
     const [MovieCreditsData, setMovieCreditsData] = React.useState(props.model.movieCredits);
     const [MovieCreditsError, setMovieCreditsError] = React.useState(props.model.movieCreditsError);
 
+    const [inWatchlist, setInWatchlist] = React.useState(props.model.inWatchlist);
+
     React.useEffect(() => {
         const obs = () => {
             setMovieID(props.model.currentMovie);
@@ -27,6 +29,7 @@ function MovieDetailsPresenter(props) {
             setMovieVideosError(props.model.movieVideosError);
             setMovieCreditsData(props.model.movieCredits);
             setMovieCreditsError(props.model.movieCreditsError);
+            setInWatchlist(props.model.inWatchlist);
         };
         props.model.addObserver(obs);
         return () => props.model.removeObserver(obs);
@@ -40,6 +43,14 @@ function MovieDetailsPresenter(props) {
                     addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                 />
             }
+
+            <MovieNotification
+                inWatchlist={inWatchlist}
+                close={() => {
+                    props.model.setInWatchlist(false)
+                }}
+            />
+
             <div className="movie-details-content">
                 {promiseNoData(movieID, MovieDetailsData, MovieDetailsError) ||
                     <MovieInformation
@@ -69,6 +80,9 @@ function MovieDetailsPresenter(props) {
                     }}
                 />
             )}
+
+            
+
         </div>
     );
 }

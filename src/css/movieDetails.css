@@ -158,6 +158,27 @@ body {
     padding-bottom: 40px;
 }
 
+.notification {
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+	z-index: 100;
+}
+
+.btn-close {
+    display: none;
+}
+
+.close {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    background-color: #3A0202;
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 1900px) {
     .movie-videos-container {
         right: 15px;

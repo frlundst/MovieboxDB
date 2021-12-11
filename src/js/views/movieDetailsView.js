@@ -2,8 +2,9 @@ import React from 'react';
 import '../../css/movieDetails.css';
 import '../../css/homeMoviesView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faClock, faPlus, faStar} from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt, faClock, faPlus, faStar, faTimes} from '@fortawesome/free-solid-svg-icons'
 import { filterTextLength } from '../model.js'
+import Toast from 'react-bootstrap/Toast'
 
 function MovieDetails(props) {
     return (
@@ -30,7 +31,7 @@ function MovieDetails(props) {
                         </p>
                     </div>
                     <div className="movie-details-button">
-                        <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.id)}>
+                        <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.movie)}>
                             <FontAwesomeIcon icon={faPlus}/> ADD LIST
                         </button>
                     </div>
@@ -123,4 +124,18 @@ function SimilarMovies(props) {
     );
 }
 
-export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation };
+function MovieNotification(props) {
+    return (
+        <div className="notification">
+            <Toast show={props.inWatchlist} bg="warning">
+                <Toast.Header>
+                    <strong className="me-auto">MovieBoxDB</strong>
+                    <button type="button" onClick={() => props.close() } className="close" data-dismiss="toast" aria-label="Close"><FontAwesomeIcon icon={faTimes}/></button>
+                </Toast.Header>
+                <Toast.Body>This movie already exists in your watchlist!</Toast.Body>
+            </Toast>
+        </div>
+    );
+}
+
+export { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation, MovieNotification };
