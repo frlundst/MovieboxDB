@@ -1,10 +1,12 @@
 import { ApiFetch } from "./apiFetch";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
-
+import { db } from "./firebaseLoad.js";
+import { getDocs, collection, addDoc, setDoc, doc } from "firebase/firestore"
 class Model {
     constructor(currentMovie = null) {
         this.observers = [];
         this.currentMovie = currentMovie;
+        this.user = null;
     }
 
     setCurrentMovie(currentMovie) {
@@ -87,8 +89,19 @@ class Model {
     
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                const user = userCredential.user;
-                console.log(user);
+                this.user = userCredential.user;
+                console.log(userCredential.user);
+                (async () => {
+                    try {
+                        await setDoc(doc(db, "users", this.user.uid), {
+                            watchedMovies: {},
+                            favouriteMovies: {},
+                            watchlistMovies: {},
+                        });
+                    } catch (e) {
+                        console.error("Error adding document: ", e);
+                    }
+                })();
             })
             .catch(error => {
                 switch (error.code) {
@@ -120,11 +133,11 @@ class Model {
 
     isLoggedIn() {
         const auth = getAuth();
-        var user = auth.currentUser;
-        if(user){
+        this.user = auth.currentUser;
+        if(this.user){
             return true;
         }
-        else{
+        else {
             return false;
         }
     }
@@ -140,7 +153,7 @@ class Model {
     
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-                console.log("Successful sign in!");
+                this.user = userCredential.user;
                 console.log(userCredential.user);
             })
             .catch((error) => {
@@ -172,6 +185,23 @@ class Model {
         }).catch((error) => {
             console.log("Signout error occured.");
         });
+    }
+
+    addMovieToWatchlist(movieId) {
+        console.log("Adding movie to watchlist");
+        const movieRef = doc(db, "users", this.user.uid);
+        console.log(movieRef);
+
+        (async () => {
+            try {
+                await setDoc(movieRef, {
+                    watchedMovies: { movieId: true },
+                });
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        })();
+        console.log("Added");
     }
 }
 

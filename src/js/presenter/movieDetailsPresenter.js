@@ -37,6 +37,7 @@ function MovieDetailsPresenter(props) {
             {promiseNoData(movieID, MovieDetailsData, MovieDetailsError) ||
                 <MovieDetails
                     movie={MovieDetailsData}
+                    addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                 />
             }
             <div className="movie-details-content">

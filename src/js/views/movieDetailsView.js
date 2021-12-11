@@ -30,7 +30,7 @@ function MovieDetails(props) {
                         </p>
                     </div>
                     <div className="movie-details-button">
-                        <button className="movie-details-button-watch">
+                        <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.id)}>
                             <FontAwesomeIcon icon={faPlus}/> ADD LIST
                         </button>
                     </div>
