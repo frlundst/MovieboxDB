@@ -9,7 +9,9 @@ class Model {
         this.user = null;
         this.watchlistMovies= [];
         this.inWatchlist = false;
-        this.initializeDataBase();
+        this.initializeDataBase(); //#TODO: TEMPORARY
+        this.profileInformation = null;
+        this.setProfileInformation();
     }
 
     setCurrentMovie(currentMovie) {
@@ -251,6 +253,19 @@ class Model {
         console.log(boolean);
         this.inWatchlist = boolean;
         this.notifyObservers();
+    }
+
+    setProfileInformation() {
+        const docRef = doc(db, "users", this.user);
+        (async () => {
+            try {
+                const doc = await getDoc(docRef);
+                const data = doc.data();
+                this.profileInformation = data;
+            } catch (e) {
+                console.error("Error Getting Document: ", e);
+            }
+        })();
     }
 }
 
