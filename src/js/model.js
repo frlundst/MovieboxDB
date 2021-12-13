@@ -7,8 +7,9 @@ class Model {
         this.observers = [];
         this.currentMovie = currentMovie;
         this.user = null;
-        this.watchedMovies = [];
+        this.watchlistMovies= [];
         this.inWatchlist = false;
+        this.initializeDataBase();
     }
 
     setCurrentMovie(currentMovie) {
@@ -159,8 +160,6 @@ class Model {
                 console.log(userCredential.user);
             })
             .catch((error) => {
-                const errorCode = error.code;
-                const errorMessage = error.message;
                 switch (error.code) {
                     case 'auth/wrong-password':
                         passwordErrorMessage.style.opacity = 1;
@@ -189,41 +188,64 @@ class Model {
         });
     }
 
-    addMovieToWatchlist(movieInformation) {
-        const docRef = doc(db, "users", 'N5hhR3bb7WVQxQ37XKpAzIcKodf1');
-
+    initializeDataBase() {
+        this.user = 'N5hhR3bb7WVQxQ37XKpAzIcKodf1';
+        const docRef = doc(db, "users", this.user);
         (async () => {
             try {
                 const doc = await getDoc(docRef);
                 const data = doc.data();
-                var inWatchList = false;
-
-                Object.values(data.watchListMovies.movies).forEach(movie => {
-                    if (movie.id === movieInformation.id) {
-                        inWatchList = true;
-                    }
+                
+                data.watchListMovies.movies.forEach((movie) => {
+                    this.watchlistMovies.push(movie);
                 });
+                
+                this.watchlistMovies = this.watchlistMovies.filter(movie =>
+                    movie !== undefined
+                );
 
-                if (!inWatchList) {
-                    const movies = [...Object.values(data.watchListMovies.movies), movieInformation];
-                    this.watchedMovies = movies;
-
-                    await updateDoc(docRef, {
-                        watchListMovies: {
-                            movies
-                        },
-                    });
-                } else {
-                    this.setInWatchlist(true);
-                }
-                    
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
         })();
     }
 
+    addMovieToWatchlist(movieInformation) {
+        var inWatchList = false;
+
+        if (this.watchlistMovies.length > 0) {
+            this.watchlistMovies.forEach(movie => {
+                if (movie !== undefined && movie.id === movieInformation.id) {
+                    inWatchList = true;
+                }
+            });
+        }
+
+        if (!inWatchList) {
+            this.watchlistMovies.push(movieInformation);
+            (async () => {
+                try {
+                    const docRef = doc(db, "users", this.user);
+                    const movies = this.watchlistMovies;
+                    await updateDoc(docRef, {
+                        watchlistMovies : {
+                            movies
+                        }
+                    });
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                }
+            })();
+        } else {
+            this.setInWatchlist(true);
+        }
+        console.log(this.watchlistMovies);
+    }
+
     setInWatchlist(boolean) {
+        if (this.inWatchlist === boolean) {
+            return;
+        }
         console.log(boolean);
         this.inWatchlist = boolean;
         this.notifyObservers();
