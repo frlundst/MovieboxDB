@@ -381,6 +381,10 @@ body {
         height: 160px;
     }
 
+    .movie-details-content {
+        margin-top: -700px;
+    }
+
     .similar-movies-header {
         font-size: 40px;
     }

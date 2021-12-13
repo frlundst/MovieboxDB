@@ -196,13 +196,15 @@ class Model {
                 const doc = await getDoc(docRef);
                 const data = doc.data();
                 
-                data.watchListMovies.movies.forEach((movie) => {
+                data.watchlistMovies.movies.forEach((movie) => {
                     this.watchlistMovies.push(movie);
                 });
                 
                 this.watchlistMovies = this.watchlistMovies.filter(movie =>
                     movie !== undefined
                 );
+
+                console.log(this.watchlistMovies);
 
             } catch (e) {
                 console.error("Error adding document: ", e);

@@ -9,7 +9,7 @@
 
 .intro-text {
     position: absolute;
-    top: 40%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -19,11 +19,13 @@
 .intro-text h1{
     font-size: 8rem;
     color: #fff;
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.3);
 }
 
 .intro-text p {
     font-size: 2rem;
     color: #fff;
+    text-shadow: 4px 4px 10px rgba(0,0,0,0.3);
 }
 
 .intro-section:before {
@@ -33,14 +35,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.3);
+    background: rgba(0,0,0,0.55);
 }
 
 .intro-section img {
     width: 100%;
     height: 700px;
     object-fit: cover;
-    text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+    margin-top: 100px;
 }
 
 @media (max-width: 1500px) {

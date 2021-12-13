@@ -147,6 +147,7 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             window.location.hash="#movieDetails";
                         }}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                     />
                 </div>
              )}
@@ -190,6 +191,7 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             window.location.hash="#movieDetails";
                         }}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                     />
                 </div>
              )}
@@ -235,6 +237,7 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             window.location.hash="#movieDetails";
                         }}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                     />
                 </div>
              )}
@@ -278,6 +281,7 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             window.location.hash="#movieDetails";
                         }}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                     />
                 </div>
              )}

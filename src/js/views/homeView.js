@@ -9,7 +9,7 @@ import { faCalendarAlt, faClock, faPlus, faStar, faInfoCircle} from '@fortawesom
 function HomeImageView(props) {
     return (
         <div className="intro-section">
-            <img src="/images/batmanHomePage.jpg" alt="Batman Home Page" />
+            <img src="/images/HomePage.jpg" alt="Batman Home Page" />
             <div className="intro-text">
                 <h1>MovieBoxDB</h1>
                 <p>Movie Tracking Application</p>
@@ -68,7 +68,7 @@ function HomeMovieDetailsView(props) {
                 </div>
                 <div className="movie-details-overview">
                     <p>{props.movieDetails.overview}</p>
-                    <button className="movie-details-button-watch">
+                    <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.movieDetails)}>
                         <FontAwesomeIcon icon={faPlus} size="lg"/> ADD LIST
                     </button>
                     <button className="movie-details-button-watch" onClick={() => props.readMore(props.movieDetails.id)}>
