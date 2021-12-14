@@ -7,7 +7,7 @@ import { filterTextLength } from "../model";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function ProfileView(props) {
-    return (console.log(props.user[3]),
+    return (
         <div className="profile-container">
             <div className="profile-about">
                 <div className="profile-about-header">
@@ -36,6 +36,7 @@ function ProfileView(props) {
                                     title={movie.title}
                                     image={movie.poster_path}
                                     props={props}
+                                    key={movie.id}
                                 />
                             ))}
                         </ScrollMenu>
@@ -125,6 +126,7 @@ function Card({ itemId, title, image, props }) {
                 alt={title}
                 onClick={() => props.movieDetails(itemId)}
             />
+            
             <OverlayTrigger
                 placement={'top'}
                 overlay={<Tooltip><h6>Remove From Favorite</h6></Tooltip>}

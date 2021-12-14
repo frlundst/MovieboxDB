@@ -32,10 +32,6 @@ export const ApiFetch = {
         return this.apiCall(`/movie/${id}/recommendations?`);
     },
 
-    getMovieCredits(id = 566525){
-        return this.apiCall(`/movie/${id}/credits?`);
-    },
-
     getMovieReviews(id = 566525){
         return this.apiCall(`/movie/${id}/reviews?`);
     },

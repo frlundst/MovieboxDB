@@ -6,14 +6,13 @@ function MovieMatcherView(props) {
     const [lastDirection, setLastDirection] = React.useState();
 
     const swiped = (direction, id) => {
-        console.log('removing: ' + id)
         setLastDirection(direction)
         props.model.setCurrentMovie(id);
         window.location.hash = "#movieDetails";
     }
 
     const outOfFrame = (name) => {
-        console.log(name + ' left the screen!')
+
     }
 
     return (

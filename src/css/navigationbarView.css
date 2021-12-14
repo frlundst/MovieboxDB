@@ -36,4 +36,26 @@
 .movie-matcher-link{
     margin-top:5px;
     font-size: 18px;
+    margin-top: 8px;
+}
+
+@media screen and (max-width: 500px) {
+    .navbar-brand img{
+        width: 210px;
+        height: auto;
+    }
+    .navbar-brand{
+        padding-left: 0%;
+        margin-left: -20px;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .navbar-brand img{
+        width: 170px;
+        height: auto;
+    }
+    .navbar-brand{
+        margin-left: -30px;
+    }
 }

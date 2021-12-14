@@ -34,6 +34,9 @@ function ProfilePresenter(props) {
                     addToFavorite={(movieInformation) => {
                         props.model.addToFavorite(movieInformation);
                     }}
+                    removeFromFavorite={(id) => {
+                        props.model.removeFromFavorite(id);
+                    }}
                 />
             }
         </div>

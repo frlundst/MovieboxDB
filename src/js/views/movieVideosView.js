@@ -12,7 +12,6 @@ function MovieVideosView(props) {
                             width="500"
                             height="280"
                             src={`https://www.youtube.com/embed/${video.key}`}
-                            frameBorder="0"
                             allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                             />
                     </div>

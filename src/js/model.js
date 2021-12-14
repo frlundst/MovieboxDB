@@ -1,7 +1,7 @@
 import { ApiFetch } from "./apiFetch";
 import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged,setPersistence,browserLocalPersistence, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { db } from "./firebaseLoad.js";
-import { getDoc, collection, addDoc, setDoc, doc, updateDoc } from "firebase/firestore"
+import { getDoc, setDoc, doc, updateDoc } from "firebase/firestore"
 import { useState, useEffect, useRef } from "react";
 
 class Model {
@@ -99,7 +99,6 @@ class Model {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
-                console.log(userCredential.user);
                 (async () => {
                     try {
                         await setDoc(doc(db, "users", this.user.uid), {
@@ -115,12 +114,10 @@ class Model {
             .catch(error => {
                 switch (error.code) {
                     case 'auth/missing-email':
-                        console.log("Email is missing.");
                         emailErrorMessage.style.opacity = 1;
                         emailErrorMessage.innerHTML='Email is required.'
                         break;
                     case 'auth/invalid-email':
-                        console.log("Email is invalid.");
                         emailErrorMessage.style.opacity = 1;
                         emailErrorMessage.innerHTML='Email is invalid.'
                         break;                   
@@ -135,6 +132,10 @@ class Model {
                     case 'auth/internal-error':
                         passwordErrorMessage.style.opacity = 1;
                         passwordErrorMessage.innerHTML = 'Password is required.'
+                        break;
+                    default:
+                        passwordErrorMessage.style.opacity = 1;
+                        passwordErrorMessage.innerHTML = 'Unknown error.'
                         break;
                 }
             })
@@ -163,7 +164,6 @@ class Model {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
-                console.log(userCredential.user);
             })
             .catch((error) => {
                 switch (error.code) {
@@ -172,15 +172,16 @@ class Model {
                         passwordErrorMessage.innerHTML='Incorrect Password.'
                         break;
                     case 'auth/missing-email':
-                        console.log("Email is missing.");
                         emailErrorMessage.style.opacity = 1;
                         emailErrorMessage.innerHTML='Email is required.'
                         break;
                     case 'auth/invalid-email':
-                        console.log("Email is invalid.");
                         emailErrorMessage.style.opacity = 1;
                         emailErrorMessage.innerHTML='Email is invalid.'
-                        break;                   
+                        break;
+                    default:
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML='Unknown error.'             
                 }
             });
     }
@@ -188,9 +189,7 @@ class Model {
     signOutUser() {
         const auth = getAuth();
         signOut(auth).then(() => {
-            console.log("Signed out");
         }).catch((error) => {
-            console.log("Signout error occured.");
         });
     }
 
@@ -218,8 +217,6 @@ class Model {
                     movie !== undefined
                 );
 
-                console.log(this.favoriteMovies);
-
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
@@ -232,10 +229,7 @@ class Model {
             .then(() => {
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
-                        console.log(user)
                         this.user = user.uid;
-                    } else {
-                        console.log("no one logged in.")
                     }
                 });
             })
@@ -272,7 +266,6 @@ class Model {
         } else {
             this.setInWatchlist(true);
         }
-        console.log(this.watchlistMovies);
     }
 
     addToFavorite(movieInformation) {
@@ -305,11 +298,9 @@ class Model {
         } else {
             this.setInWatchlist(true);
         }
-        console.log(this.favoriteMovies);
     }
 
     setInWatchlist(boolean) {
-        console.log(boolean);
         this.inWatchlist = boolean;
         this.notifyObservers();
     }
@@ -339,6 +330,26 @@ class Model {
                 const movies = this.watchlistMovies;
                 await updateDoc(docRef, {
                     watchlistMovies : {
+                        movies
+                    }
+                });
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        })();
+    }
+
+    removeFromFavorite(id) {
+        this.favoriteMovies = this.favoriteMovies.filter(movie =>
+            movie.id !== id
+        );
+        this.notifyObservers();
+        (async () => {
+            try {
+                const docRef = doc(db, "users", this.user);
+                const movies = this.favoriteMovies;
+                await updateDoc(docRef, {
+                    favoriteMovies : {
                         movies
                     }
                 });
@@ -417,7 +428,6 @@ const useInfiniteScroll = (callback) => {
   );
 
   function handleScroll() {
-    console.log("scroll");
     if (
       window.innerHeight + document.documentElement.scrollTop <=
         Math.floor(document.documentElement.offsetHeight * 0.75) ||

@@ -18,7 +18,6 @@ const scrollToRef = (ref) => {
                 behavior: "smooth",
             })
             } catch (error) {
-                console.log(error);
             }
         }, 0
     );
@@ -34,7 +33,6 @@ const scrollToList = (ref) => {
                 behavior: "smooth",
             })
             } catch (error) {
-                console.log(error);
             }
         }, 0
     );

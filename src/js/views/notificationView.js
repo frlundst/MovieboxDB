@@ -4,7 +4,7 @@ import { faTimes } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 function NotificationView(props) {
-    return (console.log("hej"),
+    return (
         <div className="notification">
             <Toast show={props.inWatchlist} bg="warning">
                 <Toast.Header>

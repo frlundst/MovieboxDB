@@ -1,5 +1,4 @@
 import React from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import "../../css/searchResultsView.css";
 
 function SearchResultsView(props) {

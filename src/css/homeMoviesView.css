@@ -127,6 +127,10 @@
     .movie-card:nth-child(5) {
         display: block;
     }
+
+    .top-movies-section:last-child {
+        
+    }
 }
 
 @media (max-width: 900px) {

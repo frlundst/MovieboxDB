@@ -146,6 +146,7 @@ hr.style {
 @media (max-width: 1800px) {
     .movie-details-section {
         padding: 0px 6%;
+        padding-bottom: 100px;
     }
 
     .movie-details-img:before {

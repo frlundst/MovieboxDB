@@ -9,7 +9,6 @@ function MovieMatcherPresenter(props){
     const [error, setError] = React.useState(null);
 
     const swiped = (direction, id) => {
-        console.log(direction + ", " + id)
         switch (direction){
             case "left":
                 break;
@@ -20,6 +19,8 @@ function MovieMatcherPresenter(props){
             case "down":
                 props.model.setCurrentMovie(id);
                 window.location.hash="#movieDetails";
+                break;
+            default:
                 break;
         }
     }

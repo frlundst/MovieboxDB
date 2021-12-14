@@ -1,13 +1,12 @@
 import React from 'react';
 import '../../css/discoverView.css';
-import TinderCard from 'react-tinder-card';
 
 const onSwipe = (direction) => {
-    console.log('You swiped: ' + direction)
+    
 }
 
 const onCardLeftScreen = (myIdentifier) => {
-    console.log(myIdentifier + ' left the screen')
+
 }
 
 function DiscoverView(props) {
