@@ -3,8 +3,10 @@ import { ApiFetch } from "../apiFetch";
 import promiseNoData from "../promiseNoData";
 import promiseNoRender from "../promiseNoRender";
 import WindowDimensions from "../windowDimensions";
-import { HomeImageView, HomeMoviesView, HomeMovieDetailsView, HomeUsView } from "../views/homeView";
-// #TODO: Ask if multiple views should be stored in the same file
+import HomeImageView from "../views/homeImageView";
+import HomeMoviesView from "../views/homeMovieView";
+import HomeMovieDetailsView from "../views/homeMovieDetailsView";
+import HomeUsView from "../views/homeUsView";
 
 const scrollToRef = (ref) => {
     setTimeout(

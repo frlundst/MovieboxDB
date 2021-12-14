@@ -1,6 +1,10 @@
 import React from "react";
 import promiseNoData from "../promiseNoData";
-import { MovieDetails, SimilarMovies, MovieVideos, MovieCredits, MovieInformation, MovieNotification } from "../views/movieDetailsView";
+import MovieDetailsView from "../views/movieDetailsView";
+import MovieCreditsView from "../views/movieCreditsView";
+import MovieInformationView from "../views/movieInformationView";
+import SimilarMoviesView from "../views/movieSimilarView";
+import MovieVideosView from "../views/movieVideosView";
 
 function MovieDetailsPresenter(props) {
     const [movieID, setMovieID] = React.useState(props.model.currentMovie);
@@ -38,41 +42,41 @@ function MovieDetailsPresenter(props) {
     return (
         <div>
             {promiseNoData(movieID, MovieDetailsData, MovieDetailsError) ||
-                <MovieDetails
+                <MovieDetailsView
                     movie={MovieDetailsData}
                     addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                 />
             }
 
-            <MovieNotification
+            {/* <MovieNotification
                 inWatchlist={inWatchlist}
                 close={() => {
                     props.model.setInWatchlist(false)
                 }}
-            />
+            /> */}
 
             <div className="movie-details-content">
                 {promiseNoData(movieID, MovieDetailsData, MovieDetailsError) ||
-                    <MovieInformation
+                    <MovieInformationView
                         movie={MovieDetailsData}
                     />
                 }
 
                 {promiseNoData(movieID, MovieCreditsData, MovieCreditsError) || (
-                    <MovieCredits
+                    <MovieCreditsView
                         movie={MovieCreditsData}
                     />
                 )}
             </div>
 
             {promiseNoData(movieID, MovieVideosData, MovieVideosError) || (
-                <MovieVideos
+                <MovieVideosView
                     movie={MovieVideosData}
                 />
             )}
 
             {promiseNoData(movieID, SimilarMoviesData, SimilarMoviesError) || (
-                <SimilarMovies
+                <SimilarMoviesView
                     movies={SimilarMoviesData.results}
                     onClick={(movieID) => {
                         props.model.setCurrentMovie(movieID);
