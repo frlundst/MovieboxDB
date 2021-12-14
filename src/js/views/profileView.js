@@ -1,6 +1,10 @@
 import React from "react";
 import '../../css/profile.css';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleRight, faAngleLeft, faInfo, faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { filterTextLength } from "../model";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function ProfileView(props) {
     return (console.log(props.watchlistMovies),
@@ -9,8 +13,14 @@ function ProfileView(props) {
                 <div className="profile-about-header">
                     <h1>Profile</h1>
                 </div>
-                <div className="profile-about-body">
-                    <p>{props.user[0]}</p>
+                <div className="profile-image">
+                    <img src="images/noProfileImage.jpg" alt="profile" />
+                </div>
+                <div className="profile-about-name">
+                    <h2>{props.user[0]}</h2>
+                </div>
+                <div className="profile-about-bio">
+                    <p>{props.user[1]}</p>
                 </div>
             </div>
             <div className="profile-movies">
@@ -37,6 +47,46 @@ function ProfileView(props) {
                         <h1>Watchlist</h1>
                     </div>
                     <div className="profile-watchlist-body">
+                        {props.watchlistMovies.map(movie => {
+                            return (
+                                <div className="profile-watchlist-movie" key={movie.id}>
+                                    <div className="profile-watchlist-movie-image">
+                                        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
+                                    </div>
+                                    <div className="profile-watchlist-movie-info">
+                                        <h3>{movie.title}</h3>
+                                        <h4>{movie.release_date}</h4>
+                                        <p>{filterTextLength(movie.overview, 125)}</p>
+                                        <div className="profile-watchlist-buttons">
+                                        <OverlayTrigger
+                                            placement={'top'}
+                                            overlay={<Tooltip><h7>Description</h7></Tooltip>}
+                                        >
+                                            <button>
+                                                <p><FontAwesomeIcon icon={faInfo}/></p>
+                                            </button>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger
+                                            placement={'top'}
+                                            overlay={<Tooltip><h7>Watched?</h7></Tooltip>}
+                                        >
+                                            <button>
+                                                <p><FontAwesomeIcon icon={faEye}/></p>
+                                            </button>
+                                        </OverlayTrigger>
+                                        <OverlayTrigger
+                                            placement={'top'}
+                                            overlay={<Tooltip><h7>Add to Favorite</h7></Tooltip>}
+                                        >
+                                            <button>
+                                                <p><FontAwesomeIcon icon={faHeart}/></p>
+                                            </button>
+                                        </OverlayTrigger>
+                                        </div>
+                                    </div>
+                                </div>
+                            );
+                        })}
                     </div>
                 </div>
             </div>
@@ -49,7 +99,7 @@ function LeftArrow() {
   
     return (
         <button disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
-            Left
+            <FontAwesomeIcon icon={faAngleLeft} />
         </button>
     );
 }
@@ -59,7 +109,7 @@ function RightArrow() {
   
     return (
         <button disabled={isLastItemVisible} onClick={() => scrollNext()}>
-            Right
+            <FontAwesomeIcon icon={faAngleRight} />
         </button>
     );
 }
@@ -68,11 +118,7 @@ function Card({ itemId, title, image, key, props }) {
     const visibility = React.useContext(VisibilityContext)
 
     return (
-        <div className="profile-favorite-movie"
-            style={{
-                
-            }}
-        >
+        <div className="profile-favorite-movie">
             <img
                 src={`https://image.tmdb.org/t/p/original/${image}`}
                 alt={title}
