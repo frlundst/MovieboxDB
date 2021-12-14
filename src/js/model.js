@@ -265,6 +265,26 @@ class Model {
             }
         })();
     }
+
+    removeFromWatchlist(id) {
+        this.watchlistMovies = this.watchlistMovies.filter(movie =>
+            movie.id !== id
+        );
+        this.notifyObservers();
+        (async () => {
+            try {
+                const docRef = doc(db, "users", this.user);
+                const movies = this.watchlistMovies;
+                await updateDoc(docRef, {
+                    watchlistMovies : {
+                        movies
+                    }
+                });
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        })();
+    }
 }
 
 function filterTextLength(text, length) {

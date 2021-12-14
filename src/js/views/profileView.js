@@ -32,7 +32,6 @@ function ProfileView(props) {
                         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
                             {props.watchlistMovies.map(movie => (
                                 <Card
-                                    key={movie.id}
                                     itemId={movie.id}
                                     title={movie.title}
                                     image={movie.poster_path}
@@ -51,7 +50,11 @@ function ProfileView(props) {
                             return (
                                 <div className="profile-watchlist-movie" key={movie.id}>
                                     <div className="profile-watchlist-movie-image">
-                                        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} alt={movie.title} />
+                                        <img
+                                            onClick={() => props.movieDetails(movie.id)}
+                                            src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                                            alt={movie.title}
+                                        />
                                     </div>
                                     <div className="profile-watchlist-movie-info">
                                         <h3>{movie.title}</h3>
@@ -62,7 +65,7 @@ function ProfileView(props) {
                                             placement={'top'}
                                             overlay={<Tooltip><h7>Description</h7></Tooltip>}
                                         >
-                                            <button>
+                                            <button onClick={() => props.movieDetails(movie.id)}>
                                                 <p><FontAwesomeIcon icon={faInfo}/></p>
                                             </button>
                                         </OverlayTrigger>
@@ -70,7 +73,7 @@ function ProfileView(props) {
                                             placement={'top'}
                                             overlay={<Tooltip><h7>Watched?</h7></Tooltip>}
                                         >
-                                            <button>
+                                            <button onClick={() => props.removeFromWatchlist(movie.id)}>
                                                 <p><FontAwesomeIcon icon={faEye}/></p>
                                             </button>
                                         </OverlayTrigger>
@@ -114,7 +117,7 @@ function RightArrow() {
     );
 }
 
-function Card({ itemId, title, image, key, props }) {
+function Card({ itemId, title, image, props }) {
     const visibility = React.useContext(VisibilityContext)
 
     return (
@@ -122,7 +125,7 @@ function Card({ itemId, title, image, key, props }) {
             <img
                 src={`https://image.tmdb.org/t/p/original/${image}`}
                 alt={title}
-                onClick={() => props.onClick(itemId)}
+                onClick={() => props.movieDetails(itemId)}
             />
             <div className="profile-favorite-info">
                 <h3>{title}</h3>

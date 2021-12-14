@@ -21,6 +21,13 @@ function ProfilePresenter(props) {
                 <ProfileView
                     user={user}
                     watchlistMovies={watchlistMovies}
+                    movieDetails={(id) => {
+                        props.model.setCurrentMovie(id);
+                        window.location.hash="#movieDetails";
+                    }}
+                    removeFromWatchlist={(id) => {
+                        props.model.removeFromWatchlist(id);
+                    }}
                 />
             }
         </div>
