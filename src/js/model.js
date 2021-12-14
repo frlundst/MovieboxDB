@@ -12,9 +12,9 @@ class Model {
         this.watchlistMovies = [];
         this.favoriteMovies = [];
         this.inWatchlist = false;
-        this.initializeDataBase(); //#TODO: TEMPORARY
+        //this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
-        this.setProfileInformation(); //#TODO: TEMPORARY
+        //this.setProfileInformation(); //#TODO: TEMPORARY
         this.setPersistence();
     }
 
@@ -101,10 +101,18 @@ class Model {
                 this.user = userCredential.user;
                 (async () => {
                     try {
+                        const movies = [];
+                        const profile = ["", "", "", ""]
                         await setDoc(doc(db, "users", this.user.uid), {
-                            watchedMovies: {},
-                            favouriteMovies: {},
-                            watchlistMovies: {},
+                            favoriteMovies: {
+                                movies
+                            },
+                            profile: {
+                                profile
+                            },
+                            watchlistMovies: {
+                                movies
+                            },
                         });
                     } catch (e) {
                         console.error("Error adding document: ", e);
@@ -112,6 +120,7 @@ class Model {
                 })();
             })
             .catch(error => {
+                console.log(error);
                 switch (error.code) {
                     case 'auth/missing-email':
                         emailErrorMessage.style.opacity = 1;
@@ -142,8 +151,6 @@ class Model {
     }
 
     isLoggedIn() {
-        const auth = getAuth();
-        this.user = auth.currentUser;
         if(this.user){
             return true;
         }
@@ -164,8 +171,11 @@ class Model {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
+                this.initializeDataBase();
+                this.setProfileInformation();
             })
             .catch((error) => {
+                console.log(error);
                 switch (error.code) {
                     case 'auth/wrong-password':
                         passwordErrorMessage.style.opacity = 1;
@@ -178,6 +188,10 @@ class Model {
                     case 'auth/invalid-email':
                         emailErrorMessage.style.opacity = 1;
                         emailErrorMessage.innerHTML='Email is invalid.'
+                        break;
+                    case 'auth/user-not-found':
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML='User not found.'
                         break;
                     default:
                         emailErrorMessage.style.opacity = 1;
@@ -194,8 +208,8 @@ class Model {
     }
 
     initializeDataBase() {
-        this.user = 'N5hhR3bb7WVQxQ37XKpAzIcKodf1';
-        const docRef = doc(db, "users", this.user);
+        // this.user = 'N5hhR3bb7WVQxQ37XKpAzIcKodf1';
+        const docRef = doc(db, "users", this.user.uid);
         (async () => {
             try {
                 const doc = await getDoc(docRef);
@@ -217,6 +231,8 @@ class Model {
                     movie !== undefined
                 );
 
+                console.log(this.favoriteMovies, this.watchlistMovies);
+                console.log(this.user);
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
@@ -229,7 +245,10 @@ class Model {
             .then(() => {
                 onAuthStateChanged(auth, (user) => {
                     if (user) {
-                        this.user = user.uid;
+                        this.user = user;
+                        this.initializeDataBase();
+                        this.setProfileInformation();
+                        this.notifyObservers();
                     }
                 });
             })
@@ -252,7 +271,7 @@ class Model {
             this.notifyObservers();
             (async () => {
                 try {
-                    const docRef = doc(db, "users", this.user);
+                    const docRef = doc(db, "users", this.user.uid);
                     const movies = this.watchlistMovies;
                     await updateDoc(docRef, {
                         watchlistMovies : {
@@ -306,7 +325,7 @@ class Model {
     }
 
     setProfileInformation() {
-        const docRef = doc(db, "users", this.user);
+        const docRef = doc(db, "users", this.user.uid);
         (async () => {
             try {
                 const doc = await getDoc(docRef);
@@ -326,7 +345,7 @@ class Model {
         this.notifyObservers();
         (async () => {
             try {
-                const docRef = doc(db, "users", this.user);
+                const docRef = doc(db, "users", this.user.uid);
                 const movies = this.watchlistMovies;
                 await updateDoc(docRef, {
                     watchlistMovies : {
@@ -346,7 +365,7 @@ class Model {
         this.notifyObservers();
         (async () => {
             try {
-                const docRef = doc(db, "users", this.user);
+                const docRef = doc(db, "users", this.user.uid);
                 const movies = this.favoriteMovies;
                 await updateDoc(docRef, {
                     favoriteMovies : {

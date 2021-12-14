@@ -1,36 +1,72 @@
 import React from "react";
 import LoginView from "../views/loginView";
-import '../../css/loginRegister.css';
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import promiseNoLogin from "../promiseNoLogin";
+import promiseNoRender from "../promiseNoRender.js";
+import ProfileView from "../views/profileView.js";
 
 function LoginPresenter(props) {
     const [signIn, setSignIn] = React.useState(true);
+    const [user, setUser] = React.useState(props.model.profile);
+    const [watchlistMovies, setWatchlistMovies] = React.useState(props.model.watchlistMovies);
+    const [favoriteMovies, setFavoriteMovies] = React.useState(props.model.favoriteMovies);
+    const [isSignedIn, setIsSignedIn] = React.useState(props.model.isLoggedIn());
 
     var email = "";
     var password = "";
+
+    React.useEffect(() => {
+        const obs = () => {
+            setUser(props.model.profile);
+            setWatchlistMovies(props.model.watchlistMovies);
+            setFavoriteMovies(props.model.favoriteMovies);
+            setIsSignedIn(props.model.isLoggedIn());
+        };
+        props.model.addObserver(obs);
+        return () => props.model.removeObserver(obs);
+    }, [props.model]);
     
     return (
-        
         <div>
-            {promiseNoLogin() || (
-            <LoginView
+            {isSignedIn ?
+                promiseNoRender('', user, null) ||
+                <ProfileView
+                    user={user}
+                    watchlistMovies={watchlistMovies}
+                    favoriteMovies={favoriteMovies}
+                    movieDetails={(id) => {
+                        props.model.setCurrentMovie(id);
+                        window.location.hash="#movieDetails";
+                    }}
+                    removeFromWatchlist={(id) => {
+                        props.model.removeFromWatchlist(id);
+                    }}
+                    addToFavorite={(movieInformation) => {
+                        props.model.addToFavorite(movieInformation);
+                    }}
+                    removeFromFavorite={(id) => {
+                        props.model.removeFromFavorite(id);
+                    }}
+                />
                 
-                setEmail={text => email = text}
-                setPassword={text => password = text}
+                :
 
-                createUser={() => {
-                    props.model.createUser(email, password)
-                }}
+                <LoginView
+                    
+                    setEmail={text => email = text}
+                    setPassword={text => password = text}
 
-                loginUser={() => {
-                    props.model.loginUser(email, password)
-                }}
+                    createUser={() => {
+                        props.model.createUser(email, password)
+                    }}
 
-                signIn={signIn}
-                login={() => setSignIn(true)}
-                signUp={() => setSignIn(false)}
-            />)}
+                    loginUser={() => {
+                        props.model.loginUser(email, password)
+                    }}
+
+                    signIn={signIn}
+                    login={() => setSignIn(true)}
+                    signUp={() => setSignIn(false)}
+                />
+            }
         </div>
     );
 }

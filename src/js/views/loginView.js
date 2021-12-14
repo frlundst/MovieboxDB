@@ -9,10 +9,10 @@ function LoginView(props) {
 
                 <ul className="login-nav">
                     <li className={`login-nav-item ${props.signIn ? 'active' : ''}`}>
-                        <a href="/#" onClick={() => props.login()}>Sign In</a>
+                        <a href="#login" onClick={() => props.login()}>Sign In</a>
                     </li>
                     <li className={`login-nav-item ${!props.signIn ? 'active' : ''}`}>
-                        <a href="/#" onClick={() => props.signUp()}>Sign Up</a>
+                        <a href="#login" onClick={() => props.signUp()}>Sign Up</a>
                     </li>
                 </ul>
 
@@ -26,8 +26,8 @@ function LoginView(props) {
 
                 <div className="terms-and-conditions">
                     <input type="checkbox" classnames="form-check-input" autoComplete="on"/>
-                    <a href="/#" hidden={props.signIn}> Terms and Condition</a>
-                    <a href="/#" hidden={!props.signIn}> Remember me</a>
+                    <a href="#login" hidden={props.signIn}> Terms and Condition</a>
+                    <a href="#login" hidden={!props.signIn}> Remember me</a>
                 </div>
 
                 <button className="login-sign-in" hidden={props.signIn} onClick={() => props.createUser()}>REGISTER</button>
