@@ -10,7 +10,7 @@ class Model {
         this.watchlistMovies= [];
         this.inWatchlist = false;
         this.initializeDataBase(); //#TODO: TEMPORARY
-        this.profileInformation = null;
+        this.profile = null;
         this.setProfileInformation();
     }
 
@@ -261,7 +261,8 @@ class Model {
             try {
                 const doc = await getDoc(docRef);
                 const data = doc.data();
-                this.profileInformation = data;
+                this.profile = data.profile;
+                this.notifyObservers();
             } catch (e) {
                 console.error("Error Getting Document: ", e);
             }
