@@ -10,7 +10,6 @@ function LoginPresenter(props) {
     var email = "";
     var password = "";
     
-
     return (
         
         <div>

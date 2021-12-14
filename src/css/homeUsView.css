@@ -4,7 +4,6 @@
 }
 
 .us-section {
-    padding-top: 150px;
     background: #19181F;
 }
 
@@ -62,6 +61,9 @@
 
 
 @media (max-width: 1200px) {
+    .us-section {
+        padding-top: 150px;
+    }
     .us-text {
         width: 100%;
         left: 0;
