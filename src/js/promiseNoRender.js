@@ -8,6 +8,7 @@ function promiseNoRender(promise, data, error) {
     } else if (error != null) {
         return(<div></div>);
     }
+
     return false;
 }
 export default promiseNoRender;

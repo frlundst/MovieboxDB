@@ -2,19 +2,19 @@ import React from "react";
 import '../../css/profile.css';
 import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faAngleLeft, faInfo, faEye, faHeart } from '@fortawesome/free-solid-svg-icons';
+import { faAngleRight, faAngleLeft, faInfo, faEye, faHeart, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { filterTextLength } from "../model";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function ProfileView(props) {
-    return (console.log(props.watchlistMovies),
+    return (console.log(props.user[3]),
         <div className="profile-container">
             <div className="profile-about">
                 <div className="profile-about-header">
                     <h1>Profile</h1>
                 </div>
                 <div className="profile-image">
-                    <img src="images/noProfileImage.jpg" alt="profile" />
+                    {props.user[3] === "" ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.user[3]} alt="profile" />}
                 </div>
                 <div className="profile-about-name">
                     <h2>{props.user[0]}</h2>
@@ -30,7 +30,7 @@ function ProfileView(props) {
                     </div>
                     <div className="profile-favorite-body">
                         <ScrollMenu LeftArrow={LeftArrow} RightArrow={RightArrow}>
-                            {props.watchlistMovies.map(movie => (
+                            {props.favoriteMovies.map(movie => (
                                 <Card
                                     itemId={movie.id}
                                     title={movie.title}
@@ -63,7 +63,7 @@ function ProfileView(props) {
                                         <div className="profile-watchlist-buttons">
                                         <OverlayTrigger
                                             placement={'top'}
-                                            overlay={<Tooltip><h7>Description</h7></Tooltip>}
+                                            overlay={<Tooltip><h6>Description</h6></Tooltip>}
                                         >
                                             <button onClick={() => props.movieDetails(movie.id)}>
                                                 <p><FontAwesomeIcon icon={faInfo}/></p>
@@ -71,7 +71,7 @@ function ProfileView(props) {
                                         </OverlayTrigger>
                                         <OverlayTrigger
                                             placement={'top'}
-                                            overlay={<Tooltip><h7>Watched?</h7></Tooltip>}
+                                            overlay={<Tooltip><h6>Watched?</h6></Tooltip>}
                                         >
                                             <button onClick={() => props.removeFromWatchlist(movie.id)}>
                                                 <p><FontAwesomeIcon icon={faEye}/></p>
@@ -79,9 +79,9 @@ function ProfileView(props) {
                                         </OverlayTrigger>
                                         <OverlayTrigger
                                             placement={'top'}
-                                            overlay={<Tooltip><h7>Add to Favorite</h7></Tooltip>}
+                                            overlay={<Tooltip><h6>Add to Favorite</h6></Tooltip>}
                                         >
-                                            <button>
+                                            <button onClick={() => props.addToFavorite(movie)}>
                                                 <p><FontAwesomeIcon icon={faHeart}/></p>
                                             </button>
                                         </OverlayTrigger>
@@ -118,8 +118,6 @@ function RightArrow() {
 }
 
 function Card({ itemId, title, image, props }) {
-    const visibility = React.useContext(VisibilityContext)
-
     return (
         <div className="profile-favorite-movie">
             <img
@@ -127,6 +125,16 @@ function Card({ itemId, title, image, props }) {
                 alt={title}
                 onClick={() => props.movieDetails(itemId)}
             />
+            <OverlayTrigger
+                placement={'top'}
+                overlay={<Tooltip><h6>Remove From Favorite</h6></Tooltip>}
+            >
+                <div className="profile-favorite-remove">
+                    <button onClick={() => props.removeFromFavorite(itemId)}>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
+                </div>
+            </OverlayTrigger>
             <div className="profile-favorite-info">
                 <h3>{title}</h3>
             </div>

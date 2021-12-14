@@ -84,13 +84,32 @@
     outline: none;
 }
 
+.profile-favorite-remove {
+    position: absolute;
+    margin-top: -15px;
+    margin-left: 350px;
+    z-index: 1;
+}
+
+.profile-favorite-info h3{
+    width: 94%;
+}
+
+.profile-favorite-movie button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 40px;
+    margin: 0;
+}
+
 .profile-favorite-body button:hover {
     transform: scale(1.1);
 }
 
 .profile-favorite-movie {
     width: 420px;
-    height: 750px;
+    height: 900px;
     padding: 25px 20px 0 20px;
     transition: all .2s ease-in-out;
 }

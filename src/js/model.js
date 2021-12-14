@@ -7,7 +7,8 @@ class Model {
         this.observers = [];
         this.currentMovie = currentMovie;
         this.user = null;
-        this.watchlistMovies= [];
+        this.watchlistMovies = [];
+        this.favoriteMovies = [];
         this.inWatchlist = false;
         this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
@@ -201,12 +202,20 @@ class Model {
                 data.watchlistMovies.movies.forEach((movie) => {
                     this.watchlistMovies.push(movie);
                 });
+
+                data.favoriteMovies.movies.forEach((movie) => {
+                    this.favoriteMovies.push(movie);
+                });
                 
                 this.watchlistMovies = this.watchlistMovies.filter(movie =>
                     movie !== undefined
                 );
 
-                console.log(this.watchlistMovies);
+                this.favoriteMovies = this.favoriteMovies.filter(movie =>
+                    movie !== undefined
+                );
+
+                console.log(this.favoriteMovies);
 
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -227,6 +236,7 @@ class Model {
 
         if (!inWatchList) {
             this.watchlistMovies.push(movieInformation);
+            this.notifyObservers();
             (async () => {
                 try {
                     const docRef = doc(db, "users", this.user);
@@ -244,6 +254,39 @@ class Model {
             this.setInWatchlist(true);
         }
         console.log(this.watchlistMovies);
+    }
+
+    addToFavorite(movieInformation) {
+        var inWatchList = false;
+
+        if (this.favoriteMovies.length > 0) {
+            this.favoriteMovies.forEach(movie => {
+                if (movie !== undefined && movie.id === movieInformation.id) {
+                    inWatchList = true;
+                }
+            });
+        }
+
+        if (!inWatchList) {
+            this.favoriteMovies.push(movieInformation);
+            this.notifyObservers();
+            (async () => {
+                try {
+                    const docRef = doc(db, "users", this.user);
+                    const movies = this.favoriteMovies;
+                    await updateDoc(docRef, {
+                        favoriteMovies : {
+                            movies
+                        }
+                    });
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                }
+            })();
+        } else {
+            this.setInWatchlist(true);
+        }
+        console.log(this.favoriteMovies);
     }
 
     setInWatchlist(boolean) {
