@@ -20,7 +20,7 @@ function NavigationbarView(props) {
                     <Nav.Link href="#favourites">Favourites</Nav.Link>
                     <Nav.Link href="#watchlist">Watchlist</Nav.Link>
                     <Nav.Link href="#login">Login</Nav.Link>
-                    <Nav.Link className='movie-matcher-link' href="#moviematcher">MovieMatcher™</Nav.Link>
+                    <Nav.Link className='movie-matcher-link' href="#movieMatcher">MovieMatcher™</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

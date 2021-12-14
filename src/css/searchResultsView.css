@@ -20,9 +20,11 @@
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
     grid-gap: 2%;
-    row-gap: 12%;
+    row-gap: 5%;
     padding-left: 10%;
     padding-right: 10%;
+    overflow: hidden;
+    padding-bottom: 500px;
 }
 
 .movie-vote {
@@ -52,6 +54,11 @@
     height: 90%;
     object-fit: cover;
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1)
+}
+
+.movie-card{
+    margin-top: -50px;
+    margin-bottom: 50px;
 }
 
 .movie-card-info h3 {

@@ -9,6 +9,7 @@ function FooterView(props) {
     return (
         <Footer
             className="footer"
+            sticky="bottom"
             columns={[
                 {
                     icon: (

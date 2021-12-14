@@ -1,5 +1,5 @@
 import { ApiFetch } from "./apiFetch";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged,setPersistence,browserLocalPersistence, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { db } from "./firebaseLoad.js";
 import { getDoc, collection, addDoc, setDoc, doc, updateDoc } from "firebase/firestore"
 class Model {
@@ -13,6 +13,7 @@ class Model {
         this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
         this.setProfileInformation(); //#TODO: TEMPORARY
+        this.setPersistence();
     }
 
     setCurrentMovie(currentMovie) {
@@ -221,6 +222,22 @@ class Model {
                 console.error("Error adding document: ", e);
             }
         })();
+    }
+
+    setPersistence() {
+        var auth = getAuth();
+        setPersistence(auth, browserLocalPersistence)
+            .then(() => {
+                onAuthStateChanged(auth, (user) => {
+                    if (user) {
+                        console.log(user)
+                        this.user = user.uid;
+                    } else {
+                        console.log("no one logged in.")
+                    }
+                });
+            })
+
     }
 
     addMovieToWatchlist(movieInformation) {
