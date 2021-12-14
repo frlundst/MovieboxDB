@@ -7,42 +7,44 @@ import { ApiFetch } from '../apiFetch.js';
 function SearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
-    const [currentData, setCurrentData] = React.useState(null);
     const [error, setError] = React.useState(null);
-    const [page, setPage] = React.useState(1);
-    const [currentPage, setCurrentPage] = React.useState(1);
+    
+    const [nextPage, setNextPage] = React.useState(null);
+    const [isFetching, setIsFetching, stop] = useInfiniteScroll(getMoreFeed);
     var query = "";
-    var state = true;
+
+    async function getMoreFeed() {
+        if (nextPage) {
+            setPromise(
+                ApiFetch.searchMovie(query, page)
+                    .then((newData) => {
+                        setData([...data, ...newData]);
+                        setIsFetching(false);
+                        setNextPage(nextPage + 1)
+                    })
+                    .catch((error) => setError(error))
+            );
+
+          //const res = await apiCall({ method: "GET", page: nextPage });
+          //if (res === 500) {
+          //  SetAPIError(500);
+          //} else {
+          //  setData([...data, ...res.data]);
+          //  setIsFetching(false);
+          //  res.next
+          //    ? setNextPage(nextPage + 1)
+          //    : setNextPage(null)((stop.current = true));
+          //}
+        } else {
+          setIsFetching(false);
+        }
+    }
 
     React.useEffect(() => {
         setPromise(ApiFetch.getTopMovies()
             .then(data => setData(data))
             .catch(error => setError(error)));
     }, []);
-
-    const fetchMoreData = () => {
-        if(state === true){
-            state=false;
-            setCurrentData(data);
-            setCurrentPage(page);
-            console.log(currentPage + " hej");
-            setPage(currentPage + 1);
-            fetchData();
-            setData({...currentData, ...data});
-            
-        }
-    };
-
-    const fetchData = () => {
-        setData(null);
-        setError(null);
-        setPromise(null);
-        setPromise(
-            ApiFetch.searchMovie(query, page)
-                .then((data) => setData(data))
-                .catch((error) => setError(error))
-        );
-      }
 
     return (
         <div>
@@ -64,7 +66,6 @@ function SearchPresenter(props) {
                     props.model.setCurrentMovie(id);
                     window.location.hash="#movieDetails";
                 }}
-                bottomReached={() => fetchMoreData()}
             ></SearchResultsView>}
         </div>
     );
