@@ -1,30 +1,30 @@
 import React from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import "../../css/searchResultsView.css";
 
-
 function SearchResultsView(props) {
-    return (console.log(props),
-        <div className="movies-container">
-            {props.searchResults.results.map(function (result) {
-                if (result.poster_path == null) {
-                    return null;
-                } else {
-                    return (
-                        <div id={result.id} className="movie-card" key={result.id}>
-                            <img id={result.id}
-                                src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
-                                alt={result.title}
-                                onClick={() => props.onClick(result.id)}
-                            />
-                            <div id={result.id} className="movie-card-info">
-                                <h3 id={result.id}>{result.title}</h3>
-                                <p id={result.id}>{result.release_date}</p>
+    return (
+            <div className="movies-container">
+                {props.searchResults.results.map(function (result) {
+                    if (result.poster_path == null || result.backdrop_path == null) {
+                        return null;
+                    } else {
+                        return (
+                            <div id={result.id} className="movie-card" key={result.id}>
+                                <img id={result.id}
+                                    src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
+                                    alt={result.title}
+                                    onClick={() => props.onClick(result.id)}
+                                />
+                                <div id={result.id} className="movie-card-info">
+                                    <h3 id={result.id}>{result.title}</h3>
+                                    <p id={result.id}>{result.release_date}</p>
+                                </div>
                             </div>
-                        </div>
-                    );
-                }
-            })}
-        </div>
+                        );
+                    }
+                })}
+            </div>
     );
 }
 

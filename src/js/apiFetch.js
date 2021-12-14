@@ -56,8 +56,8 @@ export const ApiFetch = {
         return this.apiCall(`/movie/upcoming?`);
     },
 
-    searchMovie(query=""){
-        return this.apiCall(`/search/multi?query=${query}&`);
+    searchMovie(query="", page = 1){
+        return this.apiCall(`/search/multi?query=${query}&page=${page}&`);
     },
 
     discoverMovie(query="",language="",){
