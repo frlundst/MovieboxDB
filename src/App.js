@@ -15,7 +15,7 @@ import ProfilePresenter from './js/presenter/profilePresenter.js';
 function defaultRoute() {
   	if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#movieMatcher', '#login', '#profile'].find((knownRoute) => knownRoute !== window.location.hash)){
       	window.location.hash = "#profile";
-  }
+  	}
 }
 
 function App(props) {
