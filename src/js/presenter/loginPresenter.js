@@ -15,6 +15,7 @@ function LoginPresenter(props) {
         <div>
             {promiseNoLogin() || (
             <LoginView
+                
                 setEmail={text => email = text}
                 setPassword={text => password = text}
 
@@ -30,10 +31,7 @@ function LoginPresenter(props) {
                 login={() => setSignIn(true)}
                 signUp={() => setSignIn(false)}
             />)}
-            
         </div>
-
-
     );
 }
 
