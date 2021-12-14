@@ -7,20 +7,20 @@ import { filterTextLength } from "../model";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function ProfileView(props) {
-    return (
+    return (console.log(props),
         <div className="profile-container">
             <div className="profile-about">
                 <div className="profile-about-header">
                     <h1>Profile</h1>
                 </div>
                 <div className="profile-image">
-                    {props.user[3] === "" ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.user[3]} alt="profile" />}
+                    {props.user[3] === undefined ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.user[3]} alt="profile" />}
                 </div>
                 <div className="profile-about-name">
-                    <h2>{props.user[0]}</h2>
+                    <h2>{props.user[0] === undefined ? "No Name" : props.user[0]}</h2>
                 </div>
                 <div className="profile-about-bio">
-                    <p>{props.user[1]}</p>
+                    <p>{props.user[1] === undefined ? "No Biography" : props.user[1]}</p>
                 </div>
             </div>
             <div className="profile-movies">

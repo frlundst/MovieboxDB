@@ -6,8 +6,8 @@ import ProfileView from "../views/profileView.js";
 function LoginPresenter(props) {
     const [signIn, setSignIn] = React.useState(true);
     const [user, setUser] = React.useState(props.model.profile);
-    const [watchlistMovies, setWatchlistMovies] = React.useState(props.model.watchlistMovies);
-    const [favoriteMovies, setFavoriteMovies] = React.useState(props.model.favoriteMovies);
+    const [watchlist, setWatchlist] = React.useState(props.model.watchlistMovies);
+    const [favorite, setFavorite] = React.useState(props.model.favoriteMovies);
     const [isSignedIn, setIsSignedIn] = React.useState(props.model.isLoggedIn());
 
     var email = "";
@@ -16,8 +16,8 @@ function LoginPresenter(props) {
     React.useEffect(() => {
         const obs = () => {
             setUser(props.model.profile);
-            setWatchlistMovies(props.model.watchlistMovies);
-            setFavoriteMovies(props.model.favoriteMovies);
+            setWatchlist(props.model.watchlistMovies);
+            setFavorite(props.model.favoriteMovies);
             setIsSignedIn(props.model.isLoggedIn());
         };
         props.model.addObserver(obs);
@@ -30,8 +30,8 @@ function LoginPresenter(props) {
                 promiseNoRender('', user, null) ||
                 <ProfileView
                     user={user}
-                    watchlistMovies={watchlistMovies}
-                    favoriteMovies={favoriteMovies}
+                    watchlistMovies={watchlist}
+                    favoriteMovies={favorite}
                     movieDetails={(id) => {
                         props.model.setCurrentMovie(id);
                         window.location.hash="#movieDetails";
@@ -50,18 +50,14 @@ function LoginPresenter(props) {
                 :
 
                 <LoginView
-                    
                     setEmail={text => email = text}
                     setPassword={text => password = text}
-
                     createUser={() => {
                         props.model.createUser(email, password)
                     }}
-
                     loginUser={() => {
                         props.model.loginUser(email, password)
                     }}
-
                     signIn={signIn}
                     login={() => setSignIn(true)}
                     signUp={() => setSignIn(false)}

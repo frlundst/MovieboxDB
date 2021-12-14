@@ -268,7 +268,11 @@ class Model {
 
         if (!inWatchList) {
             this.watchlistMovies.push(movieInformation);
+            this.watchlistMovies = this.watchlistMovies.filter(movie =>
+                movie !== undefined
+            );
             this.notifyObservers();
+
             (async () => {
                 try {
                     const docRef = doc(db, "users", this.user.uid);
@@ -278,6 +282,7 @@ class Model {
                             movies
                         }
                     });
+                    this.notifyObservers();
                 } catch (e) {
                     console.error("Error adding document: ", e);
                 }
@@ -300,7 +305,11 @@ class Model {
 
         if (!inWatchList) {
             this.favoriteMovies.push(movieInformation);
+            this.favoriteMovies = this.favoriteMovies.filter(movie =>
+                movie !== undefined
+            );
             this.notifyObservers();
+            
             (async () => {
                 try {
                     const docRef = doc(db, "users", this.user);
