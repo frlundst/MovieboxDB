@@ -11,6 +11,7 @@ import DiscoverPresenter from './js/presenter/discoverPresenter.js';
 import MovieMatcherPresenter from './js/presenter/movieMatcherPresenter.js'
 import FooterPresenter from './js/presenter/footerPresenter.js';
 import ProfilePresenter from './js/presenter/profilePresenter.js';
+import NotificationPresenter from './js/presenter/notificationPresenter.js';
 
 function defaultRoute() {
   	if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#movieMatcher', '#login', '#profile'].find((knownRoute) => knownRoute !== window.location.hash)){
@@ -31,6 +32,7 @@ function App(props) {
 			<Show hash="#movieMatcher"><MovieMatcherPresenter model={props.model}/></Show>
 			<Show hash="#login"><LoginPresenter model={props.model}/></Show>
 			<Show hash="#profile"><ProfilePresenter model={props.model}/></Show>
+			<NotificationPresenter model={props.model}/>
 			<FooterPresenter/>
 		</div>
 	);

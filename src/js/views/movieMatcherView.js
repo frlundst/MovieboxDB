@@ -19,7 +19,7 @@ function MovieMatcherView(props) {
     return (
         <div className="movieMatcher-section">
         <div className='cardContainer'>
-            <h3 className="title">MoiveMatcher™</h3>
+            <h3 className="title">MovieMatcher™</h3>
             <h5 className="description">Swipe right to add movie to watchlist. Swipe up to add movie to favourites. Swipe down for more information. Swipe left for no.</h5>
             <br/>
             {props.topMovies.results.map(

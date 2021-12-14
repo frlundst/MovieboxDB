@@ -1,5 +1,10 @@
-function MovieNotification(props) {
-    return (
+import React from "react";
+import Toast from 'react-bootstrap/Toast'
+import { faTimes } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
+function NotificationView(props) {
+    return (console.log("hej"),
         <div className="notification">
             <Toast show={props.inWatchlist} bg="warning">
                 <Toast.Header>
@@ -11,3 +16,5 @@ function MovieNotification(props) {
         </div>
     );
 }
+
+export default NotificationView;

@@ -11,7 +11,7 @@ class Model {
         this.inWatchlist = false;
         this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
-        this.setProfileInformation();
+        this.setProfileInformation(); //#TODO: TEMPORARY
     }
 
     setCurrentMovie(currentMovie) {
@@ -247,9 +247,6 @@ class Model {
     }
 
     setInWatchlist(boolean) {
-        if (this.inWatchlist === boolean) {
-            return;
-        }
         console.log(boolean);
         this.inWatchlist = boolean;
         this.notifyObservers();

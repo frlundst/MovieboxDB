@@ -2,9 +2,8 @@ import React from 'react';
 import '../../css/movieDetails.css';
 import '../../css/homeMoviesView.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faClock, faPlus, faStar, faTimes} from '@fortawesome/free-solid-svg-icons'
-import { filterTextLength } from '../model.js'
-import Toast from 'react-bootstrap/Toast'
+import { faCalendarAlt, faClock, faPlus, faStar } from '@fortawesome/free-solid-svg-icons'
+
 
 function MovieDetailsView(props) {
     return (
