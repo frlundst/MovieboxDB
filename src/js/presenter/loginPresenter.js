@@ -49,7 +49,8 @@ function LoginPresenter(props) {
                         window.location.hash="#editProfile";
                     }}
                     logout={() => {
-                        props.model.logout();
+                        props.model.signOutUser();
+                        window.location.hash="#home";
                     }}
                 />
                 
