@@ -19,7 +19,7 @@ function FooterView(props) {
                     items: [
                         {
                             description:
-                                "Track, save and discover all your favourite Tv-shows and movies. At MovieBoxDB we offer the best discovery experience when it comes to your favourite Tv-shows and movies. Join today and start discovering your new favourite shows!",
+                                "Who doesn't love movies? At MovieBoxDB we strive for the best and easiest movie discovering experience, with the help of TheMovieDB API. Our website offers multiple ways to find new movies. Join us today!",
                             className: "footer-about-text"
                         }        
                     ],

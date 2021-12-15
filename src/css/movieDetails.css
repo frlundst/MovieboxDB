@@ -69,6 +69,7 @@ body {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    margin-right: 20px;
 }
 
 .movie-details-button-watch:hover {
@@ -80,7 +81,7 @@ body {
     display: grid;
     grid-template-columns: 50% 50%;
     padding: 40px 0px 40px 10%;
-    background-color: #3A0202;
+    background-image: radial-gradient(at bottom, #151a50 0%,#33156be6 80%, #0b1444e6 100%);
     opacity: 0.8;
     position: absolute;
     z-index: 1;
@@ -146,6 +147,7 @@ body {
 
 .similar-movies-section {
     padding: 1%;
+    margin-bottom: 50px;
 }
 
 .similar-movies-section h1 {
@@ -373,6 +375,11 @@ body {
         grid-template-columns: 100%;
         margin-top: -660px;
     }
+
+    .movie-details-button-watch {
+        transform: scale(0.8);
+        margin-right: 0;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -387,5 +394,9 @@ body {
 
     .similar-movies-header {
         font-size: 40px;
+    }
+
+    .movie-details-button-watch {
+        margin-left: -25px;
     }
 }

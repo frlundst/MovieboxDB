@@ -45,6 +45,13 @@ function LoginPresenter(props) {
                     removeFromFavorite={(id) => {
                         props.model.removeFromFavorite(id);
                     }}
+                    editProfile={() => {
+                        window.location.hash="#editProfile";
+                    }}
+                    logout={() => {
+                        props.model.signOutUser();
+                        window.location.hash="#home";
+                    }}
                 />
                 
                 :

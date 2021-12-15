@@ -24,6 +24,11 @@ function ProfileView(props) {
                         <div className="profile-about-bio">
                             <p>{props.user[1] === undefined ? "No Biography" : props.user[1]}</p>
                         </div>
+                        <div className="profile-about-buttons">
+                            <button onClick={() => props.editProfile()}>Edit Profile</button>
+                            <button onClick={() => {console.log(props);
+                                props.logout()}}>Logout</button>
+                        </div>
                     </div>
                 </div>
             </div>
