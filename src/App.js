@@ -16,7 +16,7 @@ import EditProfilePresenter from './js/presenter/editProfilePresenter.js';
 function defaultRoute() {
   	if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#movieMatcher', '#login', '#profile', '#editProfile', '#discover']
 	  		.find((knownRoute) => knownRoute !== window.location.hash)){
-      	window.location.hash = "#editProfile";
+      	window.location.hash = "#home";
   	}
 }
 

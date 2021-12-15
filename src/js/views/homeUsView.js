@@ -6,12 +6,11 @@ function HomeUsView(props) {
         <div className="us-section">
             <div className="us-container">
                 <div className="us-text">
-                    <h3>Discover & track your favorite movies and Tv-shows</h3>
+                    <h3>Discover, save and track your favourite movies</h3>
                     <p>
-                        Track, save and discover all your favourite Tv-shows
-                        and movies. At MovieBoxDB we offer the best discovery
-                        experience when it comes to your favourite Tv-shows and movies.
-                        Join today and start discovering your new favourite shows!
+                        At MovieBoxDB we offer the best tracking and discovery 
+                        experience when it comes to movies.
+                        Join today and find your new favourite movie!
                     </p>
                 </div>
                 <img src="/images/justiceLeague.jpg" alt="Batman Home Page" />

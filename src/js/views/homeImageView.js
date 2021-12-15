@@ -7,7 +7,7 @@ function HomeImageView(props) {
             <img src="/images/HomePage.jpg" alt="Batman Home Page" />
             <div className="intro-text">
                 <h1>MovieBoxDB</h1>
-                <p>Movie Tracking Application</p>
+                <p>Movie Discovery & Tracking Application</p>
             </div>
         </div>
     );
