@@ -1,7 +1,15 @@
 import { ApiFetch } from "./apiFetch";
-import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged,setPersistence,browserLocalPersistence, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import {
+    getAuth,
+    createUserWithEmailAndPassword,
+    onAuthStateChanged,
+    setPersistence,
+    browserLocalPersistence,
+    signInWithEmailAndPassword,
+    signOut,
+} from "firebase/auth";
 import { db } from "./firebaseLoad.js";
-import { getDoc, setDoc, doc, updateDoc } from "firebase/firestore"
+import { getDoc, setDoc, doc, updateDoc } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
 
 class Model {
@@ -36,37 +44,45 @@ class Model {
         this.notifyObservers();
 
         if (this.currentMovie) {
-            ApiFetch.getMovieDetails(this.currentMovie).then((response) => {
-                this.movieDetails = response;
-                this.notifyObservers();
-            }).catch((error) => {
-                this.movieDetailsError = error;
-                this.notifyObservers();
-            });
+            ApiFetch.getMovieDetails(this.currentMovie)
+                .then((response) => {
+                    this.movieDetails = response;
+                    this.notifyObservers();
+                })
+                .catch((error) => {
+                    this.movieDetailsError = error;
+                    this.notifyObservers();
+                });
 
-            ApiFetch.getMovieVideos(this.currentMovie).then((response) => {
-                this.movieVideos = response;
-                this.notifyObservers();
-            }).catch((error) => {
-                this.movieVideosError = error;
-                this.notifyObservers();
-            });
+            ApiFetch.getMovieVideos(this.currentMovie)
+                .then((response) => {
+                    this.movieVideos = response;
+                    this.notifyObservers();
+                })
+                .catch((error) => {
+                    this.movieVideosError = error;
+                    this.notifyObservers();
+                });
 
-            ApiFetch.getMovieCredits(this.currentMovie).then((response) => {
-                this.movieCredits = response;
-                this.notifyObservers();
-            }).catch((error) => {
-                this.movieCreditsError = error;
-                this.notifyObservers();
-            });
+            ApiFetch.getMovieCredits(this.currentMovie)
+                .then((response) => {
+                    this.movieCredits = response;
+                    this.notifyObservers();
+                })
+                .catch((error) => {
+                    this.movieCreditsError = error;
+                    this.notifyObservers();
+                });
 
-            ApiFetch.getSimilarMovies(this.currentMovie).then((response) => {
-                this.similarMovies = response;
-                this.notifyObservers();
-            }).catch((error) => {
-                this.similarMoviesError = error;
-                this.notifyObservers();
-            });
+            ApiFetch.getSimilarMovies(this.currentMovie)
+                .then((response) => {
+                    this.similarMovies = response;
+                    this.notifyObservers();
+                })
+                .catch((error) => {
+                    this.similarMoviesError = error;
+                    this.notifyObservers();
+                });
         }
     }
 
@@ -92,27 +108,31 @@ class Model {
 
     createUser(email, password) {
         var auth = getAuth();
-        const passwordErrorMessage = document.getElementById("error-message-password");
-        const emailErrorMessage = document.getElementById("error-message-email");
+        const passwordErrorMessage = document.getElementById(
+            "error-message-password"
+        );
+        const emailErrorMessage = document.getElementById(
+            "error-message-email"
+        );
         emailErrorMessage.style.opacity = 0;
         passwordErrorMessage.style.opacity = 0;
-    
+
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
                 (async () => {
                     try {
                         const movies = [];
-                        const profile = ["", "", "", ""]
+                        const profile = ["", "", "", ""];
                         await setDoc(doc(db, "users", this.user.uid), {
                             favoriteMovies: {
-                                movies
+                                movies,
                             },
                             profile: {
-                                profile
+                                profile,
                             },
                             watchlistMovies: {
-                                movies
+                                movies,
                             },
                         });
                     } catch (e) {
@@ -120,55 +140,59 @@ class Model {
                     }
                 })();
             })
-            .catch(error => {
+            .catch((error) => {
                 console.log(error);
                 switch (error.code) {
-                    case 'auth/missing-email':
+                    case "auth/missing-email":
                         emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML='Email is required.'
+                        emailErrorMessage.innerHTML = "Email is required.";
                         break;
-                    case 'auth/invalid-email':
+                    case "auth/invalid-email":
                         emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML='Email is invalid.'
-                        break;                   
-                    case 'auth/email-already-in-use':
-                        emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML = 'Email already in use!'
+                        emailErrorMessage.innerHTML = "Email is invalid.";
                         break;
-                    case 'auth/weak-password':
+                    case "auth/email-already-in-use":
+                        emailErrorMessage.style.opacity = 1;
+                        emailErrorMessage.innerHTML = "Email already in use!";
+                        break;
+                    case "auth/weak-password":
                         passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML = 'Password not strong enough.'
+                        passwordErrorMessage.innerHTML =
+                            "Password not strong enough.";
                         break;
-                    case 'auth/internal-error':
+                    case "auth/internal-error":
                         passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML = 'Password is required.'
+                        passwordErrorMessage.innerHTML =
+                            "Password is required.";
                         break;
                     default:
                         passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML = 'Unknown error.'
+                        passwordErrorMessage.innerHTML = "Unknown error.";
                         break;
                 }
-            })
+            });
     }
 
     isLoggedIn() {
-        if(this.user){
+        if (this.user) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
 
     loginUser(email, password) {
-
         const auth = getAuth();
-        const emailErrorMessage = document.getElementById("error-message-email");
-        const passwordErrorMessage = document.getElementById("error-message-password");
-    
+        const emailErrorMessage = document.getElementById(
+            "error-message-email"
+        );
+        const passwordErrorMessage = document.getElementById(
+            "error-message-password"
+        );
+
         emailErrorMessage.style.opacity = 0;
         passwordErrorMessage.style.opacity = 0;
-    
+
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
@@ -178,44 +202,46 @@ class Model {
             .catch((error) => {
                 console.log(error);
                 switch (error.code) {
-                    case 'auth/wrong-password':
+                    case "auth/wrong-password":
                         passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML='Incorrect Password.'
+                        passwordErrorMessage.innerHTML = "Incorrect Password.";
                         break;
-                    case 'auth/missing-email':
+                    case "auth/missing-email":
                         emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML='Email is required.'
+                        emailErrorMessage.innerHTML = "Email is required.";
                         break;
-                    case 'auth/invalid-email':
+                    case "auth/invalid-email":
                         emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML='Email is invalid.'
+                        emailErrorMessage.innerHTML = "Email is invalid.";
                         break;
-                    case 'auth/user-not-found':
+                    case "auth/user-not-found":
                         emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML='User not found.'
+                        emailErrorMessage.innerHTML = "User not found.";
                         break;
                     default:
                         emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML='Unknown error.'             
+                        emailErrorMessage.innerHTML = "Unknown error.";
                 }
             });
     }
 
     signOutUser() {
         const auth = getAuth();
-        signOut(auth).then(() => {
-        }).catch((error) => {
-        });
+        signOut(auth)
+            .then(() => {
+                this.user = null;
+                this.notifyObservers();
+            })
+            .catch((error) => {});
     }
 
     initializeDataBase() {
-        // this.user = 'N5hhR3bb7WVQxQ37XKpAzIcKodf1';
         const docRef = doc(db, "users", this.user.uid);
         (async () => {
             try {
                 const doc = await getDoc(docRef);
                 const data = doc.data();
-                
+
                 data.watchlistMovies.movies.forEach((movie) => {
                     this.watchlistMovies.push(movie);
                 });
@@ -223,13 +249,13 @@ class Model {
                 data.favoriteMovies.movies.forEach((movie) => {
                     this.favoriteMovies.push(movie);
                 });
-                
-                this.watchlistMovies = this.watchlistMovies.filter(movie =>
-                    movie !== undefined
+
+                this.watchlistMovies = this.watchlistMovies.filter(
+                    (movie) => movie !== undefined
                 );
 
-                this.favoriteMovies = this.favoriteMovies.filter(movie =>
-                    movie !== undefined
+                this.favoriteMovies = this.favoriteMovies.filter(
+                    (movie) => movie !== undefined
                 );
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -239,25 +265,23 @@ class Model {
 
     setPersistence() {
         var auth = getAuth();
-        setPersistence(auth, browserLocalPersistence)
-            .then(() => {
-                onAuthStateChanged(auth, (user) => {
-                    if (user) {
-                        this.user = user;
-                        this.initializeDataBase();
-                        this.setProfileInformation();
-                        this.notifyObservers();
-                    }
-                });
-            })
-
+        setPersistence(auth, browserLocalPersistence).then(() => {
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    this.user = user;
+                    this.initializeDataBase();
+                    this.setProfileInformation();
+                    this.notifyObservers();
+                }
+            });
+        });
     }
 
     addMovieToWatchlist(movieInformation) {
         var inWatchList = false;
 
         if (this.watchlistMovies.length > 0) {
-            this.watchlistMovies.forEach(movie => {
+            this.watchlistMovies.forEach((movie) => {
                 if (movie !== undefined && movie.id === movieInformation.id) {
                     inWatchList = true;
                 }
@@ -266,8 +290,8 @@ class Model {
 
         if (!inWatchList) {
             this.watchlistMovies.push(movieInformation);
-            this.watchlistMovies = this.watchlistMovies.filter(movie =>
-                movie !== undefined
+            this.watchlistMovies = this.watchlistMovies.filter(
+                (movie) => movie !== undefined
             );
             this.notifyObservers();
 
@@ -276,9 +300,9 @@ class Model {
                     const docRef = doc(db, "users", this.user.uid);
                     const movies = this.watchlistMovies;
                     await updateDoc(docRef, {
-                        watchlistMovies : {
-                            movies
-                        }
+                        watchlistMovies: {
+                            movies,
+                        },
                     });
                     this.notifyObservers();
                 } catch (e) {
@@ -286,7 +310,10 @@ class Model {
                 }
             })();
         } else {
-            this.setInWatchlist(true, 'This movie already exists in your watchlist!');
+            this.setInWatchlist(
+                true,
+                "This movie already exists in your watchlist!"
+            );
         }
     }
 
@@ -294,7 +321,7 @@ class Model {
         var inWatchList = false;
 
         if (this.favoriteMovies.length > 0) {
-            this.favoriteMovies.forEach(movie => {
+            this.favoriteMovies.forEach((movie) => {
                 if (movie !== undefined && movie.id === movieInformation.id) {
                     inWatchList = true;
                 }
@@ -303,8 +330,8 @@ class Model {
 
         if (!inWatchList) {
             this.favoriteMovies.push(movieInformation);
-            this.favoriteMovies = this.favoriteMovies.filter(movie =>
-                movie !== undefined
+            this.favoriteMovies = this.favoriteMovies.filter(
+                (movie) => movie !== undefined
             );
             this.notifyObservers();
 
@@ -313,16 +340,19 @@ class Model {
                     const docRef = doc(db, "users", this.user.uid);
                     const movies = this.favoriteMovies;
                     await updateDoc(docRef, {
-                        favoriteMovies : {
-                            movies
-                        }
+                        favoriteMovies: {
+                            movies,
+                        },
                     });
                 } catch (e) {
                     console.error("Error adding document: ", e);
                 }
             })();
         } else {
-            this.setInWatchlist(true, 'This movie already exists in your favorites!');
+            this.setInWatchlist(
+                true,
+                "This movie already exists in your favorites!"
+            );
         }
     }
 
@@ -347,8 +377,8 @@ class Model {
     }
 
     removeFromWatchlist(id) {
-        this.watchlistMovies = this.watchlistMovies.filter(movie =>
-            movie.id !== id
+        this.watchlistMovies = this.watchlistMovies.filter(
+            (movie) => movie.id !== id
         );
         this.notifyObservers();
         (async () => {
@@ -356,9 +386,9 @@ class Model {
                 const docRef = doc(db, "users", this.user.uid);
                 const movies = this.watchlistMovies;
                 await updateDoc(docRef, {
-                    watchlistMovies : {
-                        movies
-                    }
+                    watchlistMovies: {
+                        movies,
+                    },
                 });
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -367,8 +397,8 @@ class Model {
     }
 
     removeFromFavorite(id) {
-        this.favoriteMovies = this.favoriteMovies.filter(movie =>
-            movie.id !== id
+        this.favoriteMovies = this.favoriteMovies.filter(
+            (movie) => movie.id !== id
         );
         this.notifyObservers();
         (async () => {
@@ -376,9 +406,26 @@ class Model {
                 const docRef = doc(db, "users", this.user.uid);
                 const movies = this.favoriteMovies;
                 await updateDoc(docRef, {
-                    favoriteMovies : {
-                        movies
-                    }
+                    favoriteMovies: {
+                        movies,
+                    },
+                });
+            } catch (e) {
+                console.error("Error adding document: ", e);
+            }
+        })();
+    }
+
+    updateProfile(name, biography, image) {
+        console.log(name, biography, image);
+        this.profile = [name, biography, "", image];
+        console.log(this.profile);
+        this.notifyObservers();
+        (async () => {
+            try {
+                const docRef = doc(db, "users", this.user.uid);
+                await updateDoc(docRef, {
+                    profile: this.profile,
                 });
             } catch (e) {
                 console.error("Error adding document: ", e);
@@ -388,91 +435,82 @@ class Model {
 }
 
 function filterTextLength(text, length) {
-    if(text.length > length) {
+    if (text.length > length) {
         text = text.substring(0, length);
         text = text.substring(0, text.lastIndexOf(" ")) + "...";
     }
     return text;
 }
 
-/*__________________________________________________________________________*/
 const useThrottledEffect = (callback, delay, deps = []) => {
-  const lastRan = useRef(Date.now());
+    const lastRan = useRef(Date.now());
 
-  useEffect(() => {
-    const handler = setTimeout(function () {
-      if (Date.now() - lastRan.current >= delay) {
-        callback();
-        lastRan.current = Date.now();
-      }
-    }, delay - (Date.now() - lastRan.current));
+    useEffect(() => {
+        const handler = setTimeout(function () {
+            if (Date.now() - lastRan.current >= delay) {
+                callback();
+                lastRan.current = Date.now();
+            }
+        }, delay - (Date.now() - lastRan.current));
 
-    return () => {
-      clearTimeout(handler);
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [delay, ...deps]);
+        return () => {
+            clearTimeout(handler);
+        };
+    }, [delay, ...deps]);
 };
 
 function debounce(func, wait, immediate) {
-  var timeout;
-  return function () {
-    var context = this,
-      args = arguments;
-    var later = function () {
-      timeout = null;
-      if (!immediate) func.apply(context, args);
+    var timeout;
+    return function () {
+        var context = this,
+            args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
     };
-    var callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) func.apply(context, args);
-  };
 }
 
 const useInfiniteScroll = (callback) => {
-  const [isFetching, setIsFetching] = useState(false);
-  const stop = useRef(false); // to stop calling callback once True
+    const [isFetching, setIsFetching] = useState(false);
+    const stop = useRef(false);
 
-  useThrottledEffect(() => {
-    // mounts window listener and call debounceScroll, once in every 500ms
-    window.addEventListener("scroll", debounceScroll());
-    return () => window.removeEventListener("scroll", debounceScroll());
-  }, 500);
+    useThrottledEffect(() => {
+        window.addEventListener("scroll", debounceScroll());
+        return () => window.removeEventListener("scroll", debounceScroll());
+    }, 500);
 
-  useThrottledEffect(
-    // execute callback when isFetching becomes true, once in every 500ms
-    () => {
-      if (!isFetching) {
-        return;
-      } else {
-        // Execute the fetch more data function
-        callback();
-      }
-    },
-    500,
-    [isFetching]
-  );
+    useThrottledEffect(
+        () => {
+            if (!isFetching) {
+                return;
+            } else {
+                callback();
+            }
+        },
+        500,
+        [isFetching]
+    );
 
-  function handleScroll() {
-    if (
-      window.innerHeight + document.documentElement.scrollTop <=
-        Math.floor(document.documentElement.offsetHeight * 0.75) ||
-      isFetching
-    )
-      // return if below 75% scroll or isFetching is false then don't do anything
-      return;
-    // if stop (meaning last page) then don't set isFetching true
-    if (!stop.current) setIsFetching(true);
-  }
+    function handleScroll() {
+        if (
+            window.innerHeight + document.documentElement.scrollTop <=
+                Math.floor(document.documentElement.offsetHeight * 0.75) ||
+            isFetching
+        )
+            return;
+        if (!stop.current) setIsFetching(true);
+    }
 
-  function debounceScroll() {
-    // execute the last handleScroll function call, in every 100ms
-    return debounce(handleScroll, 100, false);
-  }
-
-  // sharing logic
-  return [isFetching, setIsFetching, stop];
+    function debounceScroll() {
+        return debounce(handleScroll, 100, false);
+    }
+    
+    return [isFetching, setIsFetching, stop];
 };
 
 export { Model, filterTextLength, useInfiniteScroll };

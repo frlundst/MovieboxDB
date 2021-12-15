@@ -5,13 +5,14 @@ function EditProfileView(props) {
     return (
         <div className="edit-profile-container">
             <div className="edit-profile-image-container">
+                {(props.profile === null || (Array.isArray(props.profile) ? props.profile[3] === undefined : true)) ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.profile[3]} alt="profile" />}
             </div>
             <div className="edit-profile-form-container">
                 <div className="edit-profile-name">
                     <h4>Name</h4>
                     <input
                         type="text"
-                        value={props.name}
+                        value={props.biography}
                         onChange={(e) => {
                             props.setName(e.target.value);
                         }}
@@ -27,7 +28,7 @@ function EditProfileView(props) {
                     />
                 </div>
                 <div className="edit-profile-image">
-                    <h4>Image</h4>
+                    <h4>Image Url</h4>
                     <input
                         type="text"
                         value={props.image}
@@ -37,12 +38,14 @@ function EditProfileView(props) {
                     />
                 </div>
                 <div className="edit-profile-button">
-                    <button
-                        onClick={() => {
-                            props.updateProfile();
-                        }}
-                    >
+                    <button onClick={() => {props.updateProfile();}}>
                         Update Profile
+                    </button>
+                    <button onClick={() => {props.logout();}}>
+                        Logout
+                    </button>
+                    <button onClick={() => {props.cancel();}}>
+                        Cancel
                     </button>
                 </div>
             </div>
