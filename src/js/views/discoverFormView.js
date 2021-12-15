@@ -17,20 +17,14 @@ function DiscoverFormView(props) {
                             <Col>
                                 <Form.Select onChange={e => props.onSortBy(e.target.value)}>
                                     <option value="none">Sort By</option>
-                                    <option value="popularity">Popularity</option>
-                                    <option value="release_date">Release date</option>
-                                    <option value="revenue">Revenue</option>
-                                    <option value="rating">Rating</option>
-                                </Form.Select>
-                            </Col>
-                        </Row>
-
-                        <Row className="g-2">
-                            <Col>
-                                <Form.Select onChange={e => props.onOrder(e.target.value)}>
-                                    <option value="none">Order</option>
-                                    <option value="asc">Ascending</option>
-                                    <option value="desc">Descending</option>
+                                    <option value="popularity.desc">Most popular</option>
+                                    <option value="popularity.asc">Least popular</option>
+                                    <option value="release_date.desc">Newest</option>
+                                    <option value="release_date.asc">Oldest</option>
+                                    <option value="revenue.desc">Most revenue</option>
+                                    <option value="revenue.asc">Least revenue</option>
+                                    <option value="rating.desc">Top rated</option>
+                                    <option value="rating.asc">Worst rated</option>
                                 </Form.Select>
                             </Col>
                         </Row>

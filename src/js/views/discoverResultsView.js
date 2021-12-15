@@ -15,7 +15,7 @@ function DiscoverResultsView(props) {
                                     <img id={movie.id}
                                         src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
                                         alt={movie.title}
-
+                                        onClick={() => props.onClick(movie.id)}
                                     />
                                     <div id={movie.id} className="movie-card-info">
                                         <h3 id={movie.id}>{movie.title}</h3>

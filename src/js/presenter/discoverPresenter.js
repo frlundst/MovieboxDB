@@ -12,14 +12,33 @@ function DiscoverPresenter(props) {
 
     const [minScore, setMinScore] = React.useState(1);
     const [maxScore, setMaxScore] = React.useState(10);
-    const [sort, setSort] = React.useState("popularity"); //Sort
-    const [order, setOrder] = React.useState("asc"); //order
-    const [sort_by, setSort_by] = React.useState("popularity.asc"); //Final sort and order
+    const [sort_by, setSort_by] = React.useState('popularity.desc'); //Final sort and order
 
-    //const [nextPage, setNextPage] = React.useState(null);
-    //const [isFetching, setIsFetching, stop] = useInfiniteScroll(getMoreFeed);
-    //const [bottom, setBottom] = React.useState(false);
+    const [nextPage, setNextPage] = React.useState(null);
+    const [isFetching, setIsFetching, stop] = useInfiniteScroll(getMoreFeed);
+    const [bottom, setBottom] = React.useState(false);
 
+    async function getMoreFeed() {
+        if (nextPage && !bottom) {
+            setPromise(
+                ApiFetch.discoverMovie(sort_by, maxScore, minScore, nextPage)
+                    .then((newData) => {
+                        if(newData.results.length > 0){
+                            setData(data.concat(newData.results));
+                            setIsFetching(false);
+                            setNextPage(nextPage + 1)
+                        }else{
+                            console.log(newData);
+                            console.log("BOTTOM REACHED")
+                            setBottom(bottom);
+                        }
+                    })
+                    .catch((error) => setError(error))
+            );
+        } else {
+          setIsFetching(false);
+        }
+    }
 
     React.useEffect(() => {
         setPromise(ApiFetch.getTopMovies()
@@ -33,18 +52,16 @@ function DiscoverPresenter(props) {
                 maxScore={maxScore}
                 onMinScoreChange={score => setMinScore(score)}
                 onMaxScoreChange={score => setMaxScore(score)}
-                onSortBy={sort_by => setSort(sort_by)}
-                onOrder={order => setOrder(order)}
+                onSortBy={sort_by => setSort_by(sort_by)}
                 onSearch={() => {
                     setData(null);
                     setError(null);
-                    setSort_by(sort + '.' + order);
-                    console.log(sort_by);
                     setPromise(
-                        ApiFetch.discoverMovie(sort_by, minScore, maxScore)
+                        ApiFetch.discoverMovie(sort_by, maxScore, minScore)
                             .then((data) => {
+                                console.log(data);
                                 setData(data.results);
-                                //setNextPage(2);
+                                setNextPage(2);
                             })
                             .catch((error) => setError(error))
                     );
@@ -54,6 +71,10 @@ function DiscoverPresenter(props) {
 
             {promiseNoData(promise, data, error) || <DiscoverResultsView
                 discoverResults={data}
+                onClick={(id) => {
+                    props.model.setCurrentMovie(id);
+                    window.location.hash="#movieDetails";
+                }}
             ></DiscoverResultsView>}
         </div>
     );

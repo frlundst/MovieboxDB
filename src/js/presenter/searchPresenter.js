@@ -53,7 +53,8 @@ function SearchPresenter(props) {
                         ApiFetch.searchMovie(query)
                             .then((data) => {
                                 setData(data.results); 
-                                setNextPage(2);})
+                                setNextPage(2);
+                            })
                             .catch((error) => setError(error))
                     );
                 }}
