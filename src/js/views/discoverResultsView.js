@@ -1,19 +1,11 @@
 import React from 'react';
-import '../../css/discoverView.css';
+import '../../css/discoverResultsView.css';
 
-const onSwipe = (direction) => {
-    
-}
-
-const onCardLeftScreen = (myIdentifier) => {
-
-}
-
-function DiscoverView(props) {
+function DiscoverResultsView(props) {
     return (
-        <div className='discover-section'>
-            <div className="movies-container">
-                {props.topMovies.results.map(
+        <div className='discover-results-section'>
+            <div className="discover-movies-container">
+                {props.discoverResults.map(
                     function (movie) {
                         if (movie.poster_path == null) {
                             return null;
@@ -39,6 +31,4 @@ function DiscoverView(props) {
     );
 }
 
-//{`https://image.tmdb.org/t/p/original/${props.topMovies[0].poster_path}`}
-
-export default DiscoverView;
+export default DiscoverResultsView;

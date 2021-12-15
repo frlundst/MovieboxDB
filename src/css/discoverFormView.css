@@ -1,0 +1,45 @@
+.discover-form-section{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 150px;
+    padding-bottom: 1%;
+    color: white !important;
+}
+
+.g-2{
+    margin: 25px;
+}
+
+.discover-form-section button{
+    border-radius: 0px;
+    margin: 0 auto;
+}
+
+.discover-form-section h1{
+    margin-left: 40%;
+}
+
+.input{
+    border: none;
+    border-radius: 0px;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+}
+
+.discover-form{
+    display: block;
+    margin:0 auto !important;
+}
+
+.form-group{
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+@media screen and (max-width: 700px){
+    .form-group{
+        width: 90%;
+    }
+}
