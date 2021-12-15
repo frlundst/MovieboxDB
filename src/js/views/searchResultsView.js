@@ -3,8 +3,8 @@ import "../../css/searchResultsView.css";
 
 function SearchResultsView(props) {
     return (
-            <div className="movies-container">
-                {props.searchResults.results.map(function (result) {
+            <div className="search-movies-container">
+                {props.searchResults.map(function (result) {
                     if (result.poster_path == null || result.backdrop_path == null) {
                         return null;
                     } else {
