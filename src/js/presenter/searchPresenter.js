@@ -11,59 +11,61 @@ function SearchPresenter(props) {
     const [error, setError] = React.useState(null);
     const [query, setQuery] = React.useState(null);
     const [nextPage, setNextPage] = React.useState(null);
-    const [isFetching, setIsFetching, stop] = useInfiniteScroll(getMoreFeed);
+    const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
 
     async function getMoreFeed() {
+        setIsFetching(true);
         if (nextPage && !bottom) {
             setPromise(
                 ApiFetch.searchMovie(query, nextPage)
                     .then((newData) => {
-                        if(newData.results.length > 0){
+                        if (newData.results.length > 0) {
                             setData(data.concat(newData.results));
                             setIsFetching(false);
                             setNextPage(nextPage + 1)
-                        }else{
+                        } else {
                             setBottom(bottom);
                         }
                     })
                     .catch((error) => setError(error))
             );
         } else {
-          setIsFetching(false);
+            setIsFetching(false);
         }
     }
 
     React.useEffect(() => {
         setPromise(ApiFetch.getTopMovies()
             .then(data => {
-                setData(data.results); 
-                })
+                setData(data.results);
+            })
             .catch(error => setError(error)));
     }, []);
 
     return (
         <div>
-            <SearchFormView 
+            <SearchFormView
                 onText={text => setQuery(text)}
                 onSearch={() => {
                     setData(null);
                     setError(null);
-                    setPromise(
-                        ApiFetch.searchMovie(query)
-                            .then((data) => {
-                                setData(data.results); 
-                                setNextPage(2);
-                            })
-                            .catch((error) => setError(error))
-                    );
+                    if (isFetching === false)
+                        setPromise(
+                            ApiFetch.searchMovie(query)
+                                .then((data) => {
+                                    setData(data.results);
+                                    setNextPage(2);
+                                })
+                                .catch((error) => setError(error))
+                        );
                 }}
             ></SearchFormView>
-            {promiseNoData(promise, data, error) || <SearchResultsView 
+            {promiseNoData(promise, data, error) || <SearchResultsView
                 searchResults={data}
                 onClick={(id) => {
                     props.model.setCurrentMovie(id);
-                    window.location.hash="#movieDetails";
+                    window.location.hash = "#movieDetails";
                 }}
             ></SearchResultsView>}
         </div>
