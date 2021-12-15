@@ -15,7 +15,7 @@ import NotificationPresenter from './js/presenter/notificationPresenter.js';
 
 function defaultRoute() {
   	if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#movieMatcher', '#login', '#profile'].find((knownRoute) => knownRoute !== window.location.hash)){
-      	window.location.hash = "#home";
+      	window.location.hash = "#profile";
   	}
 }
 

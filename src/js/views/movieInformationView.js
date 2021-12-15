@@ -11,7 +11,7 @@ function MovieInformationView(props) {
             </div>
             <div className="movie-details-grid">
                 <h2>STORYLINE</h2>
-                <p>{filterTextLength(props.movie.overview)}</p>
+                <p>{filterTextLength(props.movie.overview, 350)}</p>
             </div>
         </div>
     );

@@ -7,20 +7,24 @@ import { filterTextLength } from "../model";
 import { OverlayTrigger, Tooltip } from "react-bootstrap";
 
 function ProfileView(props) {
-    return (console.log(props),
+    return (
         <div className="profile-container">
             <div className="profile-about">
                 <div className="profile-about-header">
                     <h1>Profile</h1>
                 </div>
-                <div className="profile-image">
-                    {props.user[3] === undefined ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.user[3]} alt="profile" />}
-                </div>
-                <div className="profile-about-name">
-                    <h2>{props.user[0] === undefined ? "No Name" : props.user[0]}</h2>
-                </div>
-                <div className="profile-about-bio">
-                    <p>{props.user[1] === undefined ? "No Biography" : props.user[1]}</p>
+                <div className="profile-about-body">
+                    <div className="profile-image">
+                        {props.user[3] === undefined ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.user[3]} alt="profile" />}
+                    </div>
+                    <div className="profile-info">
+                        <div className="profile-about-name">
+                            <h2>{props.user[0] === undefined ? "No Name" : props.user[0]}</h2>
+                        </div>
+                        <div className="profile-about-bio">
+                            <p>{props.user[1] === undefined ? "No Biography" : props.user[1]}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div className="profile-movies">
@@ -102,9 +106,11 @@ function LeftArrow() {
     const { isFirstItemVisible, scrollPrev } = React.useContext(VisibilityContext);
   
     return (
-        <button disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
-            <FontAwesomeIcon icon={faAngleLeft} />
-        </button>
+        <div className="arrow-button">
+            <button disabled={isFirstItemVisible} onClick={() => scrollPrev()}>
+                <FontAwesomeIcon icon={faAngleLeft} />
+            </button>
+        </div>
     );
 }
   
@@ -112,9 +118,11 @@ function RightArrow() {
     const { isLastItemVisible, scrollNext } = React.useContext(VisibilityContext);
   
     return (
-        <button disabled={isLastItemVisible} onClick={() => scrollNext()}>
-            <FontAwesomeIcon icon={faAngleRight} />
-        </button>
+        <div className="arrow-button">
+            <button disabled={isLastItemVisible} onClick={() => scrollNext()} >
+                <FontAwesomeIcon icon={faAngleRight} />
+            </button>
+        </div>
     );
 }
 
@@ -130,6 +138,7 @@ function Card({ itemId, title, image, props }) {
             <OverlayTrigger
                 placement={'top'}
                 overlay={<Tooltip><h6>Remove From Favorite</h6></Tooltip>}
+                id={'tooltip'}
             >
                 <div className="profile-favorite-remove">
                     <button onClick={() => props.removeFromFavorite(itemId)}>

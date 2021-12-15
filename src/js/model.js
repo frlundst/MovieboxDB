@@ -14,6 +14,7 @@ class Model {
         this.inWatchlist = false;
         //this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
+        this.notificationText = null;
         //this.setProfileInformation(); //#TODO: TEMPORARY
         this.setPersistence();
     }
@@ -230,9 +231,6 @@ class Model {
                 this.favoriteMovies = this.favoriteMovies.filter(movie =>
                     movie !== undefined
                 );
-
-                console.log(this.favoriteMovies, this.watchlistMovies);
-                console.log(this.user);
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
@@ -288,7 +286,7 @@ class Model {
                 }
             })();
         } else {
-            this.setInWatchlist(true);
+            this.setInWatchlist(true, 'This movie already exists in your watchlist!');
         }
     }
 
@@ -309,10 +307,10 @@ class Model {
                 movie !== undefined
             );
             this.notifyObservers();
-            
+
             (async () => {
                 try {
-                    const docRef = doc(db, "users", this.user);
+                    const docRef = doc(db, "users", this.user.uid);
                     const movies = this.favoriteMovies;
                     await updateDoc(docRef, {
                         favoriteMovies : {
@@ -324,12 +322,13 @@ class Model {
                 }
             })();
         } else {
-            this.setInWatchlist(true);
+            this.setInWatchlist(true, 'This movie already exists in your favorites!');
         }
     }
 
-    setInWatchlist(boolean) {
+    setInWatchlist(boolean, text) {
         this.inWatchlist = boolean;
+        this.notificationText = text;
         this.notifyObservers();
     }
 

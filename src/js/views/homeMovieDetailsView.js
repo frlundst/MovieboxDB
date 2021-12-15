@@ -1,5 +1,6 @@
 import React from "react";
 import "../../css/homeMovieDetailsView.css";
+import { filterTextLength } from "../model";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
 
@@ -24,7 +25,7 @@ function HomeMovieDetailsView(props) {
                     </div>
                 </div>
                 <div className="movie-details-overview">
-                    <p>{props.movieDetails.overview}</p>
+                    <p>{filterTextLength(props.movieDetails.overview, 350)}</p>
                     <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.movieDetails)}>
                         <FontAwesomeIcon icon={faPlus} size="lg"/> ADD LIST
                     </button>
