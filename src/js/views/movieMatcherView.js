@@ -21,14 +21,14 @@ function MovieMatcherView(props) {
                 <h3 className="title">MoiveMatcher™</h3>
                 <h5 className="description">Swipe right to add movie to watchlist. Swipe up to add movie to favourites. Swipe down for more information. Swipe left for no.</h5>
                 <br />
-                {props.topMovies.results.map(
+                {props.topMovies.map(
                     function (movie) {
                         if (movie.poster_path == null) {
                             return null;
                         } else {
                             return (
-                                <TinderCard className="swipe" key={movie.id} onSwipe={(dir) => props.onSwipe(dir, movie.id)} onCardLeftScreen={() => outOfFrame(movie.id)}>
-                                    <div className="card">
+                                <TinderCard className="swipe" key={movie.id} onSwipe={(dir) => props.onSwipe(dir, movie)} onCardLeftScreen={() => outOfFrame(movie.id)}>
+                                    <div id={movie.id} className="card">
                                         <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} ></img>
                                     </div>
                                 </TinderCard>

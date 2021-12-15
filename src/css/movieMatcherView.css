@@ -1,11 +1,12 @@
 .movieMatcher-section{
     margin-top: 150px;
-    margin-bottom: 300px;
+    margin-bottom: 350px;
 }
 
 .title{
     color: white;
     text-align: center;
+    font-size: 35px;
 }
 
 .description{

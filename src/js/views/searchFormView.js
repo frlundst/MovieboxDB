@@ -12,7 +12,7 @@ function SearchFormView(props) {
                 <Form className="form">
                     <Form.Group className="form-group" controlId="formSearch">
                             <Row className="g-2">
-                                <Form.Label>Search for movies</Form.Label>
+                                <h1>Search For Movies</h1>
                             </Row>
                             <Row className="g-2">
                                 <InputGroup>

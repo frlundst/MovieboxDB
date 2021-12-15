@@ -6,6 +6,11 @@
     color: white !important;
 }
 
+.search-form-section h1{
+    margin: 0 auto;
+}
+
+
 .button{
     border-radius: 0px;
 }
@@ -32,4 +37,8 @@
     .form-group{
         width: 90%;
     }
+}
+
+.form-label{
+    padding-left: 37%;
 }

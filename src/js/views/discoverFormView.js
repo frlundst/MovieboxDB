@@ -38,7 +38,6 @@ function DiscoverFormView(props) {
                             <Col />
                             <Col />
                             <Col />
-                            <Col />
                             <Col>
                                 <Form.Range value={props.minScore}
                                     onChange={e => props.onMinScoreChange(e.target.value)}
@@ -60,7 +59,7 @@ function DiscoverFormView(props) {
                             <Col />
                             <Col />
                             <Col />
-                            <Col />
+                            
                             <Col>
                                 <Form.Range value={props.maxScore}
                                     onChange={e => props.onMaxScoreChange(e.target.value)}
