@@ -148,6 +148,9 @@ function HomePresenter(props) {
                             window.location.hash="#movieDetails";
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToFavorite={(movieInformation) => {
+                            props.model.addToFavorite(movieInformation);
+                        }}
                     />
                 </div>
              )}
@@ -192,6 +195,9 @@ function HomePresenter(props) {
                             window.location.hash="#movieDetails";
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToFavorite={(movieInformation) => {
+                            props.model.addToFavorite(movieInformation);
+                        }}
                     />
                 </div>
              )}
@@ -238,6 +244,9 @@ function HomePresenter(props) {
                             window.location.hash="#movieDetails";
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToFavorite={(movieInformation) => {
+                            props.model.addToFavorite(movieInformation);
+                        }}
                     />
                 </div>
              )}
@@ -282,6 +291,9 @@ function HomePresenter(props) {
                             window.location.hash="#movieDetails";
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToFavorite={(movieInformation) => {
+                            props.model.addToFavorite(movieInformation);
+                        }}
                     />
                 </div>
              )}

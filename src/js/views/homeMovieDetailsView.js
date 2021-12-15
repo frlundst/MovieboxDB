@@ -2,7 +2,7 @@ import React from "react";
 import "../../css/homeMovieDetailsView.css";
 import { filterTextLength } from "../model";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendarAlt, faClock, faPlus, faStar, faInfoCircle} from '@fortawesome/free-solid-svg-icons'
+import { faCalendarAlt, faClock, faPlus, faStar, faInfoCircle, faHeart} from '@fortawesome/free-solid-svg-icons'
 
 function HomeMovieDetailsView(props) {
     return (
@@ -31,6 +31,9 @@ function HomeMovieDetailsView(props) {
                     </button>
                     <button className="movie-details-button-watch" onClick={() => props.readMore(props.movieDetails.id)}>
                         <FontAwesomeIcon icon={faInfoCircle} size="lg" /> READ MORE
+                    </button>
+                    <button className="movie-details-button-watch" onClick={() => props.addToFavorite(props.movieDetails)}>
+                        <FontAwesomeIcon icon={faHeart} size="lg" /> ADD FAVORITES
                     </button>
                 </div>
             </div>
