@@ -14,7 +14,7 @@ function HomeStatsView(props) {
                         <h3>Watchlist: {props.watchlistMovieCount}</h3>
                     </div>
                 </div>
-                <img src="/images/avatar.png" alt="Avatar Home Page" />
+                <img src="/images/bright.png" alt="Avatar Home Page" />
             </div>
         </div>
     );

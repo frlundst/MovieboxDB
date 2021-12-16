@@ -39,7 +39,6 @@ class Model {
                 } catch (e) {
                 }
             });
-            console.log("hej");
             this.notifyObservers();
         })();
     }
