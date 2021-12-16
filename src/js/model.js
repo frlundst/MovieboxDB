@@ -11,6 +11,7 @@ import {
 import { db } from "./firebaseLoad.js";
 import { getDoc, setDoc, doc, updateDoc } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
+import { store } from 'react-notifications-component';
 
 class Model {
     constructor(currentMovie = null) {
@@ -19,10 +20,8 @@ class Model {
         this.user = null;
         this.watchlistMovies = [];
         this.favoriteMovies = [];
-        this.inWatchlist = false;
         //this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
-        this.notificationText = null;
         //this.setProfileInformation(); //#TODO: TEMPORARY
         this.setPersistence();
     }
@@ -277,7 +276,7 @@ class Model {
         });
     }
 
-    addMovieToWatchlist(movieInformation) {
+    addMovieToWatchlist(movieInformation, notification=true) {
         var inWatchList = false;
 
         if (this.watchlistMovies.length > 0) {
@@ -294,6 +293,22 @@ class Model {
                 (movie) => movie !== undefined
             );
             this.notifyObservers();
+            if (notification) {
+                store.addNotification({
+                    id: "notification",
+                    title: "Added to watchlist",
+                    message: "You have added " + movieInformation.title + " to your watchlist.",
+                    type: "info",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 4000,
+                    },
+                    showIcon: true,
+                });
+            }
 
             (async () => {
                 try {
@@ -310,14 +325,26 @@ class Model {
                 }
             })();
         } else {
-            this.setInWatchlist(
-                true,
-                "This movie already exists in your watchlist!"
-            );
+            if (notification) {
+                store.addNotification({
+                    id: "notification",
+                    title: "Already in watchlist",
+                    message: "You have already added " + movieInformation.title + " to your watchlist.",
+                    type: "warning",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 4000,
+                    },
+                    showIcon: true,
+                });
+            }
         }
     }
 
-    addToFavorite(movieInformation) {
+    addToFavorite(movieInformation, notification=true) {
         var inWatchList = false;
 
         if (this.favoriteMovies.length > 0) {
@@ -335,6 +362,23 @@ class Model {
             );
             this.notifyObservers();
 
+            if (notification) {
+                store.addNotification({
+                    id: "notification",
+                    title: "Added to favorites",
+                    message: "You have added " + movieInformation.title + " to your favorites.",
+                    type: "info",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 4000,
+                    },
+                    showIcon: true,
+                });
+            }
+
             (async () => {
                 try {
                     const docRef = doc(db, "users", this.user.uid);
@@ -349,17 +393,23 @@ class Model {
                 }
             })();
         } else {
-            this.setInWatchlist(
-                true,
-                "This movie already exists in your favorites!"
-            );
+            if (notification) {
+                store.addNotification({
+                    id: "notification",
+                    title: "Already in favorites",
+                    message: "You have already added " + movieInformation.title + " to your favorites.",
+                    type: "warning",
+                    insert: "top",
+                    container: "top-right",
+                    animationIn: ["animate__animated", "animate__fadeIn"],
+                    animationOut: ["animate__animated", "animate__fadeOut"],
+                    dismiss: {
+                        duration: 4000,
+                    },
+                    showIcon: true,
+                });
+            }
         }
-    }
-
-    setInWatchlist(boolean, text) {
-        this.inWatchlist = boolean;
-        this.notificationText = text;
-        this.notifyObservers();
     }
 
     setProfileInformation() {
@@ -381,6 +431,21 @@ class Model {
             (movie) => movie.id !== id
         );
         this.notifyObservers();
+        store.addNotification({
+            id: "notification",
+            title: "Removed from watchlist",
+            message: "You have removed the movie from your watchlist.",
+            type: "info",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+                duration: 4000,
+            },
+            showIcon: true,
+        });
+
         (async () => {
             try {
                 const docRef = doc(db, "users", this.user.uid);
@@ -401,6 +466,21 @@ class Model {
             (movie) => movie.id !== id
         );
         this.notifyObservers();
+        store.addNotification({
+            id: "notification",
+            title: "Removed from favorites",
+            message: "You have removed the movie from your favorites.",
+            type: "info",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+                duration: 4000,
+            },
+            showIcon: true,
+        });
+
         (async () => {
             try {
                 const docRef = doc(db, "users", this.user.uid);
@@ -417,10 +497,24 @@ class Model {
     }
 
     updateProfile(name, biography, image) {
-        console.log(name, biography, image);
         this.profile = [name, biography, "", image];
-        console.log(this.profile);
+
         this.notifyObservers();
+        store.addNotification({
+            id: "notification",
+            title: "Profile updated",
+            message: "Your profile has been updated.",
+            type: "info",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animate__animated", "animate__fadeIn"],
+            animationOut: ["animate__animated", "animate__fadeOut"],
+            dismiss: {
+                duration: 4000,
+            },
+            showIcon: true,
+        });
+
         (async () => {
             try {
                 const docRef = doc(db, "users", this.user.uid);

@@ -21,10 +21,10 @@ function MovieMatcherPresenter(props){
             case "left":
                 break;
             case "right":
-                props.model.addToFavorite(movie);
+                props.model.addToFavorite(movie, false);
                 break;
             case "up":
-                props.model.addMovieToWatchlist(movie);
+                props.model.addMovieToWatchlist(movie, false);
                 break;
             case "down":
                 props.model.setCurrentMovie(movie.id);

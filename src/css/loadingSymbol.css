@@ -1,0 +1,5 @@
+.loading-symbol {
+    text-align: center;
+    transform: scale(2);
+    padding: 100px 0;
+}

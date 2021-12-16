@@ -8,6 +8,9 @@ import HomeMoviesView from "../views/homeMovieView";
 import HomeMovieDetailsView from "../views/homeMovieDetailsView";
 import HomeUsView from "../views/homeUsView";
 
+
+
+
 const scrollToRef = (ref) => {
     setTimeout(
         () => {
@@ -155,7 +158,7 @@ function HomePresenter(props) {
                 </div>
              )}
 
-             {promiseNoData(promise, data, error) || (
+             {promiseNoRender(promise, data, error) || (
                 <div ref={popularMovieSecond}>
                     <HomeMoviesView
                         movies={data.results}
@@ -251,7 +254,7 @@ function HomePresenter(props) {
                 </div>
              )}
 
-             {promiseNoData(promiseRatedMovie, dataRatedMovie, errorRatedMovie) || (
+             {promiseNoRender(promiseRatedMovie, dataRatedMovie, errorRatedMovie) || (
                     <div ref={ratedMovieSecond}>
                     <HomeMoviesView
                         movies={dataRatedMovie.results}
