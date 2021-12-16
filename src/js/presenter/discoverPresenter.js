@@ -42,8 +42,8 @@ function DiscoverPresenter(props) {
     }
 
     React.useEffect(() => {
-        setPromise(ApiFetch.getTopMovies()
-            .then(data => setData(data.results))
+        setPromise(ApiFetch.discoverMovie(sort_by, maxScore, minScore, 1)
+            .then(data => {setData(data.results); setNextPage(2)})
             .catch(error => setError(error)));
     }, []);
 

@@ -10,7 +10,7 @@ function SearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-    const [query, setQuery] = React.useState(null);
+    const [query, setQuery] = React.useState("Marvel");
     const [nextPage, setNextPage] = React.useState(null);
     const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
@@ -38,9 +38,10 @@ function SearchPresenter(props) {
     }
 
     React.useEffect(() => {
-        setPromise(ApiFetch.getTopMovies()
+        setPromise(ApiFetch.searchMovie(query)
             .then(data => {
                 setData(data.results);
+                setNextPage(2);
             })
             .catch(error => setError(error)));
     }, []);

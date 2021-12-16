@@ -6,7 +6,7 @@ function SearchResultsView(props) {
         <div className='search-results-section'>
             <div className="search-movies-container">
                 {props.searchResults.map(function (result) {
-                    if (result.poster_path == null || result.backdrop_path == null) {
+                    if (result.poster_path == null || result.backdrop_path == null ) {
                         return null;
                     } else {
                         return (
