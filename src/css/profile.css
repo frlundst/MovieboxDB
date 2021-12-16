@@ -225,6 +225,30 @@
     bottom: 15px;
 }
 
+.profile-about-buttons {
+    position: absolute;
+    bottom: 10px;
+    left: 40%;
+    transform: translate(-30%, -20%);
+}
+
+.profile-about-buttons button {
+    width: 100px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #0462F7;
+    background-color: #0462F7;
+    color: white;
+    margin-right: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.profile-about-buttons button:hover {
+    background-color: white;
+    color: #0462F7;
+    border: 1px solid #ffffff;
+}
+
 @media screen and (max-width: 1700px) {
     .profile-watchlist-body {
         display: grid;
@@ -262,6 +286,25 @@
 
     .profile-info {
         padding-top: 10px;
+    }
+
+    .profile-about-buttons {
+        position: relative;
+        left: 0;
+        transform: translate(0, 0);
+        bottom: 0;
+        
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 30px;
+        padding-bottom: 10px;
+    }
+
+    .profile-about-buttons button {
+        width: 140px;
+        height: 50px;
+        font-size: 22px;
     }
 }
 
@@ -422,5 +465,11 @@
 
     .arrow-button {
         margin-top: -140px;
+    }
+
+    .profile-about-buttons button {
+        width: 85px;
+        height: 35px;
+        font-size: 16px;
     }
 }
