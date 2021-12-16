@@ -40,7 +40,6 @@ class Model {
                 } catch (e) {
                 }
             });
-            console.log(this.numberOfFavoriteMovies);
             this.notifyObservers();
         })();
     }
@@ -125,6 +124,7 @@ class Model {
     }
 
     createUser(email, password) {
+
         var auth = getAuth();
 
         const passwordErrorMessage = document.getElementById(
@@ -619,7 +619,7 @@ const useThrottledEffect = (callback, delay, deps = []) => {
         return () => {
             clearTimeout(handler);
         };
-    }, [delay, ...deps]);
+    }, [delay, deps, callback]);
 };
 
 function debounce(func, wait, immediate) {

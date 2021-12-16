@@ -44,7 +44,7 @@ function SearchPresenter(props) {
                 setNextPage(2);
             })
             .catch(error => setError(error)));
-    }, []);
+    }, [query]);
 
     return (
         <div>

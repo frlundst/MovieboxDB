@@ -81,6 +81,8 @@ function MovieMatcherPresenter(props){
                         case "down":
                             setLastDirection("You swiped down");
                             break;
+                        default:
+                            break;
                     }
                 }}
         ></MovieMatcherView>}
