@@ -24,9 +24,6 @@ function NavigationbarPresenter(props){
         <div>
             <NavigationbarView
 			changePage={page => navigate(page)}
-			isLoggedIn = {
-				props.isLoggedIn
-			}
 			></NavigationbarView>
         </div>
     );

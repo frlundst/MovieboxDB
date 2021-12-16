@@ -18,7 +18,7 @@ function NavigationbarView(props) {
                     <Nav.Link className="nav-item" onClick={() => props.changePage("/search")}>Search</Nav.Link>
                     <Nav.Link className="nav-item" onClick={() => props.changePage("/discover")}>Discover</Nav.Link>
                     <Nav.Link className="nav-item" onClick={() => props.changePage("/login")}>Profile</Nav.Link>
-                    <Nav.Link className='movie-matcher-link' onClick={() => {props.isLoggedIn ? props.changePage("/movieMatcher") : props.changePage("/login")}}>MovieMatcher™</Nav.Link>
+                    <Nav.Link className='movie-matcher-link' onClick={() => props.changePage("/movieMatcher")}>MovieMatcher™</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

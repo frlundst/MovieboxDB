@@ -26,7 +26,6 @@ function DiscoverPresenter(props) {
             setPromise(
                 ApiFetch.discoverMovie(sort_by, maxScore, minScore, nextPage, year)
                     .then((newData) => {
-                        console.log("API REQUEST")
                         if (newData.results.length > 0) {
                             setData(data.concat(newData.results));
                             setIsFetching(false);
