@@ -1,0 +1,26 @@
+.website-stats {
+    align-items: center;
+    position: absolute;
+    top: 20%;
+    width: 70%;
+    left: 15%;
+}
+
+.website-stats h3{
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.favorite-stats {
+    padding-top: 50px;
+    padding-left: 40px;
+}
+
+.website-stats h1{
+    font-size: 40px;
+    color: white;
+}
+
+.watchlist-stats {
+    padding-left: 40px;
+}

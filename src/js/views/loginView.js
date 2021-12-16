@@ -30,8 +30,8 @@ function LoginView(props) {
                     <a href="#login" hidden={!props.signIn}> Remember me</a>
                 </div>
 
-                <button className="login-sign-in" hidden={props.signIn} onClick={() => props.createUser()}>REGISTER</button>
-                <button className="login-sign-in" hidden={!props.signIn} onClick={() => props.loginUser()}>LOGIN</button>
+                <button className="login-sign-in" hidden={props.signIn} onClick={(e) => {props.createUser(); e.preventDefault()}}>REGISTER</button>
+                <button className="login-sign-in" hidden={!props.signIn} onClick={(e) => {props.loginUser(); e.preventDefault()}}>LOGIN</button>
             </form>
         </div>
     );

@@ -9,7 +9,7 @@ import {
     signOut,
 } from "firebase/auth";
 import { db } from "./firebaseLoad.js";
-import { getDoc, setDoc, doc, updateDoc } from "firebase/firestore";
+import { getDoc, setDoc, doc, updateDoc, collection, getDocs } from "firebase/firestore";
 import { useState, useEffect, useRef } from "react";
 import { store } from 'react-notifications-component';
 
@@ -24,6 +24,25 @@ class Model {
         this.profile = null;
         //this.setProfileInformation(); //#TODO: TEMPORARY
         this.setPersistence();
+        this.getDataBaseInfo();
+        this.numberOfWatchlistMovies = 0;
+        this.numberOfFavoriteMovies = 0;
+    }
+
+    getDataBaseInfo() {
+        (async () => {
+
+            const querySnapshot = await getDocs(collection(db, "users"));
+            querySnapshot.forEach((doc) => {
+                try {
+                    this.numberOfFavoriteMovies += parseInt(doc.data().favoriteMovies.movies.length);
+                    this.numberOfWatchlistMovies += parseInt(doc.data().watchlistMovies.movies.length);
+                } catch (e) {
+                }
+            });
+            console.log(this.numberOfFavoriteMovies);
+            this.notifyObservers();
+        })();
     }
 
     setCurrentMovie(currentMovie) {
@@ -106,7 +125,6 @@ class Model {
     }
 
     createUser(email, password) {
-        var auth = getAuth();
         const passwordErrorMessage = document.getElementById(
             "error-message-password"
         );
@@ -115,7 +133,8 @@ class Model {
         );
         emailErrorMessage.style.opacity = 0;
         passwordErrorMessage.style.opacity = 0;
-
+        
+        var auth = getAuth();
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 this.user = userCredential.user;
@@ -140,7 +159,6 @@ class Model {
                 })();
             })
             .catch((error) => {
-                console.log(error);
                 switch (error.code) {
                     case "auth/missing-email":
                         emailErrorMessage.style.opacity = 1;
@@ -199,7 +217,6 @@ class Model {
                 this.setProfileInformation();
             })
             .catch((error) => {
-                console.log(error);
                 switch (error.code) {
                     case "auth/wrong-password":
                         passwordErrorMessage.style.opacity = 1;

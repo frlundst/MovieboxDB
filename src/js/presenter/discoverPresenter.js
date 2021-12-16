@@ -59,7 +59,6 @@ function DiscoverPresenter(props) {
                         setPromise(
                             ApiFetch.discoverMovie(sort_by, maxScore, minScore)
                                 .then((data) => {
-                                    console.log(data);
                                     setData(data.results);
                                     setNextPage(2);
                                 })

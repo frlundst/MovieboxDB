@@ -7,9 +7,7 @@ import HomeImageView from "../views/homeImageView";
 import HomeMoviesView from "../views/homeMovieView";
 import HomeMovieDetailsView from "../views/homeMovieDetailsView";
 import HomeUsView from "../views/homeUsView";
-
-
-
+import HomeStatsView from "../views/homeStatsView";
 
 const scrollToRef = (ref) => {
     setTimeout(
@@ -66,6 +64,9 @@ function HomePresenter(props) {
     const [dataRatedMovieSecond, setDataRatedMovieSecond] = React.useState(null);
     const [errorRatedMovieSecond, setErrorRatedMovieSecond] = React.useState(null);
 
+    const [favoriteMovieCount, setFavoriteMovieCount] = React.useState(props.model.numberOfFavoriteMovies);
+    const [watchlistMovieCount, setWatchlistMovieCount] = React.useState(props.model.numberOfWatchlistMovies);
+
     const popularMovie = useRef(null);
     const popularMovieScroll = () => scrollToList(popularMovie);
 
@@ -104,7 +105,14 @@ function HomePresenter(props) {
                 .then((data) => setDataRatedMovie(data))
                 .catch((error) => setErrorRatedMovie(error))
         );
-    }, []);
+        
+        const obs = () =>{
+            setFavoriteMovieCount(props.model.numberOfFavoriteMovies);
+            setWatchlistMovieCount(props.model.numberOfWatchlistMovies);
+        };
+        props.model.addObserver(obs);
+        return () => props.model.removeObserver(obs);
+    }, [props.model]);
 
     return (
         <div>
@@ -300,6 +308,11 @@ function HomePresenter(props) {
                     />
                 </div>
              )}
+
+            <HomeStatsView
+                watchlistMovieCount={watchlistMovieCount}
+                favoriteMovieCount={favoriteMovieCount}            
+            />
         </div>
     );
 }

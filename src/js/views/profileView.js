@@ -28,8 +28,7 @@ function ProfileView(props) {
                 </div>
                 <div className="profile-about-buttons">
                         <button onClick={() => props.editProfile()}>Edit Profile</button>
-                        <button onClick={() => {console.log(props);
-                            props.logout()}}>Logout</button>
+                        <button onClick={() => props.logout()}>Logout</button>
                 </div>
             </div>
             <div className="profile-movies">
