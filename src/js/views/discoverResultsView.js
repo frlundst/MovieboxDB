@@ -7,7 +7,7 @@ function DiscoverResultsView(props) {
             <div className="discover-movies-container">
                 {props.discoverResults.map(
                     function (movie) {
-                        if (movie.poster_path == null) {
+                        if (movie.poster_path == null || movie.backdrop_path == null) {
                             return null;
                         } else {
                             return (

@@ -39,7 +39,6 @@ class Model {
                 } catch (e) {
                 }
             });
-            console.log("hej");
             this.notifyObservers();
         })();
     }
@@ -307,9 +306,9 @@ class Model {
         });
     }
 
-    addMovieToWatchlist(movieInformation, notification = true) {
+    addMovieToWatchlist(movieInformation,notification = true, navigate) {
         if (!this.isLoggedIn()) {
-            window.location.href="/login";
+            navigate("/login");
             return;
         }
 
@@ -378,9 +377,9 @@ class Model {
         }
     }
 
-    addToFavorite(movieInformation, notification = true) {
+    addToFavorite(movieInformation, notification = true, navigate) {
         if (!this.isLoggedIn()) {
-            window.location.href="/login";
+            navigate("/login");
             /*
             store.addNotification({
                 title: "Not logged in",
@@ -662,7 +661,7 @@ const useInfiniteScroll = (callback) => {
         return debounce(handleScroll, 100, false);
     }
 
-    return [isFetching, setIsFetching, stop];
+    return [setIsFetching, stop];
 };
 
 export { Model, filterTextLength, useInfiniteScroll };

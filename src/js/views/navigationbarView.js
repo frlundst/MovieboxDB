@@ -14,11 +14,11 @@ function NavigationbarView(props) {
             <Navbar.Toggle />
             <Navbar.Collapse>
                 <Nav className="nav">
-                    <Nav.Link href="/">Home</Nav.Link>
-                    <Nav.Link href="/search">Search</Nav.Link>
-                    <Nav.Link href="/discover">Discover</Nav.Link>
-                    <Nav.Link href="/login">Profile</Nav.Link>
-                    <Nav.Link className='movie-matcher-link' href={props.isLoggedIn ?"/movieMatcher": "/login"}>MovieMatcher™</Nav.Link>
+                    <Nav.Link className="nav-item" onClick={() => props.changePage("/")}>Home</Nav.Link>
+                    <Nav.Link className="nav-item" onClick={() => props.changePage("/search")}>Search</Nav.Link>
+                    <Nav.Link className="nav-item" onClick={() => props.changePage("/discover")}>Discover</Nav.Link>
+                    <Nav.Link className="nav-item" onClick={() => props.changePage("/login")}>Profile</Nav.Link>
+                    <Nav.Link className='movie-matcher-link' onClick={() => {props.isLoggedIn ? props.changePage("/movieMatcher") : props.changePage("/login")}}>MovieMatcher™</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

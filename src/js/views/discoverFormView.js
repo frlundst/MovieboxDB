@@ -59,7 +59,6 @@ function DiscoverFormView(props) {
                             <Col />
                             <Col />
                             <Col />
-                            
                             <Col>
                                 <Form.Range value={props.maxScore}
                                     onChange={e => props.onMaxScoreChange(e.target.value)}
@@ -72,6 +71,11 @@ function DiscoverFormView(props) {
                                 <Form.Control value={props.maxScore} readOnly="readOnly"/>
                             </Col>
                         </Row>
+                        
+                        <Row className="g-2">
+                        <Form.Control className="input" type="search" placeholder="Enter year..." onInput={e => props.onYearChange(e.target.value)} />
+                        </Row>
+
                         <Row className="g-2">
                             <Button variant="dark" onClick={() => props.onSearch()}>Search</Button>
                         </Row>
