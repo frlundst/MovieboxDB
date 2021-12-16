@@ -3,18 +3,6 @@ import '../../css/movieMatcherView.css';
 import TinderCard from 'react-tinder-card';
 
 function MovieMatcherView(props) {
-    const [lastDirection, setLastDirection] = React.useState();
-
-    const swiped = (direction, id) => {
-        setLastDirection(direction)
-        props.model.setCurrentMovie(id);
-        window.location.hash = "#movieDetails";
-    }
-
-    const outOfFrame = (name) => {
-
-    }
-
     return (
         <div className="movieMatcher-section">
             <div className='cardContainer'>
@@ -27,16 +15,15 @@ function MovieMatcherView(props) {
                             return null;
                         } else {
                             return (
-                                <TinderCard className="swipe" key={movie.id} onSwipe={(dir) => props.onSwipe(dir, movie)} onCardLeftScreen={() => outOfFrame(movie.id)}>
+                                <TinderCard className="swipe" key={movie.id} onSwipe={(dir) => props.onSwipe(dir, movie)}>
                                     <div id={movie.id} className="card">
-                                        <img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} ></img>
+                                        <img alt={movie.title} src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} ></img>
                                     </div>
                                 </TinderCard>
                             );
                         }
                     }
                 )}
-                {lastDirection ? <h2 className='infoText'>You swiped {lastDirection}</h2> : <h2 className='infoText' />}
             </div>
         </div>
     );

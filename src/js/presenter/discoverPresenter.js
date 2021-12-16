@@ -15,28 +15,27 @@ function DiscoverPresenter(props) {
     const [sort_by, setSort_by] = React.useState('popularity.desc'); //Final sort and order
 
     const [nextPage, setNextPage] = React.useState(null);
-    const [isFetching, setIsFetching, stop] = useInfiniteScroll(getMoreFeed);
+    const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
 
     async function getMoreFeed() {
+        setIsFetching(true);
         if (nextPage && !bottom) {
             setPromise(
                 ApiFetch.discoverMovie(sort_by, maxScore, minScore, nextPage)
                     .then((newData) => {
-                        if(newData.results.length > 0){
+                        if (newData.results.length > 0) {
                             setData(data.concat(newData.results));
                             setIsFetching(false);
                             setNextPage(nextPage + 1)
-                        }else{
-                            console.log(newData);
-                            console.log("BOTTOM REACHED")
+                        } else {
                             setBottom(bottom);
                         }
                     })
                     .catch((error) => setError(error))
             );
         } else {
-          setIsFetching(false);
+            setIsFetching(false);
         }
     }
 
@@ -56,15 +55,16 @@ function DiscoverPresenter(props) {
                 onSearch={() => {
                     setData(null);
                     setError(null);
-                    setPromise(
-                        ApiFetch.discoverMovie(sort_by, maxScore, minScore)
-                            .then((data) => {
-                                console.log(data);
-                                setData(data.results);
-                                setNextPage(2);
-                            })
-                            .catch((error) => setError(error))
-                    );
+                    if (isFetching === false)
+                        setPromise(
+                            ApiFetch.discoverMovie(sort_by, maxScore, minScore)
+                                .then((data) => {
+                                    console.log(data);
+                                    setData(data.results);
+                                    setNextPage(2);
+                                })
+                                .catch((error) => setError(error))
+                        );
                 }}
             >
             </DiscoverFormView>
@@ -73,7 +73,7 @@ function DiscoverPresenter(props) {
                 discoverResults={data}
                 onClick={(id) => {
                     props.model.setCurrentMovie(id);
-                    window.location.hash="#movieDetails";
+                    window.location.hash = "#movieDetails";
                 }}
             ></DiscoverResultsView>}
         </div>

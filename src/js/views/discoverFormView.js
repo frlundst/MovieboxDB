@@ -11,11 +11,11 @@ function DiscoverFormView(props) {
             <div className="discover-form">
                 <Form className="form">
 
-                    <Form.Group className="form-group" controlId="formDiscover">
+                    <Form.Group className="form-group">
                         <h1>Discover</h1>
                         <Row className="g-2">
                             <Col>
-                                <Form.Select onChange={e => props.onSortBy(e.target.value)}>
+                                <Form.Select onChange={e => props.onSortBy(e.target.value)} defaultValue="none">
                                     <option value="none">Sort By</option>
                                     <option value="popularity.desc">Most popular</option>
                                     <option value="popularity.asc">Least popular</option>
@@ -47,7 +47,7 @@ function DiscoverFormView(props) {
                                 />
                             </Col>
                             <Col>
-                                <Form.Control value={props.minScore} />
+                                <Form.Control value={props.minScore} readOnly="readOnly"/>
                             </Col>
                         </Row>
                         <Row className="g-2">
@@ -69,7 +69,7 @@ function DiscoverFormView(props) {
                                 />
                             </Col>
                             <Col>
-                                <Form.Control value={props.maxScore} />
+                                <Form.Control value={props.maxScore} readOnly="readOnly"/>
                             </Col>
                         </Row>
                         <Row className="g-2">

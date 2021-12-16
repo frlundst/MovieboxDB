@@ -3,6 +3,7 @@ import "../../css/searchResultsView.css";
 
 function SearchResultsView(props) {
     return (
+        <div className='search-results-section'>
             <div className="search-movies-container">
                 {props.searchResults.map(function (result) {
                     if (result.poster_path == null || result.backdrop_path == null) {
@@ -24,6 +25,7 @@ function SearchResultsView(props) {
                     }
                 })}
             </div>
+        </div>
     );
 }
 
