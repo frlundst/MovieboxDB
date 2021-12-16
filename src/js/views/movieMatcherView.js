@@ -24,7 +24,9 @@ function MovieMatcherView(props) {
                         }
                     }
                 )}
+                
             </div>
+            {props.lastDirection ? <h2 className='infoText'>{props.lastDirection}</h2> : <h2 className='infoText' />}
         </div>
     );
 }

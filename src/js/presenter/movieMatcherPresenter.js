@@ -10,6 +10,7 @@ function MovieMatcherPresenter(props){
     const [error, setError] = React.useState(null);
     const [bottom, setBottom] = React.useState(false);
     const [nextPage, setNextPage] = React.useState(2);
+    const [lastDirection, setLastDirection] = React.useState(null)
     let navigate = useNavigate();
     var counter = 0;
 
@@ -62,10 +63,25 @@ function MovieMatcherPresenter(props){
     return(
         <div>
             {promiseNoData(promise, data, error) || <MovieMatcherView 
+                lastDirection={lastDirection}
                 topMovies={data}
                 onSwipe={(direction,movie) => {
                     counter++;
                     swiped(direction, movie);
+                    switch(direction){
+                        case "left":
+                            setLastDirection("Movie skipped");
+                            break;
+                        case "right":
+                            setLastDirection(movie.title + " added to favorites");
+                            break;
+                        case "up":
+                            setLastDirection(movie.title + " added to watchlist");
+                            break;
+                        case "down":
+                            setLastDirection("You swiped down");
+                            break;
+                    }
                 }}
         ></MovieMatcherView>}
         </div>

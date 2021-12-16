@@ -1,9 +1,15 @@
 .movieMatcher-section{
     margin-top: 150px;
-    margin-bottom: 350px;
 }
 
 .title{
+    color: white;
+    text-align: center;
+    font-size: 35px;
+}
+
+.infoText{
+    margin-top: 200px;
     color: white;
     text-align: center;
     font-size: 35px;
@@ -20,6 +26,7 @@
     width: 90vw;
     max-width: 260px;
     height: 300px;
+    margin-bottom: 320px;
 }
   
 .card {
