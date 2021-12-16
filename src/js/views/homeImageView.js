@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/homeImageView.css';
+import '../../css/homeImage.css';
 
 function HomeImageView(props) {
     return (

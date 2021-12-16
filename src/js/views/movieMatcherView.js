@@ -1,5 +1,5 @@
 import React from "react";
-import '../../css/movieMatcherView.css';
+import '../../css/movieMatcher.css';
 import TinderCard from 'react-tinder-card';
 
 function MovieMatcherView(props) {

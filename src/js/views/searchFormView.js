@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import InputGroup from 'react-bootstrap/InputGroup';
-import '../../css/searchFormView.css';
+import '../../css/searchForm.css';
 
 function SearchFormView(props) {
     return (

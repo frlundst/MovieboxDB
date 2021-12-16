@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/searchResultsView.css";
+import "../../css/searchResults.css";
 
 function SearchResultsView(props) {
     return (
