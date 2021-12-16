@@ -56,11 +56,15 @@
 }
 
 .movie-card:hover {
-    transform: scale(1.05);
+    transform: scale(1.15);
 }
 
 .top-movies-container img:hover {
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 60px rgba(0, 0, 0, 0.8);
+}
+
+.top-movies-container {
+    transition: 1s ease-in-out;
 }
 
 .movie-card-info h3 {
@@ -163,5 +167,9 @@
 
     .top-movies-section {
         padding: 20px 10px 0 10px;
+    }
+
+    .movie-card:hover {
+        transform: scale(1.05);
     }
 }

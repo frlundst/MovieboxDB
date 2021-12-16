@@ -23,15 +23,14 @@ class Model {
         //this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
         //this.setProfileInformation(); //#TODO: TEMPORARY
-        this.setPersistence();
-        this.getDataBaseInfo();
         this.numberOfWatchlistMovies = 0;
         this.numberOfFavoriteMovies = 0;
+        this.setPersistence();
+        this.getDataBaseInfo();
     }
 
     getDataBaseInfo() {
         (async () => {
-
             const querySnapshot = await getDocs(collection(db, "users"));
             querySnapshot.forEach((doc) => {
                 try {
@@ -40,7 +39,7 @@ class Model {
                 } catch (e) {
                 }
             });
-            console.log(this.numberOfFavoriteMovies);
+            console.log("hej");
             this.notifyObservers();
         })();
     }

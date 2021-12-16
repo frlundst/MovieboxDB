@@ -251,6 +251,14 @@
     border: 1px solid #ffffff;
 }
 
+.profile-favorite-remove button:hover {
+    color: red;
+}
+
+.profile-favorite-remove button {
+    transition: all 0.3s ease-in-out;
+}
+
 @media screen and (max-width: 1700px) {
     .profile-watchlist-body {
         display: grid;

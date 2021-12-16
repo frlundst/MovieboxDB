@@ -54,7 +54,7 @@ function LoginPresenter(props) {
                         navigate(`/`);
                     }}
                 />
-                
+
                 :
 
                 <LoginView

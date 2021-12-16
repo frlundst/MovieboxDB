@@ -2,9 +2,9 @@ import React from "react";
 import '../../css/homeStats.css';
 
 function HomeStatsView(props) {
-    return (console.log(props),
-        <div className="us-section">
-            <div className="us-container">
+    return (
+        <div className="stats-section">
+            <div className="stats-container">
                 <div className="website-stats">
                     <h1>Across all the current users on MovieBoxDB, these are the numbers of movies that have been either added to favourites or the watchlist.</h1>
                     <div className="favorite-stats">
