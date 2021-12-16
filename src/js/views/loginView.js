@@ -25,14 +25,15 @@ function LoginView(props) {
                 <Form.Label id="error-message-password"></Form.Label>
 
                 <div className="terms-and-conditions">
-                    <input type="checkbox" classnames="form-check-input" autoComplete="on"/>
+                    <input type="checkbox" id="checkbox" classnames="form-check-input" autoComplete="on"/>
                     <a href="#login" hidden={props.signIn}> Terms and Condition</a>
                     <a href="#login" hidden={!props.signIn}> Remember me</a>
                 </div>
-
+                <Form.Label id="error-message-checkbox">Blabla</Form.Label>
                 <button className="login-sign-in" hidden={props.signIn} onClick={(e) => {props.createUser(); e.preventDefault()}}>REGISTER</button>
                 <button className="login-sign-in" hidden={!props.signIn} onClick={(e) => {props.loginUser(); e.preventDefault()}}>LOGIN</button>
             </form>
+
         </div>
     );
 }

@@ -1,7 +1,6 @@
 import React from 'react';
 import './css/App.css';
 import { } from './js/firebaseLoad';
-import Show from './js/presenter/showPresenter.js';
 
 import HomePresenter from './js/presenter/homePresenter.js';
 import NavigationbarPresenter from './js/presenter/navigationbarPresenter.js';
