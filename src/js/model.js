@@ -277,6 +277,23 @@ class Model {
     }
 
     addMovieToWatchlist(movieInformation, notification=true) {
+        if (!this.isLoggedIn()) {
+            store.addNotification({
+                title: "Not logged in",
+                message: "You need to be logged in to add a movie to your watchlist.",
+                type: "warning",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 4000,
+                },
+                showIcon: true,
+            });
+            return;
+        }
+
         var inWatchList = false;
 
         if (this.watchlistMovies.length > 0) {
@@ -295,7 +312,6 @@ class Model {
             this.notifyObservers();
             if (notification) {
                 store.addNotification({
-                    id: "notification",
                     title: "Added to watchlist",
                     message: "You have added " + movieInformation.title + " to your watchlist.",
                     type: "info",
@@ -327,7 +343,6 @@ class Model {
         } else {
             if (notification) {
                 store.addNotification({
-                    id: "notification",
                     title: "Already in watchlist",
                     message: "You have already added " + movieInformation.title + " to your watchlist.",
                     type: "warning",
@@ -345,6 +360,24 @@ class Model {
     }
 
     addToFavorite(movieInformation, notification=true) {
+        if (!this.isLoggedIn()) {
+            store.addNotification({
+                title: "Not logged in",
+                message: "You need to be logged in to add a movie to your favorites.",
+                type: "warning",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 4000,
+                },
+                showIcon: true,
+            });
+
+            return;
+        }
+
         var inWatchList = false;
 
         if (this.favoriteMovies.length > 0) {
@@ -364,7 +397,6 @@ class Model {
 
             if (notification) {
                 store.addNotification({
-                    id: "notification",
                     title: "Added to favorites",
                     message: "You have added " + movieInformation.title + " to your favorites.",
                     type: "info",
@@ -395,7 +427,6 @@ class Model {
         } else {
             if (notification) {
                 store.addNotification({
-                    id: "notification",
                     title: "Already in favorites",
                     message: "You have already added " + movieInformation.title + " to your favorites.",
                     type: "warning",
@@ -432,7 +463,6 @@ class Model {
         );
         this.notifyObservers();
         store.addNotification({
-            id: "notification",
             title: "Removed from watchlist",
             message: "You have removed the movie from your watchlist.",
             type: "info",
@@ -467,7 +497,6 @@ class Model {
         );
         this.notifyObservers();
         store.addNotification({
-            id: "notification",
             title: "Removed from favorites",
             message: "You have removed the movie from your favorites.",
             type: "info",
@@ -497,11 +526,20 @@ class Model {
     }
 
     updateProfile(name, biography, image) {
+        if(name === undefined) {
+            name = "";
+        }
+        if (biography === undefined) {
+            biography = "";
+        }
+        if (image === undefined) {
+            image = "";
+        }
+
         this.profile = [name, biography, "", image];
 
         this.notifyObservers();
         store.addNotification({
-            id: "notification",
             title: "Profile updated",
             message: "Your profile has been updated.",
             type: "info",

@@ -5,14 +5,14 @@ function EditProfileView(props) {
     return (
         <div className="edit-profile-container">
             <div className="edit-profile-image-container">
-                {(props.profile === null || (Array.isArray(props.profile) ? props.profile[3] === undefined : true)) ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.profile[3]} alt="profile" />}
+                {(props.profile === null || (Array.isArray(props.profile) ? (props.profile[3] === undefined || props.profile[3] === "") : true)) ? <img src="images/noProfileImage.jpg" alt="profile" /> : <img src={props.profile[3]} alt="profile" />}
             </div>
             <div className="edit-profile-form-container">
                 <div className="edit-profile-name">
                     <h4>Name</h4>
                     <input
                         type="text"
-                        value={props.biography}
+                        value={props.name}
                         onChange={(e) => {
                             props.setName(e.target.value);
                         }}
