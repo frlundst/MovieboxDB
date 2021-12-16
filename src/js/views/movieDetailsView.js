@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../css/movieDetails.css';
-import '../../css/homeMoviesView.css';
+import '../../css/homeMovies.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faHeart, faPlus, faStar } from '@fortawesome/free-solid-svg-icons'
 

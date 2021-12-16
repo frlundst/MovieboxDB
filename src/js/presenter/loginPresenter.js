@@ -2,6 +2,7 @@ import React from "react";
 import LoginView from "../views/loginView";
 import promiseNoRender from "../promiseNoRender.js";
 import ProfileView from "../views/profileView.js";
+import { useNavigate } from "react-router-dom";
 
 function LoginPresenter(props) {
     const [signIn, setSignIn] = React.useState(true);
@@ -9,7 +10,7 @@ function LoginPresenter(props) {
     const [watchlist, setWatchlist] = React.useState(props.model.watchlistMovies);
     const [favorite, setFavorite] = React.useState(props.model.favoriteMovies);
     const [isSignedIn, setIsSignedIn] = React.useState(props.model.isLoggedIn());
-
+    let navigate = useNavigate();
     var email = "";
     var password = "";
 
@@ -34,7 +35,7 @@ function LoginPresenter(props) {
                     favoriteMovies={favorite}
                     movieDetails={(id) => {
                         props.model.setCurrentMovie(id);
-                        window.location.hash="#movieDetails";
+                        navigate(`/movieDetails`);
                     }}
                     removeFromWatchlist={(id) => {
                         props.model.removeFromWatchlist(id);
@@ -46,11 +47,11 @@ function LoginPresenter(props) {
                         props.model.removeFromFavorite(id);
                     }}
                     editProfile={() => {
-                        window.location.hash="#editProfile";
+                        navigate(`/editProfile`);
                     }}
                     logout={() => {
                         props.model.signOutUser();
-                        window.location.hash="#home";
+                        navigate(`/`);
                     }}
                 />
                 

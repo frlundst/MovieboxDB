@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/homeMovieDetailsView.css";
+import "../../css/homeMovieDetails.css";
 import { filterTextLength } from "../model";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarAlt, faClock, faPlus, faStar, faInfoCircle, faHeart} from '@fortawesome/free-solid-svg-icons'

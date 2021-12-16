@@ -1,5 +1,5 @@
 import React from 'react';
-import "../../css/homeUsView.css";
+import "../../css/homeUs.css";
 
 function HomeUsView(props) {
     return (

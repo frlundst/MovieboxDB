@@ -1,14 +1,14 @@
 .discover-results-section{
     padding-left: 10%;
     padding-right: 10%;
-    padding-top: 1100px;
+    padding-top: 150px;
     color: white !important;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .discover-results-section {
-    padding: 0px 10% 1100px 10%;
+    padding: 0px 10% 150px 10%;
     color: white;
 }
 
@@ -26,7 +26,7 @@
     display: grid;
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
     grid-gap: 2%;
-    row-gap: 100px;
+    row-gap: 50px;
     padding-left: 10%;
     padding-right: 10%;
     overflow: hidden;
@@ -74,12 +74,12 @@
 
 @media (max-width: 1800px) {
     .discover-results-section {
-        padding: 0px 6% 1100px 6%;
+        padding: 0px 6% 150px 6%;
     }
 
     .discover-movies-container {
         grid-template-columns: repeat(5, 18%);
-        row-gap: 100px;
+        row-gap: 50px;
     }
 
     .movie-card:nth-child(6) {
@@ -90,7 +90,7 @@
 @media (max-width: 1400px) {
     .discover-movies-container {
         grid-template-columns: repeat(4, 23.5%);
-        row-gap: 100px;
+        row-gap: 50px;
     }
 
     .movie-card:nth-child(6) {
@@ -109,7 +109,7 @@
     
     .discover-movies-container {
         grid-template-columns: 32% 32% 32%;
-        row-gap: 100px;
+        row-gap: 50px;
     }
 
     .discover-results-section h1 {
@@ -129,7 +129,7 @@
 @media (max-width: 900px) {
     .discover-movies-container{
         grid-template-columns: 49% 49%;
-        row-gap: 100px;
+        row-gap: 50px;
         padding-top: 0px;
         padding-bottom: 180px;
     }

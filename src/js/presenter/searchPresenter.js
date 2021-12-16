@@ -4,16 +4,18 @@ import SearchResultsView from '../views/searchResultsView.js';
 import promiseNoData from '../promiseNoData.js';
 import { ApiFetch } from '../apiFetch.js';
 import { useInfiniteScroll } from '../model.js';
+import { useNavigate } from "react-router-dom";
 
 function SearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
     const [data, setData] = React.useState(null);
     const [error, setError] = React.useState(null);
-    const [query, setQuery] = React.useState(null);
+    const [query, setQuery] = React.useState("Marvel");
     const [nextPage, setNextPage] = React.useState(null);
     const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
-
+    let navigate = useNavigate();
+    
     async function getMoreFeed() {
         setIsFetching(true);
         if (nextPage && !bottom) {
@@ -36,9 +38,10 @@ function SearchPresenter(props) {
     }
 
     React.useEffect(() => {
-        setPromise(ApiFetch.getTopMovies()
+        setPromise(ApiFetch.searchMovie(query)
             .then(data => {
                 setData(data.results);
+                setNextPage(2);
             })
             .catch(error => setError(error)));
     }, []);
@@ -65,7 +68,7 @@ function SearchPresenter(props) {
                 searchResults={data}
                 onClick={(id) => {
                     props.model.setCurrentMovie(id);
-                    window.location.hash = "#movieDetails";
+                    navigate(`/movieDetails`);
                 }}
             ></SearchResultsView>}
         </div>

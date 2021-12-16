@@ -1,8 +1,10 @@
 import React from "react";
 import EditProfileView from "../views/editProfileView";
+import { useNavigate } from "react-router-dom";
 
 function EditProfilePresenter(props) {
     const [profile, setProfile] = React.useState(props.model.profile);
+    let navigate = useNavigate();
     var name;
     var biography;
     var image;
@@ -20,7 +22,7 @@ function EditProfilePresenter(props) {
             profile={profile}
             updateProfile={() => {
                 props.model.updateProfile(name, biography, image);
-                window.location.hash="#login";
+                navigate(`/login`);
             }}
             setName={(name_set) => {
                 name = name_set;
@@ -33,10 +35,10 @@ function EditProfilePresenter(props) {
             }}
             logout={() => {
                 props.model.signOutUser();
-                window.location.hash="#home";
+                navigate(`/`);
             }}
             cancel={() => {
-                window.location.hash="#login";
+                navigate(`/login`);
             }}
         />
     );

@@ -8,6 +8,7 @@ import HomeMoviesView from "../views/homeMovieView";
 import HomeMovieDetailsView from "../views/homeMovieDetailsView";
 import HomeUsView from "../views/homeUsView";
 import HomeStatsView from "../views/homeStatsView";
+import { useNavigate } from "react-router-dom";
 
 const scrollToRef = (ref) => {
     setTimeout(
@@ -93,6 +94,8 @@ function HomePresenter(props) {
 
     const { width } = WindowDimensions();
 
+    let navigate = useNavigate();
+
     React.useEffect(() => {
         setPromise(
             ApiFetch.getTopMovies()
@@ -136,7 +139,7 @@ function HomePresenter(props) {
                                 
                             } else {
                                 props.model.setCurrentMovie(id);
-                                window.location.hash="#movieDetails";
+                                navigate(`/movieDetails`);
                             }
                         }}
                     />
@@ -156,7 +159,7 @@ function HomePresenter(props) {
                         }}
                         readMore={(id) => {
                             props.model.setCurrentMovie(id);
-                            window.location.hash="#movieDetails";
+                            navigate(`/movieDetails`);
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                         addToFavorite={(movieInformation) => {
@@ -183,7 +186,7 @@ function HomePresenter(props) {
                                 );
                             } else {
                                 props.model.setCurrentMovie(id);
-                                window.location.hash="#movieDetails";
+                                navigate(`/movieDetails`);
                             }                        
                         }}
                     />
@@ -203,7 +206,7 @@ function HomePresenter(props) {
                         }}
                         readMore={(id) => {
                             props.model.setCurrentMovie(id);
-                            window.location.hash="#movieDetails";
+                            navigate(`/movieDetails`);
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                         addToFavorite={(movieInformation) => {
@@ -232,7 +235,7 @@ function HomePresenter(props) {
                                 );
                             } else {
                                 props.model.setCurrentMovie(id);
-                                window.location.hash="#movieDetails";
+                                navigate(`/movieDetails`);
                             }
                         }}
                     />
@@ -252,7 +255,7 @@ function HomePresenter(props) {
                         }}
                         readMore={(id) => {
                             props.model.setCurrentMovie(id);
-                            window.location.hash="#movieDetails";
+                            navigate(`/movieDetails`);
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                         addToFavorite={(movieInformation) => {
@@ -279,7 +282,7 @@ function HomePresenter(props) {
                                 );
                             } else {
                                 props.model.setCurrentMovie(id);
-                                window.location.hash="#movieDetails";
+                                navigate(`/movieDetails`);
                             }
                         }}
                     />
@@ -299,7 +302,7 @@ function HomePresenter(props) {
                         }}
                         readMore={(id) => {
                             props.model.setCurrentMovie(id);
-                            window.location.hash="#movieDetails";
+                            navigate(`/movieDetails`);
                         }}
                         addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
                         addToFavorite={(movieInformation) => {

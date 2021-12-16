@@ -53,7 +53,7 @@ export const ApiFetch = {
     },
 
     searchMovie(query="", page = 1){
-        return this.apiCall(`/search/multi?query=${query}&page=${page}&`);
+        return this.apiCall(`/search/movie?query=${query}&page=${page}&`);
     },
 
     discoverMovie(sort_by="", maxScore, minScore, page = 1){

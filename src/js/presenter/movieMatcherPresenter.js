@@ -2,6 +2,7 @@ import React from 'react';
 import MovieMatcherView from '../views/movieMatcherView.js';
 import promiseNoData from '../promiseNoData.js';
 import { ApiFetch } from '../apiFetch.js';
+import { useNavigate } from "react-router-dom";
 
 function MovieMatcherPresenter(props){
     const [promise, setPromise] = React.useState(null);
@@ -9,7 +10,7 @@ function MovieMatcherPresenter(props){
     const [error, setError] = React.useState(null);
     const [bottom, setBottom] = React.useState(false);
     const [nextPage, setNextPage] = React.useState(2);
-
+    let navigate = useNavigate();
     var counter = 0;
 
     const swiped = (direction, movie) => {
@@ -28,7 +29,7 @@ function MovieMatcherPresenter(props){
                 break;
             case "down":
                 props.model.setCurrentMovie(movie.id);
-                window.location.hash="#movieDetails";
+                navigate(`/movieDetails`);
                 break;
             default:
                 break;

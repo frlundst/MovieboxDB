@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/homeMoviesView.css";
+import "../../css/homeMovies.css";
 
 function HomeMoviesView(props) {
     return (
