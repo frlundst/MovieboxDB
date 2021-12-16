@@ -1,6 +1,6 @@
 import React from 'react';
 import './css/App.css';
-import {} from './js/firebaseLoad';
+import { } from './js/firebaseLoad';
 import Show from './js/presenter/showPresenter.js';
 
 import HomePresenter from './js/presenter/homePresenter.js';
@@ -12,33 +12,28 @@ import DiscoverPresenter from './js/presenter/discoverPresenter.js';
 import MovieMatcherPresenter from './js/presenter/movieMatcherPresenter.js'
 import FooterPresenter from './js/presenter/footerPresenter.js';
 import EditProfilePresenter from './js/presenter/editProfilePresenter.js';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 
-function defaultRoute() {
-  	if (["#home", "#search", "#favourites", "#watchlist", '#movieDetails', '#movieMatcher', '#login', '#profile', '#editProfile', '#discover']
-	  		.find((knownRoute) => knownRoute !== window.location.hash)){
-      	window.location.hash = "#home";
-  	}
-}
-
 function App(props) {
-  	return (
-		defaultRoute(),
-		window.addEventListener("hashchange", defaultRoute()),
-		<div className="App">
-			<NavigationbarPresenter/>
-			<Show hash="#home"><HomePresenter model={props.model}/></Show>
-			<Show hash="#movieDetails"><MovieDetailsPresenter model={props.model}/></Show>
-			<Show hash="#search"><SearchPresenter model={props.model}/></Show>
-			<Show hash="#discover"><DiscoverPresenter model={props.model}/></Show>
-			<Show hash="#movieMatcher"><MovieMatcherPresenter model={props.model}/></Show>
-			<Show hash="#login"><LoginPresenter model={props.model}/></Show>
-			<Show hash="#editProfile"><EditProfilePresenter model={props.model}/></Show>
-			<ReactNotification />
-			<FooterPresenter/>
-		</div>
+	return (
+		<Router>
+			<div className="App">
+				<NavigationbarPresenter />
+				<Routes>
+					<Route path="/" element={<HomePresenter model={props.model} />}></Route>
+					<Route path="/movieDetails" element={<MovieDetailsPresenter model={props.model} />}></Route>
+					<Route path="/search" element={<SearchPresenter model={props.model} />}></Route>
+					<Route path="/discover" element={<DiscoverPresenter model={props.model} />}></Route>
+					<Route path="/movieMatcher" element={<MovieMatcherPresenter model={props.model} />}></Route>
+					<Route path="/login" element={<LoginPresenter model={props.model} />}></Route>
+					<Route path="/editProfile" element={<EditProfilePresenter model={props.model} />}></Route>
+				</Routes>
+				<ReactNotification />
+				<FooterPresenter />
+			</div>
+		</Router>
 	);
 }
 

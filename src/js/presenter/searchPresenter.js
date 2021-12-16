@@ -4,6 +4,7 @@ import SearchResultsView from '../views/searchResultsView.js';
 import promiseNoData from '../promiseNoData.js';
 import { ApiFetch } from '../apiFetch.js';
 import { useInfiniteScroll } from '../model.js';
+import { useNavigate } from "react-router-dom";
 
 function SearchPresenter(props) {
     const [promise, setPromise] = React.useState(null);
@@ -13,7 +14,8 @@ function SearchPresenter(props) {
     const [nextPage, setNextPage] = React.useState(null);
     const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
-
+    let navigate = useNavigate();
+    
     async function getMoreFeed() {
         setIsFetching(true);
         if (nextPage && !bottom) {
@@ -65,7 +67,7 @@ function SearchPresenter(props) {
                 searchResults={data}
                 onClick={(id) => {
                     props.model.setCurrentMovie(id);
-                    window.location.hash = "#movieDetails";
+                    navigate(`/movieDetails`);
                 }}
             ></SearchResultsView>}
         </div>

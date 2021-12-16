@@ -5,6 +5,7 @@ import MovieCreditsView from "../views/movieCreditsView";
 import MovieInformationView from "../views/movieInformationView";
 import SimilarMoviesView from "../views/movieSimilarView";
 import MovieVideosView from "../views/movieVideosView";
+import { useNavigate } from "react-router-dom";
 
 function MovieDetailsPresenter(props) {
     const [movieID, setMovieID] = React.useState(props.model.currentMovie);
@@ -19,6 +20,7 @@ function MovieDetailsPresenter(props) {
 
     const [MovieCreditsData, setMovieCreditsData] = React.useState(props.model.movieCredits);
     const [MovieCreditsError, setMovieCreditsError] = React.useState(props.model.movieCreditsError);
+    let navigate = useNavigate();
 
     React.useEffect(() => {
         const obs = () => {
@@ -73,7 +75,7 @@ function MovieDetailsPresenter(props) {
                     movies={SimilarMoviesData.results}
                     onClick={(movieID) => {
                         props.model.setCurrentMovie(movieID);
-                        window.location.hash="#movieDetails";
+                        navigate(`/movieDetails`);
                     }}
                 />
             )}

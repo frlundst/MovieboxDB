@@ -4,6 +4,7 @@ import DiscoverFormView from '../views/discoverFormView.js';
 import promiseNoData from '../promiseNoData.js';
 import { ApiFetch } from '../apiFetch.js';
 import { useInfiniteScroll } from '../model.js';
+import { useNavigate } from "react-router-dom";
 
 function DiscoverPresenter(props) {
     const [promise, setPromise] = React.useState(null);
@@ -17,6 +18,7 @@ function DiscoverPresenter(props) {
     const [nextPage, setNextPage] = React.useState(null);
     const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
+    let navigate = useNavigate();
 
     async function getMoreFeed() {
         setIsFetching(true);
@@ -73,7 +75,7 @@ function DiscoverPresenter(props) {
                 discoverResults={data}
                 onClick={(id) => {
                     props.model.setCurrentMovie(id);
-                    window.location.hash = "#movieDetails";
+                    navigate(`/movieDetails`);
                 }}
             ></DiscoverResultsView>}
         </div>

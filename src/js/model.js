@@ -10,7 +10,7 @@ import {
 } from "firebase/auth";
 import { db } from "./firebaseLoad.js";
 import { getDoc, setDoc, doc, updateDoc } from "firebase/firestore";
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { store } from 'react-notifications-component';
 
 class Model {
