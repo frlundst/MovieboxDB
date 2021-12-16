@@ -1,6 +1,6 @@
 .search-form-section{
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 2%;
+    padding-right: 2%;
     padding-top: 150px;
     padding-bottom: 1%;
     color: white !important;
@@ -9,7 +9,6 @@
 .search-form-section h1{
     margin: 0 auto;
 }
-
 
 .button{
     border-radius: 0px;
@@ -24,21 +23,27 @@
 }
 
 .search-form{
-    display: block;
-    margin:0 auto !important;
+    width: 100%;
+    text-align: center;
 }
 
 .form-group{
-    width: 50%;
-    margin: 0 auto;
-}
-
-@media screen and (max-width: 700px){
-    .form-group{
-        width: 90%;
-    }
+    display: inline-block;
+    width: 900px !important;
 }
 
 .form-label{
     padding-left: 37%;
+}
+
+@media screen and (max-width: 1200px){
+    .form-group{
+        width: 70% !important;
+    }
+}
+
+@media screen and (max-width: 700px){
+    .form-group{
+        width: 100% !important;
+    }
 }

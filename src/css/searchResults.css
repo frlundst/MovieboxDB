@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 .search-results-section {
-    padding: 0px 10% 150px 10%;
+    padding: 0px 9% 150px 9%;
     color: white;
 }
 
@@ -17,30 +17,13 @@
 .search-movies-container {
     background-color: #19181F;
     display: grid;
-    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    grid-template-columns: repeat(6, 15%);
     grid-gap: 2%;
-    row-gap: 50px;
-    padding-left: 10%;
-    padding-right: 10%;
+    row-gap: 125px;
+    padding: 0 2%;
     overflow: hidden;
     padding-bottom: 500px;
-}
-
-.movie-vote {
-    position: relative;
-    background-color: #5B818A;
-    border-radius: 20px;
-    padding: 0 10px;
-
-    margin-bottom: -33px;
-    z-index: 99;
-    width: 70px;
-
-    text-align: center;
-
-    display: block;
-  	margin-left: auto;
-	margin-right: auto;
+    cursor: pointer;
 }
 
 .search-movies-container p {
@@ -105,8 +88,9 @@
     }
     
     .search-movies-container {
-        grid-template-columns: 32% 32% 32%;
+        grid-template-columns: 30% 30% 30%;
         row-gap: 100px;
+        column-gap: 5%;
     }
 
     .movies-section h1 {
@@ -125,7 +109,7 @@
 
 @media (max-width: 900px) {
     .search-movies-container{
-        grid-template-columns: 49% 49%;
+        grid-template-columns: 47.5% 47.5%;
         row-gap: 100px;
         padding-top: 0px;
         padding-bottom: 180px;
@@ -143,9 +127,14 @@
 
 @media (max-width: 600px) {
     .search-movies-container{
-        row-gap: 120px;
+        row-gap: 100px;
         padding-top: 0px;
         padding-bottom: 60px;
+    }
+
+    .search-results-section {
+        padding: 0px 0% 150px 0%;
+        color: white;
     }
 
     .movies-section h1 {
