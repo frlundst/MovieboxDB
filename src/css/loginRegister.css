@@ -157,6 +157,12 @@ body {
 	padding-top: 5px;
 }
 
+#error-message-checkbox{
+	color:red;
+    opacity: 0;
+	padding-left: 4%;
+}
+
 
 @media screen and (max-width: 500px) {
     .login-section {

@@ -28,7 +28,7 @@ class Model {
         this.numberOfWatchlistMovies = 0;
         this.numberOfFavoriteMovies = 0;
     }
-
+    
     getDataBaseInfo() {
         (async () => {
 
@@ -125,69 +125,83 @@ class Model {
     }
 
     createUser(email, password) {
+        var auth = getAuth();
+
         const passwordErrorMessage = document.getElementById(
             "error-message-password"
         );
         const emailErrorMessage = document.getElementById(
             "error-message-email"
         );
+        const termsAndConditionsErrorMessage = document.getElementById(
+            "error-message-checkbox"
+        );
+
+        termsAndConditionsErrorMessage.style.opacity = 0;
         emailErrorMessage.style.opacity = 0;
         passwordErrorMessage.style.opacity = 0;
-        
-        var auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                this.user = userCredential.user;
-                (async () => {
-                    try {
-                        const movies = [];
-                        const profile = ["", "", "", ""];
-                        await setDoc(doc(db, "users", this.user.uid), {
-                            favoriteMovies: {
-                                movies,
-                            },
-                            profile: {
-                                profile,
-                            },
-                            watchlistMovies: {
-                                movies,
-                            },
-                        });
-                    } catch (e) {
-                        console.error("Error adding document: ", e);
+
+        if ((document.getElementById("checkbox").checked)) {
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    this.user = userCredential.user;
+                    (async () => {
+                        try {
+                            const movies = [];
+                            const profile = ["", "", "", ""];
+                            await setDoc(doc(db, "users", this.user.uid), {
+                                favoriteMovies: {
+                                    movies,
+                                },
+                                profile: {
+                                    profile,
+                                },
+                                watchlistMovies: {
+                                    movies,
+                                },
+                            });
+                        } catch (e) {
+                            console.error("Error adding document: ", e);
+                        }
+                    })();
+                })
+                .catch((error) => {
+                    console.log(error);
+                    switch (error.code) {
+                        case "auth/missing-email":
+                            emailErrorMessage.style.opacity = 1;
+                            emailErrorMessage.innerHTML = "Email is required.";
+                            break;
+                        case "auth/invalid-email":
+                            emailErrorMessage.style.opacity = 1;
+                            emailErrorMessage.innerHTML = "Email is invalid.";
+                            break;
+                        case "auth/email-already-in-use":
+                            emailErrorMessage.style.opacity = 1;
+                            emailErrorMessage.innerHTML = "Email already in use!";
+                            break;
+                        case "auth/weak-password":
+                            passwordErrorMessage.style.opacity = 1;
+                            passwordErrorMessage.innerHTML =
+                                "Password not strong enough. A password containing a combination of 6 numbers and/or letters required.";
+                            break;
+                        case "auth/internal-error":
+                            passwordErrorMessage.style.opacity = 1;
+                            passwordErrorMessage.innerHTML =
+                                "Password is required.";
+                            break;
+                        default:
+                            passwordErrorMessage.style.opacity = 1;
+                            passwordErrorMessage.innerHTML = "Unknown error.";
+                            break;
                     }
-                })();
-            })
-            .catch((error) => {
-                switch (error.code) {
-                    case "auth/missing-email":
-                        emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML = "Email is required.";
-                        break;
-                    case "auth/invalid-email":
-                        emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML = "Email is invalid.";
-                        break;
-                    case "auth/email-already-in-use":
-                        emailErrorMessage.style.opacity = 1;
-                        emailErrorMessage.innerHTML = "Email already in use!";
-                        break;
-                    case "auth/weak-password":
-                        passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML =
-                            "Password not strong enough.";
-                        break;
-                    case "auth/internal-error":
-                        passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML =
-                            "Password is required.";
-                        break;
-                    default:
-                        passwordErrorMessage.style.opacity = 1;
-                        passwordErrorMessage.innerHTML = "Unknown error.";
-                        break;
-                }
-            });
+                });
+        }
+        else{
+            termsAndConditionsErrorMessage.style.opacity = 1;
+            termsAndConditionsErrorMessage.innerHTML = 
+                "Terms and Conditions need to be accepted to create an account."
+        }
     }
 
     isLoggedIn() {
@@ -248,7 +262,7 @@ class Model {
                 this.user = null;
                 this.notifyObservers();
             })
-            .catch((error) => {});
+            .catch((error) => { });
     }
 
     initializeDataBase() {
@@ -293,7 +307,7 @@ class Model {
         });
     }
 
-    addMovieToWatchlist(movieInformation, notification=true) {
+    addMovieToWatchlist(movieInformation, notification = true) {
         if (!this.isLoggedIn()) {
             store.addNotification({
                 title: "Not logged in",
@@ -376,7 +390,7 @@ class Model {
         }
     }
 
-    addToFavorite(movieInformation, notification=true) {
+    addToFavorite(movieInformation, notification = true) {
         if (!this.isLoggedIn()) {
             store.addNotification({
                 title: "Not logged in",
@@ -543,7 +557,7 @@ class Model {
     }
 
     updateProfile(name, biography, image) {
-        if(name === undefined) {
+        if (name === undefined) {
             name = "";
         }
         if (biography === undefined) {
@@ -648,7 +662,7 @@ const useInfiniteScroll = (callback) => {
     function handleScroll() {
         if (
             window.innerHeight + document.documentElement.scrollTop <=
-                Math.floor(document.documentElement.offsetHeight * 0.75) ||
+            Math.floor(document.documentElement.offsetHeight * 0.75) ||
             isFetching
         )
             return;
@@ -658,7 +672,7 @@ const useInfiniteScroll = (callback) => {
     function debounceScroll() {
         return debounce(handleScroll, 100, false);
     }
-    
+
     return [isFetching, setIsFetching, stop];
 };
 
