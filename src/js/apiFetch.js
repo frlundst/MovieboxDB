@@ -56,8 +56,8 @@ export const ApiFetch = {
         return this.apiCall(`/search/movie?query=${query}&page=${page}&`);
     },
 
-    discoverMovie(sort_by="", maxScore, minScore, page = 1){
-        return this.apiCall(`/discover/movie?sort_by=${sort_by}&vote_average.lte=${maxScore}&vote_average.gte=${minScore}&page=${page}&`);
+    discoverMovie(sort_by="", maxScore, minScore, page = 1, year){
+        return this.apiCall(`/discover/movie?sort_by=${sort_by}&vote_average.lte=${maxScore}&vote_average.gte=${minScore}&page=${page}&primary_release_year=${year}&`);
     },
 
     getSimilarMovies(id = 566525){

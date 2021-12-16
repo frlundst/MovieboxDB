@@ -1,5 +1,6 @@
 import React from 'react';
-import NavigationbarView from "../views/navigationbarView"
+import NavigationbarView from "../views/navigationbarView";
+import { useNavigate } from "react-router-dom";
 
 function scrollFunction() {
 	if (document.documentElement.scrollTop > 30) {
@@ -18,9 +19,15 @@ window.onload = function () {
 };
 
 function NavigationbarPresenter(props){
+	let navigate = useNavigate();
     return(
         <div>
-            <NavigationbarView></NavigationbarView>
+            <NavigationbarView
+			changePage={page => navigate(page)}
+			isLoggedIn = {
+				props.isLoggedIn
+			}
+			></NavigationbarView>
         </div>
     );
 }

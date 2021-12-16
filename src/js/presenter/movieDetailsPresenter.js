@@ -43,9 +43,9 @@ function MovieDetailsPresenter(props) {
             {promiseNoData(movieID, MovieDetailsData, MovieDetailsError) ||
                 <MovieDetailsView
                     movie={MovieDetailsData}
-                    addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                    addToWatchlist={(id) => props.model.addMovieToWatchlist(id, true, navigate)}
                     addToFavorite={(movieInformation) => {
-                        props.model.addToFavorite(movieInformation);
+                        props.model.addToFavorite(movieInformation, true, navigate);
                     }}
                 />
             }

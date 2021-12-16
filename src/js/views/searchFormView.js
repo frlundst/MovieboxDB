@@ -16,7 +16,7 @@ function SearchFormView(props) {
                             </Row>
                             <Row className="g-2">
                                 <InputGroup>
-                                    <Form.Control className="input" type="search" placeholder="Search..." onKeyPress={e => { if (e.charCode === 13) { props.onSearch() } }} onInput={e => props.onText(e.target.value)} />
+                                    <Form.Control className="input" type="search" placeholder="Search..." onInput={e => props.onText(e.target.value)} />
                                     <Button className="button" variant="dark" onClick={() => props.onSearch()}>Search</Button>
                                 </InputGroup>
                             </Row>

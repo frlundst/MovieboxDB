@@ -13,19 +13,20 @@ function DiscoverPresenter(props) {
 
     const [minScore, setMinScore] = React.useState(1);
     const [maxScore, setMaxScore] = React.useState(10);
+    const [year, setYear] = React.useState("none");
     const [sort_by, setSort_by] = React.useState('popularity.desc'); //Final sort and order
 
     const [nextPage, setNextPage] = React.useState(null);
-    const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
+    const [setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
     let navigate = useNavigate();
 
     async function getMoreFeed() {
-        setIsFetching(true);
         if (nextPage && !bottom) {
             setPromise(
-                ApiFetch.discoverMovie(sort_by, maxScore, minScore, nextPage)
+                ApiFetch.discoverMovie(sort_by, maxScore, minScore, nextPage, year)
                     .then((newData) => {
+                        console.log("API REQUEST")
                         if (newData.results.length > 0) {
                             setData(data.concat(newData.results));
                             setIsFetching(false);
@@ -42,24 +43,26 @@ function DiscoverPresenter(props) {
     }
 
     React.useEffect(() => {
-        setPromise(ApiFetch.discoverMovie(sort_by, maxScore, minScore, 1)
+        setPromise(ApiFetch.discoverMovie('popularity.desc', 10, 1, 1)
             .then(data => {setData(data.results); setNextPage(2)})
             .catch(error => setError(error)));
-    }, [sort_by, maxScore, minScore]);
+    }, []);
 
     return (
         <div>
             <DiscoverFormView minScore={minScore}
                 maxScore={maxScore}
+                year={year}
                 onMinScoreChange={score => setMinScore(score)}
                 onMaxScoreChange={score => setMaxScore(score)}
                 onSortBy={sort_by => setSort_by(sort_by)}
+                onYearChange={year => setYear(year)}
                 onSearch={() => {
+                    console.log(year);
                     setData(null);
                     setError(null);
-                    if (isFetching === false)
                         setPromise(
-                            ApiFetch.discoverMovie(sort_by, maxScore, minScore)
+                            ApiFetch.discoverMovie(sort_by, maxScore, minScore, 1, year)
                                 .then((data) => {
                                     setData(data.results);
                                     setNextPage(2);

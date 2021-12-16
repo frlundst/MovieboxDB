@@ -306,21 +306,9 @@ class Model {
         });
     }
 
-    addMovieToWatchlist(movieInformation, notification = true) {
+    addMovieToWatchlist(movieInformation,notification = true, navigate) {
         if (!this.isLoggedIn()) {
-            store.addNotification({
-                title: "Not logged in",
-                message: "You need to be logged in to add a movie to your watchlist.",
-                type: "warning",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 4000,
-                },
-                showIcon: true,
-            });
+            navigate("/login");
             return;
         }
 
@@ -389,8 +377,10 @@ class Model {
         }
     }
 
-    addToFavorite(movieInformation, notification = true) {
+    addToFavorite(movieInformation, notification = true, navigate) {
         if (!this.isLoggedIn()) {
+            navigate("/login");
+            /*
             store.addNotification({
                 title: "Not logged in",
                 message: "You need to be logged in to add a movie to your favorites.",
@@ -403,8 +393,7 @@ class Model {
                     duration: 4000,
                 },
                 showIcon: true,
-            });
-
+            });*/
             return;
         }
 
@@ -672,7 +661,7 @@ const useInfiniteScroll = (callback) => {
         return debounce(handleScroll, 100, false);
     }
 
-    return [isFetching, setIsFetching, stop];
+    return [setIsFetching, stop];
 };
 
 export { Model, filterTextLength, useInfiniteScroll };

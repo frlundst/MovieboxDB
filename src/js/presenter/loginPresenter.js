@@ -11,8 +11,8 @@ function LoginPresenter(props) {
     const [favorite, setFavorite] = React.useState(props.model.favoriteMovies);
     const [isSignedIn, setIsSignedIn] = React.useState(props.model.isLoggedIn());
     let navigate = useNavigate();
-    var email = "hej";
-    var password = "lol";
+    var email = "";
+    var password = "";
 
     React.useEffect(() => {
         const obs = () => {

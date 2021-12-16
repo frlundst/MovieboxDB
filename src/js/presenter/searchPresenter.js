@@ -12,12 +12,11 @@ function SearchPresenter(props) {
     const [error, setError] = React.useState(null);
     const [query, setQuery] = React.useState("Marvel");
     const [nextPage, setNextPage] = React.useState(null);
-    const [isFetching, setIsFetching] = useInfiniteScroll(getMoreFeed);
+    const [setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
     let navigate = useNavigate();
-    
+
     async function getMoreFeed() {
-        setIsFetching(true);
         if (nextPage && !bottom) {
             setPromise(
                 ApiFetch.searchMovie(query, nextPage)
@@ -38,13 +37,13 @@ function SearchPresenter(props) {
     }
 
     React.useEffect(() => {
-        setPromise(ApiFetch.searchMovie(query)
+        setPromise(ApiFetch.searchMovie("Marvel")
             .then(data => {
                 setData(data.results);
                 setNextPage(2);
             })
             .catch(error => setError(error)));
-    }, [query]);
+    }, []);
 
     return (
         <div>
@@ -53,15 +52,14 @@ function SearchPresenter(props) {
                 onSearch={() => {
                     setData(null);
                     setError(null);
-                    if (isFetching === false)
-                        setPromise(
-                            ApiFetch.searchMovie(query)
-                                .then((data) => {
-                                    setData(data.results);
-                                    setNextPage(2);
-                                })
-                                .catch((error) => setError(error))
-                        );
+                    setPromise(
+                        ApiFetch.searchMovie(query)
+                            .then((data) => {
+                                setData(data.results);
+                                setNextPage(2);
+                            })
+                            .catch((error) => setError(error))
+                    );
                 }}
             ></SearchFormView>
             {promiseNoData(promise, data, error) || <SearchResultsView

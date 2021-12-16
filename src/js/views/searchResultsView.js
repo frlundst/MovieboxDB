@@ -10,15 +10,15 @@ function SearchResultsView(props) {
                         return null;
                     } else {
                         return (
-                            <div id={result.id} className="movie-card" key={result.id}>
-                                <img id={result.id}
+                            <div className="movie-card" key={result.id}>
+                                <img 
                                     src={`https://image.tmdb.org/t/p/original/${result.poster_path}`}
                                     alt={result.title}
                                     onClick={() => props.onClick(result.id)}
                                 />
-                                <div id={result.id} className="movie-card-info">
-                                    <h3 id={result.id}>{result.title}</h3>
-                                    <p id={result.id}>{result.release_date}</p>
+                                <div className="movie-card-info">
+                                    <h3>{result.title}</h3>
+                                    <p>{result.release_date}</p>
                                 </div>
                             </div>
                         );

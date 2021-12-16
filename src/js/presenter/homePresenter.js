@@ -161,9 +161,9 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             navigate(`/movieDetails`);
                         }}
-                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id, true, navigate)}
                         addToFavorite={(movieInformation) => {
-                            props.model.addToFavorite(movieInformation);
+                            props.model.addToFavorite(movieInformation, true, navigate);
                         }}
                     />
                 </div>
@@ -208,9 +208,9 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             navigate(`/movieDetails`);
                         }}
-                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id, true, navigate)}
                         addToFavorite={(movieInformation) => {
-                            props.model.addToFavorite(movieInformation);
+                            props.model.addToFavorite(movieInformation, true, navigate);
                         }}
                     />
                 </div>
@@ -257,9 +257,9 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             navigate(`/movieDetails`);
                         }}
-                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id, true, navigate)}
                         addToFavorite={(movieInformation) => {
-                            props.model.addToFavorite(movieInformation);
+                            props.model.addToFavorite(movieInformation, true, navigate);
                         }}
                     />
                 </div>
@@ -304,9 +304,9 @@ function HomePresenter(props) {
                             props.model.setCurrentMovie(id);
                             navigate(`/movieDetails`);
                         }}
-                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id)}
+                        addToWatchlist={(id) => props.model.addMovieToWatchlist(id, true, navigate)}
                         addToFavorite={(movieInformation) => {
-                            props.model.addToFavorite(movieInformation);
+                            props.model.addToFavorite(movieInformation, true, navigate);
                         }}
                     />
                 </div>
