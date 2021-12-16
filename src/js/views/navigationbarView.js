@@ -18,7 +18,7 @@ function NavigationbarView(props) {
                     <Nav.Link href="/search">Search</Nav.Link>
                     <Nav.Link href="/discover">Discover</Nav.Link>
                     <Nav.Link href="/login">Profile</Nav.Link>
-                    <Nav.Link className='movie-matcher-link' href="/movieMatcher">MovieMatcher™</Nav.Link>
+                    <Nav.Link className='movie-matcher-link' href={props.isLoggedIn ?"/movieMatcher": "/login"}>MovieMatcher™</Nav.Link>
                 </Nav>
             </Navbar.Collapse>
         </Navbar>

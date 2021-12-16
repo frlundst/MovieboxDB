@@ -309,19 +309,7 @@ class Model {
 
     addMovieToWatchlist(movieInformation, notification = true) {
         if (!this.isLoggedIn()) {
-            store.addNotification({
-                title: "Not logged in",
-                message: "You need to be logged in to add a movie to your watchlist.",
-                type: "warning",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 4000,
-                },
-                showIcon: true,
-            });
+            window.location.href="/login";
             return;
         }
 
@@ -392,6 +380,8 @@ class Model {
 
     addToFavorite(movieInformation, notification = true) {
         if (!this.isLoggedIn()) {
+            window.location.href="/login";
+            /*
             store.addNotification({
                 title: "Not logged in",
                 message: "You need to be logged in to add a movie to your favorites.",
@@ -404,8 +394,7 @@ class Model {
                     duration: 4000,
                 },
                 showIcon: true,
-            });
-
+            });*/
             return;
         }
 

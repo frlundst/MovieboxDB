@@ -20,7 +20,11 @@ window.onload = function () {
 function NavigationbarPresenter(props){
     return(
         <div>
-            <NavigationbarView></NavigationbarView>
+            <NavigationbarView
+			isLoggedIn = {
+				props.isLoggedIn
+			}
+			></NavigationbarView>
         </div>
     );
 }
