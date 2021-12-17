@@ -1,23 +1,21 @@
 @import url('https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
 
 .navbar{
-    background-color: #19181F;
-    border-bottom: 1px solid #303743;
+    background-color: #100E1B;
 }
 
 .navbar-brand {
-    padding-left: 9%;
+    padding-left: 100%;
     height: 90px;
     display: flex;
   	justify-content: center;
   	align-items: center;
     transition: all 0.25s ease-in-out;
-
 }
 
 .navbar-brand img{
-    height: auto;
-    width: 300px;
+    height: 60px;
+    width: auto;
 }
 
 .nav{

@@ -1,7 +1,7 @@
 .top-movies-section {
     margin-top: -4px;
     padding: 0px 10% 50px 10%;
-    background-color: #19181F;
+    background-color: #131217;
     color: white;
 }
 
@@ -24,7 +24,7 @@
 
 .movie-vote {
     position: relative;
-    background-color: #5B818A;
+    background-color: #2A2357;
     border-radius: 20px;
     padding: 0 10px;
 
