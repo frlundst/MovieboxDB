@@ -17,11 +17,11 @@ function LoginView(props) {
                 </ul>
 
                 <p className="login-text">EMAIL</p>
-                <input className="login-box" onInput={e => props.setEmail(e.target.value)}/>
+                <input id = "email-input"className="login-box" onInput={e => props.setEmail(e.target.value)}/>
                 <Form.Label id="error-message-email"></Form.Label>
                 
                 <p className="login-text">PASSWORD</p>
-                <input className="login-box" type="password" onInput={e => props.setPassword(e.target.value)} autoComplete="on"/>
+                <input id="password-input" className="login-box" type="password" onInput={e => props.setPassword(e.target.value)} autoComplete="on"/>
                 <Form.Label id="error-message-password"></Form.Label>
 
                 <div className="terms-and-conditions">
@@ -29,11 +29,10 @@ function LoginView(props) {
                     <a href="#login" hidden={props.signIn}> Terms and Condition</a>
                     <a href="#login" hidden={!props.signIn}> Remember me</a>
                 </div>
-                <Form.Label id="error-message-checkbox">Blabla</Form.Label>
-                <button className="login-sign-in" hidden={props.signIn} onClick={(e) => {props.createUser(); e.preventDefault()}}>REGISTER</button>
-                <button className="login-sign-in" hidden={!props.signIn} onClick={(e) => {props.loginUser(); e.preventDefault()}}>LOGIN</button>
+                <Form.Label id="error-message-checkbox"></Form.Label>
+                <button className="login-sign-in" hidden={props.signIn} onClick={() => props.createUser()}>REGISTER</button>
+                <button className="login-sign-in" hidden={!props.signIn} onClick={() => props.loginUser()}>LOGIN</button>
             </form>
-
         </div>
     );
 }
