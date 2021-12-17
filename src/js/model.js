@@ -165,7 +165,6 @@ class Model {
                     })();
                 })
                 .catch((error) => {
-                    console.log(error);
                     switch (error.code) {
                         case "auth/missing-email":
                             emailErrorMessage.style.opacity = 1;

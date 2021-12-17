@@ -57,7 +57,6 @@ function DiscoverPresenter(props) {
                 onSortBy={sort_by => setSort_by(sort_by)}
                 onYearChange={year => setYear(year)}
                 onSearch={() => {
-                    console.log(year);
                     setData(null);
                     setError(null);
                         setPromise(
