@@ -2,7 +2,7 @@
 
 https://movieboxdb.web.app
 
-## Short description of your project
+## Description of Project
 
 The API that has been used in this project is:
 https://developers.themoviedb.org/4/getting-started/authorization
@@ -44,7 +44,7 @@ favourites list or the watchlist at the bottom of the home page.
 ![image](https://user-images.githubusercontent.com/86981714/146510404-be758eb8-a6fe-4d84-86d0-3a0c2f62f493.png)
 
 
-## Your project file structure (short description/purpose of each file)
+## Project file structure
 We are following the React structure for files, which means that
 we utilize a public folder where we store all our imgs and our 
 index files. Then we have a source file where our main files are, such as
