@@ -219,7 +219,11 @@ class Model {
         const passwordErrorMessage = document.getElementById(
             "error-message-password"
         );
+        const termsAndConditionsErrorMessage = document.getElementById(
+            "error-message-checkbox"
+        );
 
+        termsAndConditionsErrorMessage.style.opacity = 0;
         emailErrorMessage.style.opacity = 0;
         passwordErrorMessage.style.opacity = 0;
 
