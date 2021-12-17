@@ -31,11 +31,10 @@ Aside from this there is also a discover page that helps users find new
 movies to either save or watch. The movies that appear in
 the discover page can be sorted by min score, max score, newest 
 or oldest, most or least popular, highest or lowest rated, year,
-and lastly most and least revenue. 
+and lastly most and least revenue.
 
-DISCOVER SCREENSHOT HÄR VVVVV
 
-<img src="" width="250">
+![image](https://github.com/CasperKristiansson/MovieBoxDB/blob/59dccfda6dd5cb21cfe9e61aefb404b1260fb5ee/readme-images/discoverMovies.png)
 
 Aside from these features the
 site also shows how many movies have been saved to either the
