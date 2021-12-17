@@ -65,8 +65,8 @@
         padding-top: 150px;
     }
     .us-text {
-        width: 100%;
-        left: 0;
+        width: 80%;
+        left: 10%;
     }
 }
 
@@ -75,6 +75,8 @@
         text-align: left;
         padding-right: 40px;
         padding-left: 40px;
+        width: 100%;
+        left: 0;
     }
 
     .us-text p {

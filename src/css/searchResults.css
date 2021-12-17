@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
 .search-results-section {
     padding: 0px 9% 150px 9%;
     color: white;
@@ -19,11 +17,12 @@
     display: grid;
     grid-template-columns: repeat(6, 15%);
     grid-gap: 2%;
-    row-gap: 125px;
+    row-gap: 150px;
     padding: 0 2%;
     overflow: hidden;
     padding-bottom: 500px;
     cursor: pointer;
+    padding-top: 50px;
 }
 
 .search-movies-container p {
@@ -38,10 +37,6 @@
     text-shadow: 4px 4px 2px rgba(150, 150, 150, 1)
 }
 
-.movie-card{
-    margin-top:50px;
-}
-
 .movie-card-info h3 {
     font-size: 1.4em;
     color: white;
@@ -54,31 +49,18 @@
 
 @media (max-width: 1800px) {
     .movies-section {
-        padding: 0px 6% 150px 6%;
+        padding: 150px 6% 150px 6%;
     }
 
     .search-movies-container {
         grid-template-columns: repeat(5, 18%);
-        row-gap: 100px;
-    }
-
-    .movie-card:nth-child(6) {
-        display: none;
+        row-gap: 150px;
     }
 }
 
 @media (max-width: 1400px) {
     .search-movies-container {
         grid-template-columns: repeat(4, 23.5%);
-        row-gap: 100px;
-    }
-
-    .movie-card:nth-child(6) {
-        display: none;
-    }
-
-    .movie-card:nth-child(5) {
-        display: none;
     }
 }
 
@@ -96,14 +78,6 @@
     .movies-section h1 {
         padding-bottom: 60px;
         font-size: 60px;
-    }
-
-    .movie-card:nth-child(6) {
-        display: block;
-    }
-
-    .movie-card:nth-child(5) {
-        display: block;
     }
 }
 
@@ -127,7 +101,7 @@
 
 @media (max-width: 600px) {
     .search-movies-container{
-        row-gap: 100px;
+        row-gap: 150px;
         padding-top: 0px;
         padding-bottom: 60px;
     }
@@ -140,9 +114,5 @@
     .movies-section h1 {
         text-align: center;
         padding-bottom: 40px;
-    }
-
-    .movies-section {
-        padding: 20px 10px 0 10px;
     }
 }

@@ -11,6 +11,7 @@
 
 .movie-heading {
     padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .top-movies-container {
@@ -114,7 +115,7 @@
     
     .top-movies-container {
         grid-template-columns: 32% 32% 32%;
-        row-gap: 5%;
+        row-gap: 100px;
     }
 
     .top-movies-section h1 {
@@ -130,8 +131,12 @@
         display: block;
     }
 
-    .top-movies-section:last-child {
-        
+    .movie-card:hover {
+        transform: scale(1.10);
+    }
+
+    .top-movies-container img:hover {
+        box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
     }
 }
 

@@ -1,36 +1,18 @@
-.discover-results-section{
-    padding-left: 10%;
-    padding-right: 10%;
-    padding-top: 150px;
-    color: white !important;
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
 .discover-results-section {
-    padding: 0px 10% 150px 10%;
+    padding: 150px 9% 100px 9%;
     color: white;
-}
-
-.discover-results-section h1 {
-    padding-bottom: 30px;
-    font-size: 60px;
-}
-
-.movie-heading {
-    padding-top: 60px;
 }
 
 .discover-movies-container {
     background-color: #19181F;
     display: grid;
-    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+    grid-template-columns: repeat(6, 15%);
     grid-gap: 2%;
-    row-gap: 50px;
-    padding-left: 10%;
-    padding-right: 10%;
+    row-gap: 125px;
+    padding: 0 2%;
     overflow: hidden;
     padding-bottom: 500px;
+    cursor: pointer;
 }
 
 .movie-vote {
@@ -74,31 +56,19 @@
 
 @media (max-width: 1800px) {
     .discover-results-section {
-        padding: 0px 6% 150px 6%;
+        padding: 150px 6% 150px 6%;
     }
 
     .discover-movies-container {
         grid-template-columns: repeat(5, 18%);
-        row-gap: 50px;
-    }
-
-    .movie-card:nth-child(6) {
-        display: none;
+        row-gap: 100px;
+        padding-top: 50px;
     }
 }
 
 @media (max-width: 1400px) {
     .discover-movies-container {
         grid-template-columns: repeat(4, 23.5%);
-        row-gap: 50px;
-    }
-
-    .movie-card:nth-child(6) {
-        display: none;
-    }
-
-    .movie-card:nth-child(5) {
-        display: none;
     }
 }
 
@@ -108,28 +78,21 @@
     }
     
     .discover-movies-container {
-        grid-template-columns: 32% 32% 32%;
-        row-gap: 50px;
+        grid-template-columns: 30% 30% 30%;
+        row-gap: 100px;
+        column-gap: 5%;
     }
 
     .discover-results-section h1 {
         padding-bottom: 60px;
         font-size: 60px;
     }
-
-    .movie-card:nth-child(6) {
-        display: block;
-    }
-
-    .movie-card:nth-child(5) {
-        display: block;
-    }
 }
 
 @media (max-width: 900px) {
     .discover-movies-container{
-        grid-template-columns: 49% 49%;
-        row-gap: 50px;
+        grid-template-columns: 47.5% 47.5%;
+        row-gap: 100px;
         padding-top: 0px;
         padding-bottom: 180px;
     }
@@ -146,7 +109,7 @@
 
 @media (max-width: 600px) {
     .discover-movies-container{
-        row-gap: 120px;
+        row-gap: 100px;
         padding-top: 0px;
         padding-bottom: 60px;
     }
@@ -157,6 +120,7 @@
     }
 
     .discover-results-section {
-        padding: 20px 10px 0 10px;
+        padding: 0px 0% 150px 0%;
+        color: white;
     }
 }
