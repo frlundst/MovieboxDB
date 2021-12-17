@@ -27,7 +27,7 @@ function HomeMovieDetailsView(props) {
                 <div className="movie-details-overview">
                     <p>{filterTextLength(props.movieDetails.overview, 350)}</p>
                     <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.movieDetails)}>
-                        <FontAwesomeIcon icon={faPlus} size="lg"/> ADD LIST
+                        <FontAwesomeIcon icon={faPlus} size="lg"/> ADD WATCHLIST
                     </button>
                     <button className="movie-details-button-watch" onClick={() => props.readMore(props.movieDetails.id)}>
                         <FontAwesomeIcon icon={faInfoCircle} size="lg" /> READ MORE

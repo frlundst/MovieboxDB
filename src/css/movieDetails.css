@@ -275,9 +275,9 @@ body {
     }
 
     .movie-details-intro-content {
-        transform: scale(0.9);
-        width: 115%;
-        margin-left: -6%;
+        transform: scale(0.8);
+        width: 130%;
+        margin-left: -12%;
     }
 }
 
@@ -398,5 +398,11 @@ body {
 
     .movie-details-button-watch {
         margin-left: -25px;
+    }
+
+    .movie-details-button {
+        transform: scale(0.9);
+        width: 140%;
+        margin-left: -8%;
     }
 }

@@ -31,7 +31,7 @@ function MovieDetailsView(props) {
                     </div>
                     <div className="movie-details-button">
                         <button className="movie-details-button-watch" onClick={() => props.addToWatchlist(props.movie)}>
-                            <FontAwesomeIcon icon={faPlus}/> ADD LIST
+                            <FontAwesomeIcon icon={faPlus}/> ADD WATCHLIST
                         </button>
                         <button className="movie-details-button-watch" onClick={() => props.addToFavorite(props.movie)}>
                             <FontAwesomeIcon icon={faHeart}/> ADD FAVORITE
