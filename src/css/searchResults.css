@@ -13,7 +13,7 @@
 }
 
 .search-movies-container {
-    background-color: #19181F;
+    background-color: #131217;
     display: grid;
     grid-template-columns: repeat(6, 15%);
     grid-gap: 2%;
