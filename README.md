@@ -19,7 +19,7 @@ gives the user access to the MovieMatcher, which is a game
 inspired by the dating app "Tinder", where the user swipes 
 in one of the four directions for movies depending on
 whether or not they want to skip, add to favourites, add to
-watchlist or see more info about the movie. ![Showcase of MovieMatcher](ezgif.com-gif-maker (4).gif) 
+watchlist or see more info about the movie. ![Showcase of MovieMatcher](https://github.com/CasperKristiansson/MovieBoxDB/blob/master/readme-images/ezgif.com-gif-maker%20(6).gif?raw=true) 
 Aside from this there is also a discover page that helps users find new 
 movies to either save or watch. The movies that appear in
 the discover page can be sorted by min score, max score, newest 
