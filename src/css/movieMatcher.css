@@ -1,5 +1,6 @@
 .movieMatcher-section{
     margin-top: 150px;
+    padding-bottom: 100px;
 }
 
 .title{
@@ -16,7 +17,7 @@
     margin-bottom: 50px;
 }
 
-.description{
+.description {
     color: gray !important;
     text-align: center !important;
 }
@@ -25,17 +26,18 @@
     position:static;
     margin: 0 auto;
     width: 90vw;
-    max-width: 260px;
-    height: 300px;
+    max-width: 400px;
+    height: 500px;
     margin-bottom: 320px;
+    padding-top: 120px;
 }
   
 .card {
     position: relative;
     background: transparent;
     width: 80vw;
-    max-width: 260px;
-    height: 300px;
+    max-width: 400px;
+    height: auto;
     background-size: cover;
     background-position: center;
 }
@@ -50,8 +52,42 @@
     bottom: 0;
     margin: 10px;
     color: #fff;
-  }
+}
 
-  .swipe {
+.swipe {
     position: absolute;
-  }
+}
+
+.movieMatcher-section h2 {
+    padding-top: 100px;
+}
+
+@media screen and (max-width: 500px) {
+    .card {
+        position: relative;
+        background: transparent;
+        width: 60vw;
+        max-width: 400px;
+        height: auto;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .cardContainer {
+        position:static;
+        margin: 0 auto;
+        width: 60vw;
+        max-width: 400px;
+        height: 500px;
+        margin-bottom: 320px;
+    }
+
+    .movieMatcher-section{
+        padding-bottom: 0px;
+    }
+
+    .movieMatcher-section h2 {
+        padding-top: 0px;
+        margin-top: -50px;
+    }
+}

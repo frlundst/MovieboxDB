@@ -5,13 +5,15 @@ import TinderCard from 'react-tinder-card';
 function MovieMatcherView(props) {
     return (
         <div className="movieMatcher-section">
+            <div className="discover ">
+                    <h1 className="movie-matcher-title">MovieMatcher™</h1>
+                </div>
             <div className='cardContainer'>
-                <h3 className="title">MoiveMatcher™</h3>
                 <h5 className="description">Swipe right to add movie to watchlist. Swipe up to add movie to favourites. Swipe down for more information. Swipe left for no.</h5>
                 <br />
                 {props.topMovies.map(
                     function (movie) {
-                        if (movie.poster_path == null) {
+                        if (movie.poster_path == null || movie.backdrop_path == null ) {
                             return null;
                         } else {
                             return (

@@ -23,10 +23,10 @@ function MovieMatcherPresenter(props){
             case "left":
                 break;
             case "right":
-                props.model.addToFavorite(movie, false, navigate);
+                props.model.addMovieToWatchlist(movie, false, navigate);
                 break;
             case "up":
-                props.model.addMovieToWatchlist(movie, false, navigate);
+                props.model.addToFavorite(movie, false, navigate);
                 break;
             case "down":
                 props.model.setCurrentMovie(movie.id);
@@ -73,10 +73,10 @@ function MovieMatcherPresenter(props){
                             setLastDirection("Movie skipped");
                             break;
                         case "right":
-                            setLastDirection(movie.title + " added to favorites");
+                            setLastDirection(movie.title + " added to watchlist");
                             break;
                         case "up":
-                            setLastDirection(movie.title + " added to watchlist");
+                            setLastDirection(movie.title + " added to favorites");
                             break;
                         case "down":
                             setLastDirection("You swiped down");
