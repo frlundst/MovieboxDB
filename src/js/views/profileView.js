@@ -22,7 +22,7 @@ function ProfileView(props) {
                             <h2>{props.user[0] === undefined ? "No Name" : props.user[0]}</h2>
                         </div>
                         <div className="profile-about-bio">
-                            <p>{props.user[1] === undefined ? "No Biography" : filterTextLength(props.user[1], 550)}</p>
+                            <p>{props.user[1] === undefined ? "No Biography" : filterTextLength(props.user[1], 350)}</p>
                         </div>
                     </div>
                 </div>
