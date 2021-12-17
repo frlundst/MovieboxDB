@@ -2,6 +2,35 @@
 View the website here:
 https://movieboxdb.web.app
 
+## Default or Basic Usage
+```
+$ git clone https://github.com/CasperKristiansson/MovieBoxDB
+$ cd MovieBoxDB
+$ npm install
+```
+
+Next step is to create a api key at: https://developers.themoviedb.org/3/getting-started/introduction
+
+Create a file at the path: src/js/apiConfig.js
+```
+export const API_KEY = API_KEY;
+export const BASE_URL = "https://api.themoviedb.org/3";
+export const IMAGE_URL = "https://image.tmdb.org/t/p/original";
+```
+
+Next step is to create a firebase application: https://firebase.google.com/docs/build
+
+Create a file at the path: src/js/firebaseConfig.js
+```
+export const firebaseConfig = {
+    //...
+};
+```
+
+```
+$ npm start
+```
+
 ## Description of Project
 
 The API that has been used in this project is:
