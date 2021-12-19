@@ -296,7 +296,6 @@ class Model {
                     (movie) => movie !== undefined
                 );
 
-                //Remove duplicates from watchlist and favorites using the id of the movie
                 this.watchlistMovies = this.watchlistMovies.filter(
                     (movie, index, self) =>
                         index ===
