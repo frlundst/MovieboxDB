@@ -9,19 +9,15 @@ function SearchFormView(props) {
     return (
         <div className="search-form-section">
             <div className="search-form">
-                <Form className="form">
-                    <Form.Group className="form-group" controlId="formSearch">
-                            <Row className="g-2">
-                                <h1>Search For Movies</h1>
-                            </Row>
-                            <Row className="g-2">
-                                <InputGroup>
-                                    <Form.Control className="input" type="search" placeholder="Search..." onInput={e => props.onText(e.target.value)} />
-                                    <Button className="button" variant="dark" onClick={() => props.onSearch()}>Search</Button>
-                                </InputGroup>
-                            </Row>
-                    </Form.Group>
-                </Form>
+                <Row className="g-2">
+                    <h1>Search For Movies</h1>
+                </Row>
+                <Row className="g-2">
+                    <InputGroup>
+                        <Form.Control className="input" placeholder="Search..." type="search" onInput={e => props.onText(e.target.value)} onKeyPress={e => { if (e.key === "Enter") props.onSearch() }} />
+                        <Button className="button" variant="dark" onClick={() => props.onSearch()}>Search</Button>
+                    </InputGroup>
+                </Row>
             </div>
 
         </div>

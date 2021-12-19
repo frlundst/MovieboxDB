@@ -58,7 +58,7 @@ function DiscoverFormView(props) {
                             </div>
                         </div>
                         <div className="year">
-                            <Form.Control className="year-input" type="search" placeholder="Enter Specific Year..." onInput={e => props.onYearChange(e.target.value)} />
+                            <Form.Control className="year-input" type="search" placeholder="Enter Specific Year..." onInput={e => props.onYearChange(e.target.value)} onKeyPress={e => { if (e.key === "Enter") props.onSearch() }} />
                         </div>
                         <div className="search-button">
                             <Button className="discover-box-search" variant="dark" onClick={() => props.onSearch()}>Search</Button>

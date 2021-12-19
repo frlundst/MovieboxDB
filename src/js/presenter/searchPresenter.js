@@ -16,7 +16,6 @@ function SearchPresenter(props) {
     const [bottom, setBottom] = React.useState(false);
 
     let navigate = useNavigate();
-    window.scrollTo(0, 0);
 
     async function getMoreFeed() {
         if (nextPage && !bottom) {
@@ -50,7 +49,9 @@ function SearchPresenter(props) {
     return (
         <div>
             <SearchFormView
-                onText={text => setQuery(text)}
+                onText={text => {
+                    setQuery(text)
+                }}
                 onSearch={() => {
                     setData(null);
                     setError(null);
@@ -63,14 +64,14 @@ function SearchPresenter(props) {
                             .catch((error) => setError(error))
                     );
                 }}
-            ></SearchFormView>
+            />
             {promiseNoData(promise, data, error) || <SearchResultsView
                 searchResults={data}
                 onClick={(id) => {
                     props.model.setCurrentMovie(id);
                     navigate(`/movieDetails`);
                 }}
-            ></SearchResultsView>}
+            />}
         </div>
     );
 }

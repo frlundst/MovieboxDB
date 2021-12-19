@@ -16,6 +16,11 @@
     .footer {
         padding: 0 10px !important;
     }
+
+    .footer-links {
+        width: 15% !important;
+        padding-left: 10px !important;
+    }
 }
 
 @media (max-width: 768px) {

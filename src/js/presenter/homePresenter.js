@@ -94,7 +94,6 @@ function HomePresenter(props) {
 
     const { width } = WindowDimensions();
     let navigate = useNavigate();
-    window.scrollTo(0, 0);
 
     React.useEffect(() => {
         setPromise(

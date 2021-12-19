@@ -22,11 +22,13 @@
     box-shadow: none;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
+    width: 50% !important;
 }
 
 .search-form{
-    width: 100%;
+    width: 50%;
     text-align: center;
+    margin: auto;
 }
 
 .form-group{
@@ -45,6 +47,11 @@
 
     .search-form-section h1{
         font-size: 40px;
+    }
+
+    .search-form {
+        width: 80%;
+        padding-bottom: 30px;
     }
 }
 

@@ -12,7 +12,6 @@ function LoginPresenter(props) {
     const [isSignedIn, setIsSignedIn] = React.useState(props.model.isLoggedIn());
 
     let navigate = useNavigate();
-    window.scrollTo(0, 0);
     var email = "";
     var password = "";
 
