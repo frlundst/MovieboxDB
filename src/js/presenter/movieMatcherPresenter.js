@@ -16,7 +16,6 @@ function MovieMatcherPresenter(props){
     var counter = 0;
 
     const swiped = (direction, movie) => {
-        console.log(direction);
         if(counter >= 20){
             setNextPage(nextPage + 1);
             fetchMoreData();

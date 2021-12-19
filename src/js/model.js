@@ -580,13 +580,11 @@ class Model {
     }
 
     setMovieMatcherCounter(counter) {
-        console.log(counter);
         this.movieMatcherCounter = counter;
         this.notifyObservers();
     }
 
     setMovieMatcherPage(page) {
-        console.log(page);
         this.movieMatcherPage = page;
         this.notifyObservers();
     }

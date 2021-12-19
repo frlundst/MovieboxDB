@@ -53,6 +53,9 @@ export const ApiFetch = {
     },
 
     searchMovie(query="", page = 1){
+        if(query === ""){
+            query = "marvel";
+        }
         return this.apiCall(`/search/movie?query=${query}&page=${page}&`);
     },
 
