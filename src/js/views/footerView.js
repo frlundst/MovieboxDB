@@ -61,23 +61,19 @@ function FooterView(props) {
                     items: [
                         {
                             title: "Home",
-                            url: "/#home"
+                            url: "/"
                         },
                         {
                             title: "Search",
-                            url: "/#search"
+                            url: "/search"
                         },
                         {
                             title: "Discover",
-                            url: "/#discover"
+                            url: "/discover"
                         },
                         {
-                            title: "Favourites",
-                            url: "/#favourites"
-                        },
-                        {
-                            title: "Watchlist",
-                            url: "/#watchlist"
+                            title: "MovieMatcher",
+                            url: "/movieMatcher"
                         },
                     ],
                     style: {
