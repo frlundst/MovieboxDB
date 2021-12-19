@@ -20,9 +20,7 @@ class Model {
         this.user = null;
         this.watchlistMovies = [];
         this.favoriteMovies = [];
-        //this.initializeDataBase(); //#TODO: TEMPORARY
         this.profile = null;
-        //this.setProfileInformation(); //#TODO: TEMPORARY
         this.numberOfWatchlistMovies = 0;
         this.numberOfFavoriteMovies = 0;
         this.setPersistence();
@@ -383,20 +381,6 @@ class Model {
     addToFavorite(movieInformation, notification = true, navigate) {
         if (!this.isLoggedIn()) {
             navigate("/login");
-            /*
-            store.addNotification({
-                title: "Not logged in",
-                message: "You need to be logged in to add a movie to your favorites.",
-                type: "warning",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 4000,
-                },
-                showIcon: true,
-            });*/
             return;
         }
 

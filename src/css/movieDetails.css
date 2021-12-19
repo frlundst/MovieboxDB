@@ -276,8 +276,12 @@ body {
 
     .movie-details-intro-content {
         transform: scale(0.8);
-        width: 130%;
-        margin-left: -12%;
+        margin-left: -10%;
+    }
+
+    .movie-details-intro-content button {
+        width: 80%;
+        margin-bottom: 20px;
     }
 }
 
@@ -289,12 +293,6 @@ body {
 }
 
 @media screen and (max-width: 580px) {
-    .movie-details-intro-content {
-        transform: scale(0.8);
-        width: 130%;
-        margin-left: -12%;
-    }
-
     .movie-details-content {
         grid-template-columns: 100%;
         margin-top: -600px;
@@ -375,11 +373,6 @@ body {
         grid-template-columns: 100%;
         margin-top: -660px;
     }
-
-    .movie-details-button-watch {
-        transform: scale(0.8);
-        margin-right: 0;
-    }
 }
 
 @media screen and (max-width: 400px) {
@@ -400,9 +393,7 @@ body {
         margin-left: -25px;
     }
 
-    .movie-details-button {
-        transform: scale(0.9);
-        width: 140%;
-        margin-left: -8%;
+    .movie-details-intro-content button {
+        margin-left: 0%;
     }
 }

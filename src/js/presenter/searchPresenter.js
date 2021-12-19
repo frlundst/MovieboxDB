@@ -14,7 +14,9 @@ function SearchPresenter(props) {
     const [nextPage, setNextPage] = React.useState(null);
     const [setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
+
     let navigate = useNavigate();
+    window.scrollTo(0, 0);
 
     async function getMoreFeed() {
         if (nextPage && !bottom) {

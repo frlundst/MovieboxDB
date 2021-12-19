@@ -93,8 +93,8 @@ function HomePresenter(props) {
     const executeScrollFourth = () => scrollToRef(movieDetailsFourth);
 
     const { width } = WindowDimensions();
-
     let navigate = useNavigate();
+    window.scrollTo(0, 0);
 
     React.useEffect(() => {
         setPromise(

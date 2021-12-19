@@ -10,7 +10,9 @@ function LoginPresenter(props) {
     const [watchlist, setWatchlist] = React.useState(props.model.watchlistMovies);
     const [favorite, setFavorite] = React.useState(props.model.favoriteMovies);
     const [isSignedIn, setIsSignedIn] = React.useState(props.model.isLoggedIn());
+
     let navigate = useNavigate();
+    window.scrollTo(0, 0);
     var email = "";
     var password = "";
 

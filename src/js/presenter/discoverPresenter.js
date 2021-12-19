@@ -14,12 +14,14 @@ function DiscoverPresenter(props) {
     const [minScore, setMinScore] = React.useState(1);
     const [maxScore, setMaxScore] = React.useState(10);
     const [year, setYear] = React.useState("none");
-    const [sort_by, setSort_by] = React.useState('popularity.desc'); //Final sort and order
+    const [sort_by, setSort_by] = React.useState('popularity.desc');
 
     const [nextPage, setNextPage] = React.useState(null);
     const [setIsFetching] = useInfiniteScroll(getMoreFeed);
     const [bottom, setBottom] = React.useState(false);
+    
     let navigate = useNavigate();
+    window.scrollTo(0, 0);
 
     async function getMoreFeed() {
         if (nextPage && !bottom) {

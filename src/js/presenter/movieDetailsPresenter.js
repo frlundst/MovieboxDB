@@ -12,27 +12,29 @@ function MovieDetailsPresenter(props) {
     const [MovieDetailsData, setMovieDetailsData] = React.useState(props.model.movieDetails);
     const [MovieDetailsError, setMovieDetailsError] = React.useState(props.model.movieDetailsError);
 
-    const [SimilarMoviesData, setSimilarMoviesData] = React.useState(props.model.similarMovies);
-    const [SimilarMoviesError, setSimilarMoviesError] = React.useState(props.model.similarMoviesError);
-
     const [MovieVideosData, setMovieVideosData] = React.useState(props.model.movieVideos);
     const [MovieVideosError, setMovieVideosError] = React.useState(props.model.movieVideosError);
-
+    
     const [MovieCreditsData, setMovieCreditsData] = React.useState(props.model.movieCredits);
     const [MovieCreditsError, setMovieCreditsError] = React.useState(props.model.movieCreditsError);
+    
+    const [SimilarMoviesData, setSimilarMoviesData] = React.useState(props.model.similarMovies);
+    const [SimilarMoviesError, setSimilarMoviesError] = React.useState(props.model.similarMoviesError);
+    
     let navigate = useNavigate();
+    window.scrollTo(0, 0);
 
     React.useEffect(() => {
         const obs = () => {
             setMovieID(props.model.currentMovie);
             setMovieDetailsData(props.model.movieDetails);
             setMovieDetailsError(props.model.movieDetailsError);
-            setSimilarMoviesData(props.model.similarMovies);
-            setSimilarMoviesError(props.model.similarMoviesError);
             setMovieVideosData(props.model.movieVideos);
             setMovieVideosError(props.model.movieVideosError);
             setMovieCreditsData(props.model.movieCredits);
             setMovieCreditsError(props.model.movieCreditsError);
+            setSimilarMoviesData(props.model.similarMovies);
+            setSimilarMoviesError(props.model.similarMoviesError);
         };
         props.model.addObserver(obs);
         return () => props.model.removeObserver(obs);

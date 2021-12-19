@@ -22,6 +22,7 @@ function NavigationbarPresenter(props) {
 	const [expanded, setExpanded] = React.useState(false);
 
 	let navigate = useNavigate();
+
     return(
         <div>
             <NavigationbarView

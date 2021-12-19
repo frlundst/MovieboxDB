@@ -11,6 +11,7 @@ function MovieMatcherPresenter(props){
     const [bottom, setBottom] = React.useState(false);
     const [nextPage, setNextPage] = React.useState(2);
     const [lastDirection, setLastDirection] = React.useState(null)
+    
     let navigate = useNavigate();
     var counter = 0;
 
