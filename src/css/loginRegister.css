@@ -58,7 +58,7 @@ body {
     color: white;
 }
 
-.login-nav-item a {
+.login-nav-item p {
 	padding-bottom: 5px;
 	position: relative;
 	color: #ffffff40;
@@ -68,12 +68,12 @@ body {
     cursor: pointer;
 }
 
-.login-nav-item.active a,
-.login-nav-item a:hover{
+.login-nav-item.active p,
+.login-nav-item p:hover{
 	color: white;
 }
 
-.login-nav-item a:after {
+.login-nav-item p:after {
 	content: '';
     height: 10px;
     position: absolute;
@@ -81,8 +81,8 @@ body {
     
 }
 
-.login-nav-item a:hover:after,
-.login-nav-item.active a:after{
+.login-nav-item p:hover:after,
+.login-nav-item.active p:after{
 	background-color: rgb(17, 97, 237);
 	height: 1px;
 	right: 0;
@@ -137,11 +137,15 @@ body {
 
 .terms-and-conditions input {
     margin-top: 7px;
+	float: left;
 }
 
-.terms-and-conditions a {
+.terms-and-conditions p {
 	color: #1161ED !important;
 	z-index: 1;
+	margin-left: 7px;
+	float: left;
+	margin-top: 1px;
 }
 
 #error-message-email{

@@ -14,9 +14,9 @@ import { useState, useEffect, useRef } from "react";
 import { store } from 'react-notifications-component';
 
 class Model {
-    constructor(currentMovie = null) {
+    constructor() {
         this.observers = [];
-        this.currentMovie = currentMovie;
+        this.currentMovie = null;
         this.user = null;
         this.watchlistMovies = [];
         this.favoriteMovies = [];
@@ -206,6 +206,10 @@ class Model {
         } else {
             return false;
         }
+    }
+
+    sleep (milliseconds) {
+        return new Promise(resolve => setTimeout(resolve, milliseconds))
     }
 
     loginUser(email, password) {

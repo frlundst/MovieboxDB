@@ -9,29 +9,29 @@ function LoginView(props) {
 
                 <ul className="login-nav">
                     <li className={`login-nav-item ${props.signIn ? 'active' : ''}`}>
-                        <a href="#login" onClick={() => props.login()}>Sign In</a>
+                        <p onClick={() => props.login()}>Sign In</p>
                     </li>
                     <li className={`login-nav-item ${!props.signIn ? 'active' : ''}`}>
-                        <a href="#login" onClick={() => props.signUp()}>Sign Up</a>
+                        <p onClick={() => props.signUp()}>Sign Up</p>
                     </li>
                 </ul>
 
                 <p className="login-text">EMAIL</p>
-                <input id = "email-input"className="login-box" onInput={e => props.setEmail(e.target.value)}/>
+                <input id = "email-input"className="login-box" onChange={e => props.setEmail(e.target.value)} onSelect={e => props.setEmail(e.target.value)} />
                 <Form.Label id="error-message-email"></Form.Label>
                 
                 <p className="login-text">PASSWORD</p>
-                <input id="password-input" className="login-box" type="password" onInput={e => props.setPassword(e.target.value)} autoComplete="on"/>
+                <input id="password-input" className="login-box" type="password" onChange={e => props.setPassword(e.target.value)}/>
                 <Form.Label id="error-message-password"></Form.Label>
 
                 <div className="terms-and-conditions">
-                    <input type="checkbox" id="checkbox" classnames="form-check-input" autoComplete="on"/>
-                    <a href="#login" hidden={props.signIn}> Terms and Condition</a>
-                    <a href="#login" hidden={!props.signIn}> Remember me</a>
+                    <input type="checkbox" id="checkbox" classnames="form-check-input"/>
+                    <p hidden={props.signIn}>Terms and Condition</p>
+                    <p hidden={!props.signIn}>Remember me</p>
                 </div>
                 <Form.Label id="error-message-checkbox"></Form.Label>
-                <button className="login-sign-in" hidden={props.signIn} onClick={() => props.createUser()}>REGISTER</button>
-                <button className="login-sign-in" hidden={!props.signIn} onClick={() => props.loginUser()}>LOGIN</button>
+                <button className="login-sign-in" hidden={props.signIn} onClick={(e) => { e.preventDefault(); props.createUser() }}>REGISTER</button>
+                <button className="login-sign-in" hidden={!props.signIn} onClick={(e) => { e.preventDefault(); props.loginUser() }}>LOGIN</button>
             </form>
         </div>
     );
