@@ -16,6 +16,7 @@ function MovieMatcherPresenter(props){
     var counter = 0;
 
     const swiped = (direction, movie) => {
+        console.log(direction);
         if(counter >= 20){
             setNextPage(nextPage + 1);
             fetchMoreData();
@@ -54,11 +55,13 @@ function MovieMatcherPresenter(props){
     }
 
     React.useEffect(() => {
+        let isMounted = true;
         setPromise(ApiFetch.discoverMovie("popularity.desc", 10, 1)
             .then(data => {
-                setData(data.results);
+                if(isMounted) setData(data.results);
             })
             .catch(error => setError(error)));
+        return () => isMounted = false;
     }, []);
 
     return(
