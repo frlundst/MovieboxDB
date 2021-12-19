@@ -295,6 +295,24 @@ class Model {
                 this.favoriteMovies = this.favoriteMovies.filter(
                     (movie) => movie !== undefined
                 );
+
+                //Remove duplicates from watchlist and favorites using the id of the movie
+                this.watchlistMovies = this.watchlistMovies.filter(
+                    (movie, index, self) =>
+                        index ===
+                        self.findIndex(
+                            (t) => t.id === movie.id
+                        )
+                );
+
+                this.favoriteMovies = this.favoriteMovies.filter(
+                    (movie, index, self) =>
+                        index ===
+                        self.findIndex(
+                            (t) => t.id === movie.id
+                        )
+                );
+
             } catch (e) {
                 console.error("Error adding document: ", e);
             }
