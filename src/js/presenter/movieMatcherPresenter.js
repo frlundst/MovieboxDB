@@ -66,6 +66,7 @@ function MovieMatcherPresenter(props){
             {promiseNoData(promise, data, error) || <MovieMatcherView 
                 lastDirection={lastDirection}
                 topMovies={data}
+                increaseCounter={() => counter++}
                 onSwipe={(direction,movie) => {
                     counter++;
                     swiped(direction, movie);

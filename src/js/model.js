@@ -23,6 +23,10 @@ class Model {
         this.profile = null;
         this.numberOfWatchlistMovies = 0;
         this.numberOfFavoriteMovies = 0;
+
+        this.movieMatcherCounter = 0;
+        this.movieMatcherPage = 2;
+
         this.setPersistence();
         this.getDataBaseInfo();
     }
@@ -573,6 +577,18 @@ class Model {
                 console.error("Error adding document: ", e);
             }
         })();
+    }
+
+    setMovieMatcherCounter(counter) {
+        console.log(counter);
+        this.movieMatcherCounter = counter;
+        this.notifyObservers();
+    }
+
+    setMovieMatcherPage(page) {
+        console.log(page);
+        this.movieMatcherPage = page;
+        this.notifyObservers();
     }
 }
 

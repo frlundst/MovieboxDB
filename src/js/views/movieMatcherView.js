@@ -14,6 +14,7 @@ function MovieMatcherView(props) {
                 {props.topMovies.map(
                     function (movie) {
                         if (movie.poster_path == null || movie.backdrop_path == null ) {
+                            props.increaseCounter();
                             return null;
                         } else {
                             return (

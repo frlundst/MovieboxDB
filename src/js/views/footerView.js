@@ -3,7 +3,7 @@ import '../../css/footer.css';
 import Footer from 'rc-footer';
 import 'rc-footer/assets/index.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faUsers, faAddressBook, faLocationArrow } from '@fortawesome/free-solid-svg-icons'
+import {faUsers, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 
 function FooterView(props) {
     return (
