@@ -49,38 +49,10 @@ function FooterView(props) {
                         },                                 
                     ],
                     style: {
-                        paddingLeft: "10px"
+                        paddingLeft: "10px",
+                        width: "35%"
                     },
                     className: "footer-contact-us"
-                },
-                {
-                    title: "Links",
-                    icon: (
-                        <FontAwesomeIcon icon={faLocationArrow}/>
-                    ),
-                    items: [
-                        {
-                            title: "Home",
-                            url: "/"
-                        },
-                        {
-                            title: "Search",
-                            url: "/search"
-                        },
-                        {
-                            title: "Discover",
-                            url: "/discover"
-                        },
-                        {
-                            title: "MovieMatcher",
-                            url: "/movieMatcher"
-                        },
-                    ],
-                    style: {
-                        width: "10%",
-                        paddingLeft: "10px"
-                    },
-                    className: "footer-links"
                 },
                 {
                     title: "Attribution",

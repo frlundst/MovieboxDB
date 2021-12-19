@@ -5,5 +5,9 @@
   "hosting": {
     "site": "movieboxdb",
     "public": "build"
-  }
+  },
+  "rewrites": [{
+    "source": "/build/**",
+    "destination": "/index.html"
+  }]
 }
