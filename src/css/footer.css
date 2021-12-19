@@ -12,28 +12,32 @@
     }
 }
 
+@media (max-width: 1024px) {
+    .footer {
+        padding: 0 10px !important;
+    }
+}
+
 @media (max-width: 768px) {
-    .footer-attribution img{
-        margin-left: -53px;
+    .footer-attribution {
+        width: 100% !important;
     }
 
-    .footer-about-us{
-        margin-left: -73%;
-        padding: 0;
+    .footer-attribution img {
+        margin-left: -50px;
     }
 
-    .footer-contact-us{
-        margin-left: -22%;
-        padding: 0;
+    .footer-links {
+        width: 100% !important;
+        padding-left: 0px !important;
     }
 
-    .footer-contact-text {
-        width: 80%;
-        padding-left: 15%;
+    .footer-contact-us {
+        width: 100% !important;
+        padding-left: 0px !important;
     }
 
-    .footer-about-text {
-        width: 67%;
-        padding-left: 30%;
+    .footer-about-us {
+        width: 100% !important;
     }
 }

@@ -4,7 +4,7 @@ import { Nav, Navbar } from 'react-bootstrap';
 
 function NavigationbarView(props) {
     return (
-        <Navbar className="navbar" bg="blue" fixed="top" variant="dark" expand="lg">
+        <Navbar className="navbar" fixed="top" variant="dark" expand="lg">
             <Nav.Link href="/">
                 <Navbar.Brand className="navbar-brand" id="navigation-bar">
                     <img id="navigation-bar-img" alt="Logo" src="images/movieBoxDB Logo.png" />

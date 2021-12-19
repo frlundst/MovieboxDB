@@ -24,9 +24,7 @@ function FooterView(props) {
                         }        
                     ],
                     style: {
-                        paddingRight: '30px',
-                        paddingLeft: '30px',
-                        width: "250%",
+                        width: "40%"
                     },
                     className: "footer-about-us"
                 },
@@ -51,9 +49,7 @@ function FooterView(props) {
                         },                                 
                     ],
                     style: {
-                        paddingRight: '30px',
-                        paddingLeft: '30px',
-                        width: "150%",
+                        paddingLeft: "10px"
                     },
                     className: "footer-contact-us"
                 },
@@ -85,10 +81,10 @@ function FooterView(props) {
                         },
                     ],
                     style: {
-                        width: "100%",
-                        paddingRight: '30px',
-                        paddingLeft: '30px',
-                    }
+                        width: "10%",
+                        paddingLeft: "10px"
+                    },
+                    className: "footer-links"
                 },
                 {
                     title: "Attribution",
@@ -106,9 +102,7 @@ function FooterView(props) {
                     ],
 
                     style: {
-                        paddingRight: '30px',
-                        paddingLeft: '30px',
-                        width: "100%",
+                        width: "15%",
                     },
                     className: "footer-attribution"            
                 }

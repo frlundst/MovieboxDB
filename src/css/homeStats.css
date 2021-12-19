@@ -60,7 +60,7 @@
 
 @media screen and (max-width: 1200px) {
     .stats-container {
-        margin-top: 200px;
+        margin-top: 0px;
         margin-bottom: -150px;
     }
 
@@ -72,8 +72,6 @@
 
 @media screen and (max-width: 550px) {
     .stats-container {
-        margin-top: 200px;
-        margin-bottom: -150px;
         text-align: center;
     }
 
